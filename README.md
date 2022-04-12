@@ -1,1 +1,1 @@
-# mall-directory
+# Mall Direct
