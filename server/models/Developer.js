@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 const bcrypt = require('bcrypt');
+const Mall = require('./Mall');
 
-const userSchema = new Schema({
+const developerSchema = new Schema({
     firstName: {
         type: String,
         required: true,
@@ -26,5 +27,9 @@ const userSchema = new Schema({
     malls: [Mall.schema]
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+// set middleware for creating admin password
+
+// compare password to hashed
+
+const Developer = mongoose.model('Developer', developerSchema);
+module.exports = Developer;
