@@ -26,5 +26,9 @@ const userSchema = new Schema({
     malls: [Mall.schema]
 });
 
+// set middleware for creating admin password
+
+// compare password to hashed
+
 const User = mongoose.model('User', userSchema);
 module.exports = User;
