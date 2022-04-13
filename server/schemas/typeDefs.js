@@ -1,36 +1,41 @@
-const {gql } = require('apollo-server-express');
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-type Developer{
-_id: ID
-username: String
-email: String
-password: String
-malls: [Mall] 
-}
-type Auth{
-token: ID!
-user: Developer
-}
-type Mall{
-_id: ID
-mallName: String
-style: String
-location: String
-stores: [Store] 
-}
-type Store{
-mallID: ID
-storeName: String
-# image: image
-category: Category
-description: String
-url: String
-}
-type Category{
-_id: ID
-name: String
-}
+    type Developer {
+        _id: ID
+        username: String
+        email: String
+        password: String
+        malls: [Mall] 
+    }
+
+    type Auth{
+        token: ID!
+        user: Developer
+    }
+
+    type Mall{
+        _id: ID
+        mallName: String
+        style: String
+        location: String
+        stores: [Store] 
+    }
+
+    type Store{
+        mallID: ID
+        storeName: String
+        # image: image
+        category: Category
+        description: String
+        url: String
+    }
+
+    type Category{
+        _id: ID
+        name: String
+    }
+    
 # type Mutation {
 #     addDeveloper(username: String!, email: String!, password: String!): Auth
 # login(email: String!, password: String!): Auth
