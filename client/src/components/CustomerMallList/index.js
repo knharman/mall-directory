@@ -1,7 +1,11 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import { QUERY_MALLS } from '../utils/queries';
 
-function CustomerMallList(props) {
-  const { Mall, Category} = props;
+function CustomerMallList() {
+
+  const { Mall } = useQuery(QUERY_MALLS);
+ const style = Mall.style
   return (
 <>
   <section>
@@ -11,15 +15,21 @@ function CustomerMallList(props) {
         <div className="center">
           <input className="center" list="select" name="selectCity" placeholder="Select A Category"></input>
           <datalist className="center" id="select">  
-            {Category.map(({ name }) => (
-              <option value={name}></option>
-              ))}
+              <option value="Plaza" ></option>
+              <option value="Strip Mall1"></option>
+              <option value="Shopping Center"></option>
           </datalist>
+        
+        {/* This is saved for updating to location
+          <datalist className="center" id="select">  
+            {location.map(({ name }) => (
+              <option value={ name }></option>
+              ))}
+          </datalist> */}
+        
+        
         </div>
       </div>
-
-      
-
       <ul className="scrollBox">
         {Mall.map(({ mallName, style, location, _id}) => (
 // Need an onClick() funtion that will generate the stores array in the stores field.
@@ -35,4 +45,5 @@ function CustomerMallList(props) {
 </>
   );
 }
+
 export default CustomerMallList;

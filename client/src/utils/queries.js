@@ -7,7 +7,6 @@ export const QUERY_MALLS = gql`
       mallName
       style
       location
-      Address
       Store {
       storeName
       image

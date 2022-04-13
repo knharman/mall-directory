@@ -3,15 +3,17 @@ import { CustomerMallList } from "/index.js"
 
 function MallNames(props) {
   const citySlected = document.getElementByName("selectCity").value;
-  const { Mall, Category} = props;
+  const { Mall, Location} = props;
 
  if (!citySlected) {
-   const citySlected = Category;
+   const citySlected = Location;
  }
 
 
   if input
   return (
+
+
 <>
 
 
