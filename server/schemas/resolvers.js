@@ -1,23 +1,23 @@
 const {AuthenticationError} = require('apollo-server-express');
 const {signToken} = require('../utils/auth');
-const {User} = require('../models');
+const {Developer} = require('../models');
 
 
 const resolvers = {
-    user: async (parent, args, context) => {
-        if (context.user) {
-          const user = await User.findById(context.user._id).populate({
-            path: "",
-            populate: "malls",
-          });
+    // developer: async (parent, args, context) => {
+    //     if (context.developer) {
+    //       const developer = await Developer.findById(context.developer._id).populate({
+    //         path: "",
+    //         populate: "malls",
+    //       });
   
-          user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+    //       developer.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
   
-          return user;
-        }
+    //       return developer;
+    //     }
   
-        throw new AuthenticationError("Not logged in");
-      },
+    //     throw new AuthenticationError("Not logged in");
+    //   },
 
 };
 

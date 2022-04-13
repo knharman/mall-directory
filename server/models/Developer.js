@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 const bcrypt = require('bcrypt');
+const Mall = require('./Mall');
 
-const userSchema = new Schema({
+const developerSchema = new Schema({
     firstName: {
         type: String,
         required: true,
@@ -30,5 +31,5 @@ const userSchema = new Schema({
 
 // compare password to hashed
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+const Developer = mongoose.model('Developer', developerSchema);
+module.exports = Developer;
