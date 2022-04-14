@@ -28,8 +28,18 @@ const developerSchema = new Schema({
 });
 
 // set middleware for creating admin password
+developerSchema.pre('save', async function(next) {
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+    next();
+})
 
 // compare password to hashed
+developerSchema.methods.isCorrectPassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
+};
 
 const Developer = mongoose.model('Developer', developerSchema);
 module.exports = Developer;
