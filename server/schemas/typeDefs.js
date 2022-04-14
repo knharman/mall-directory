@@ -35,17 +35,17 @@ const typeDefs = gql`
         _id: ID
         name: String
     }
-    
-# type Mutation {
-#     addDeveloper(username: String!, email: String!, password: String!): Auth
-# login(email: String!, password: String!): Auth
-# # addMall(mallName: String!, style: String!, location: String!)
-# # updateMall(mallName: String!, style: String!, location: String!)
-# # removeMall(_id: ID!)
-# # addStore(mallID: ID!, storeName: String!, image: String!, category: String!, description: String!, url: String!)
-# # updateStore(mallID: ID!, storeName: String!, image: String!, category: String!, description: String!, url: String!)
-# # removeStore(mallID: ID!)
-# }
+
+    type Mutation {
+        addDeveloper(username: String!, email: String!, password: String!): Auth
+        addMall(mallName: String!, style: String!, location: String!): Mall
+        login(email: String!, password: String!): Auth
+        updateMall(_id: ID!, mallName: String!, style: String!, location: String!): Mall
+        removeMall(_id: ID!): Mall
+        addStore(mallID: ID!, storeName: String!, image: String!, category: String!, description: String!, url: String!)
+        updateStore(mallID: ID!, storeName: String!, image: String!, category: String!, description: String!, url: String!)
+        removeStore(mallID: ID!)
+    }
 `;
 
 
