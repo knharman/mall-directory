@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_MALLS, QUERY_STORES, QUERY_CATEGORIES } from "../utils/queries";
-import LocationFilter from "../LocationFilter";
+import LocationFilter from "./LocationFilter";
 import IndividualMall from "../IndividualMall";
 
 import { useStoreContext } from "../../utils/GlobalState";
@@ -12,7 +12,7 @@ function CustomerMallList() {
   const [state, dispatch] = useStoreContext();
 
   // TODO: figure out How to get element from other file.
-  const slectedLocation = document.getElementByName(selectedCity);
+  const slectedLocation = document.getElementByName('selectedCity');
 
   const { loading, data } = useQuery(QUERY_MALLS);
 
