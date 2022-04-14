@@ -1,9 +1,13 @@
 import './App.css';
-import DeveloperHome from './pages/DeveloperHome';
+// import DeveloperHome from './pages/DeveloperHome';
+import DeveloperLogin from './pages/DeveloperLogin';
 
 function App() {
   return (
-    <DeveloperHome />
+    <>
+      {/* <DeveloperHome /> */}
+      <DeveloperLogin />
+    </>
   );
 }
 
