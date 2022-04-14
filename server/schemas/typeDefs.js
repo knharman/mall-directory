@@ -31,6 +31,9 @@ type Category{
 _id: ID
 name: String
 }
+type Query {
+    
+}
 # type Mutation {
 #     addDeveloper(username: String!, email: String!, password: String!): Auth
 # login(email: String!, password: String!): Auth
