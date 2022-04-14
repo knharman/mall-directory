@@ -17,11 +17,11 @@ export const QUERY_MALLS = gql`
 
 export const QUERY_STORE = gql`
  {
-
+    
  }
 `;
 
-export const QUERY_ALL_STOREs = gql`
+export const QUERY_ALL_STORES = gql`
  {
     stores {
         mallID
