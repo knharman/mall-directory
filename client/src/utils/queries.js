@@ -23,6 +23,7 @@ export const QUERY_MALLS = gql`
 export const QUERY_STORES = gql` 
   {
     Store {
+      id
       mallID
       storeName
       image
