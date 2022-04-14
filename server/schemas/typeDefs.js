@@ -23,9 +23,8 @@ const typeDefs = gql`
     }
 
     type Store{
-        mallID: ID
         storeName: String
-        # image: image
+        image: String
         category: Category
         description: String
         url: String
@@ -42,7 +41,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         updateMall(_id: ID!, mallName: String!, style: String!, location: String!): Mall
         removeMall(_id: ID!): Mall
-        addStore(mallID: ID!, storeName: String!, image: String!, category: String!, description: String!, url: String!)
+        addStore(mallID: ID!, storeName: String!, image: String!, category: String!, description: String!, url: String!): Store
         updateStore(mallID: ID!, storeName: String!, image: String!, category: String!, description: String!, url: String!)
         removeStore(mallID: ID!)
     }

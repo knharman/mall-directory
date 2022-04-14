@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const { Developer, Mall } = require('../models');
+const { Developer, Mall, Store, Category } = require('../models');
 
 const resolvers = {
     // developer: async (parent, args, context) => {
@@ -60,6 +60,17 @@ const resolvers = {
         removeMall: async (parent, { _id }, context) => {
             if (context.user){
                 return await Mall.findOneAndDelete({_id})
+            }
+            throw new AuthenticationError('Not logged in');
+        },
+        addStore: async (parent, { mallID, storeName, image, category, description, url }, context) => {
+            if (context.user){
+                const cat = Category.findOne({ name: category });
+                const store = new Store({ storeName, image, category: cat._id, description, url });
+
+                await Mall.findByIdAndUpdate(mallID, { $push: { stores: store } });
+        
+                return store;
             }
             throw new AuthenticationError('Not logged in');
         }
