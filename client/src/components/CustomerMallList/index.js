@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_MALLS, QUERY_STORES, QUERY_CATEGORIES } from "../../utils/queries";
+import { QUERY_MALLS } from "../../utils/queries";
 import LocationFilter from "./LocationFilter";
 import IndividualMall from "./IndividualMall";
 
@@ -35,7 +35,7 @@ function CustomerMallList() {
     }
   }, [data, loading, dispatch]);
 
-  function filerMalls() {
+  function filterMalls() {
     if (!slectedLocation) {
       return state.malls;
     }
@@ -52,7 +52,7 @@ function CustomerMallList() {
             <LocationFilter />
           </div>
           <ul className="scrollBox">
-            {filerMalls().map((mall) => (
+            {filterMalls().map((mall) => (
               <IndividualMall
                 key={mall._id}
                 _id={mall._id}

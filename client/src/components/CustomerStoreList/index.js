@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_MALLS, QUERY_STORES, QUERY_CATEGORIES } from "../../utils/queries";
+import { QUERY_STORES } from "../../utils/queries";
 import CategoryFilter from "./CategoryFilter";
 import IndividualStore from "./IndividualStore";
 import CustomerMallList from "../CustomerMallList";

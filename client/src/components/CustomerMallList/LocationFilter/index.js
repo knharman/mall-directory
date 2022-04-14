@@ -4,15 +4,14 @@ import { QUERY_MALLS } from "../../../utils/queries";
 
 function LocationFilter() {
   const { Mall } = useQuery(QUERY_MALLS);
- 
+
   const locations = Mall.map((malls) => malls.location);
 
   let unique = [...new Set(locations)];
 
   const handleChange = (id) => {
-const newLocation = id;
-return newLocation
-
+    const newLocation = id;
+    return newLocation;
   };
 
   return (
@@ -27,10 +26,12 @@ return newLocation
       {/* Maps over locations for drop down filtering */}
       <datalist className="center" id="select1">
         {unique.map((loc) => (
-          <option value={loc}
-          onChange={() => {
-            handleChange(loc);
-          }}></option>
+          <option
+            value={loc}
+            onChange={() => {
+              handleChange(loc);
+            }}
+          ></option>
         ))}
       </datalist>
     </div>

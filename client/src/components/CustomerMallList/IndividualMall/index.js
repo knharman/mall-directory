@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import CustomerStoreList from "../../CustomerStoreList";
 
 function IndividualMall(mall) {
 
@@ -16,13 +14,11 @@ function IndividualMall(mall) {
   return (
     
     <li className="box center" id={_id}>
-      <Link to={ CustomerStoreList }>
         <h5>{mallName}</h5>
         <div>
           <p>Style: {style}</p>
           <p>Location: {location}</p>
         </div>
-      </Link>
     </li>
   );
 }
