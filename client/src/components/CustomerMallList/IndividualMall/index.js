@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CustomerStoreList from "../CustomerStoreList";
+import CustomerStoreList from "../../CustomerStoreList";
 
 function IndividualMall(mall) {
 

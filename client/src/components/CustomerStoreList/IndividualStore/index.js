@@ -13,7 +13,7 @@ function IndividualStore(store) {
   return (
     
     <li className="box center">
-      <Link to={`model.${_id}`}>
+      <Link to={`model.id`}>
         <img
           alt={storeName}
           src={`/images/${image}`}

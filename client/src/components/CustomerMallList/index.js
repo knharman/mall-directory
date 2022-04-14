@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_MALLS, QUERY_STORES, QUERY_CATEGORIES } from "../utils/queries";
+import { QUERY_MALLS, QUERY_STORES, QUERY_CATEGORIES } from "../../utils/queries";
 import LocationFilter from "./LocationFilter";
-import IndividualMall from "../IndividualMall";
+import IndividualMall from "./IndividualMall";
 
 import { useStoreContext } from "../../utils/GlobalState";
 import { UPDATE_MALLS } from "../../utils/actions";

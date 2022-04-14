@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_MALLS } from "../utils/queries";
+import { QUERY_MALLS } from "../../../utils/queries";
 
 function LocationFilter() {
   const { Mall } = useQuery(QUERY_MALLS);
@@ -8,6 +8,12 @@ function LocationFilter() {
   const locations = Mall.map((malls) => malls.location);
 
   let unique = [...new Set(locations)];
+
+  const handleChange = (id) => {
+const newLocation = id;
+return newLocation
+
+  };
 
   return (
     <div className="center">

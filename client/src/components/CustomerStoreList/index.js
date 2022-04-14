@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_MALLS, QUERY_STORES, QUERY_CATEGORIES } from "../utils/queries";
-import CategoryFilter from "../CategoryFilter";
+import { QUERY_MALLS, QUERY_STORES, QUERY_CATEGORIES } from "../../utils/queries";
+import CategoryFilter from "./CategoryFilter";
 import IndividualStore from "./IndividualStore";
 import CustomerMallList from "../CustomerMallList";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -13,10 +13,10 @@ function CustomerStoreList() {
 
   const { currentCategory } = state;
 
-  const { stores } = useQuery(QUERY_STORES);
+  const { loading, stores } = useQuery(QUERY_STORES);
 
   // TODO: get and connect ID or Key from CustomerMallList
-  const mallClicked = CustomerMallList.getElementById(_.id)
+  const mallClicked = CustomerMallList.getElementById("TBD")
 
   const data = stores.filter((store) => store.MallId === mallClicked);
 

@@ -1,3 +1,4 @@
+import { useReducer } from "react";
 // import actions
 import {
   UPDATE_STORES,
@@ -56,4 +57,6 @@ const reducer = (state=defaultState, action) => {
   }
 };
 
-export default reducer;
+export function useProductReducer(initialState) {
+  return useReducer(reducer, initialState)
+}
