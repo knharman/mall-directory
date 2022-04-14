@@ -65,12 +65,44 @@ const resolvers = {
         },
         addStore: async (parent, { mallID, storeName, image, category, description, url }, context) => {
             if (context.user){
-                const cat = Category.findOne({ name: category });
+                const cat = await Category.findOne({ name: category });
                 const store = new Store({ storeName, image, category: cat._id, description, url });
 
                 await Mall.findByIdAndUpdate(mallID, { $push: { stores: store } });
         
                 return store;
+            }
+            throw new AuthenticationError('Not logged in');
+        },
+        updateStore: async (parent, { mallID, storeID, storeName, image, category, description, url }, context) => {
+            if (context.user){
+                const cat = await Category.findOne({ name: category });
+                
+                const storeUpdates = { storeName, image, category: cat._id, description, url }
+                const mall = await Mall.findOneAndUpdate(
+                    { _id: mallID, "stores._id": storeID }, 
+                    { $set: {
+                        "stores.$": storeUpdates
+                    }}
+                );
+        
+                // const mall = await Mall.findById(mallID)
+                // const store = mall.stores.id(storeID)
+                // store.set(storeUpdates)
+                // mall.save()
+
+                return mall;
+            }
+            throw new AuthenticationError('Not logged in');
+        },
+        removeStore: async (parent, { mallID, storeID }, context) => {
+            if (context.user){                
+                const mall = await Mall.findOne({ _id: mallID });
+        
+                mall.stores.id(storeID).remove()
+                mall.save()
+
+                return mall;
             }
             throw new AuthenticationError('Not logged in');
         }
