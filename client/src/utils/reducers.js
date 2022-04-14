@@ -1,6 +1,7 @@
 // import actions
 import {
   UPDATE_STORES,
+  UPDATE_MALLS,
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
   OPEN_MODAL,
@@ -12,6 +13,7 @@ const defaultState = {
   categories: [],
   currentCategory: '',
   modal: false,
+  malls:''
 }
 
 // Root reducer
@@ -23,6 +25,12 @@ const reducer = (state=defaultState, action) => {
               ...state,
               stores: [...action.stores],
           };
+                // if the action type value is the value of `UPDATE_MALLS`, return a new state object with an updated malls array
+      case UPDATE_MALLS:
+        return {
+            ...state,
+            malls: [...action.malls],
+        };
       // if the action type value is the value of `UPDATE_CATEGORIES`, return a new state object with an updated categories array
       case UPDATE_CATEGORIES:
           return {

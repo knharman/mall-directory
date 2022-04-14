@@ -1,13 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_MALLS } from "../utils/queries";
+import { QUERY_MALLS, QUERY_STORES, QUERY_CATEGORIES } from "../utils/queries";
+import LocationFilter from "../LocationFilter";
+import IndividualMall from "../IndividualMall";
+
+import { useStoreContext } from "../../utils/GlobalState";
+import { UPDATE_MALLS } from "../../utils/actions";
+import { idbPromise } from "../../utils/helpers";
 
 function CustomerMallList() {
-  const { Mall } = useQuery(QUERY_MALLS);
+  const [state, dispatch] = useStoreContext();
 
-  const locations = Mall.location;
+  // TODO: figure out How to get element from other file.
+  const slectedLocation = document.getElementByName(selectedCity);
 
-  let unique = [...new Set(locations)];
+  const { loading, data } = useQuery(QUERY_MALLS);
+
+  useEffect(() => {
+    if (data) {
+      dispatch({
+        type: UPDATE_MALLS,
+        malls: data.malls,
+      });
+      data.malls.forEach((mall) => {
+        idbPromise("malls", "put", mall);
+      });
+    } else if (!loading) {
+      idbPromise("malls", "get").then((malls) => {
+        dispatch({
+          type: UPDATE_MALLS,
+          malls: malls,
+        });
+      });
+    }
+  }, [data, loading, dispatch]);
+
+  function filerMalls() {
+    if (!slectedLocation) {
+      return state.malls;
+    }
+
+    return state.malls.filter((mall) => mall.location === slectedLocation);
+  }
 
   return (
     <>
@@ -15,30 +49,17 @@ function CustomerMallList() {
         <div className="box margin50">
           <div className="box inline margin50">
             <h2 className="center">List of Malls</h2>
-            <div className="center">
-              <input
-                className="center"
-                list="select"
-                name="selectCity"
-                placeholder="Select A Category"
-              ></input>
-              {/* Maps over locations for drop down filtering */}
-              <datalist className="center" id="select">
-                {unique.map((loc) => (
-                  <option value={loc}></option>
-                ))}
-              </datalist>
-            </div>
+            <LocationFilter />
           </div>
-          {/* TODO: create filtration in response to input value above */}
           <ul className="scrollBox">
-            {Mall.map(({ mallName, style, location, _id }) => (
-              // TODO: create an onClick() funtion that will generate the stores array in the stores field.
-              <li className="box center" id={_id}>
-                <h4>{mallName} </h4>
-                <p>Style: {style}</p>
-                <p>Location: {location}</p>
-              </li>
+            {filerMalls().map((mall) => (
+              <IndividualMall
+                key={mall._id}
+                _id={mall._id}
+                style={mall.style}
+                location={mall.location}
+                store={[mall.store]}
+              />
             ))}
           </ul>
         </div>

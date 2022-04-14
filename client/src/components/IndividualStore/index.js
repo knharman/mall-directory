@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SingleStore(store) {
+function IndividualStore(store) {
 
   const {
     image,
@@ -24,4 +24,4 @@ function SingleStore(store) {
   );
 }
 
-export default SingleStore;
+export default IndividualStore;
