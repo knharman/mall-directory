@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_MALLS = gql`
-    query getMalls($store: ID) {
-        
+    query getMalls($developer: ID) {
+        malls(developer: $developer) {
         _id
         mallName
         style
@@ -15,9 +15,25 @@ export const QUERY_MALLS = gql`
 `;
 
 
-export const QUERY_ALL_MALLS = gql`
+export const QUERY_STORE = gql`
  {
 
+ }
+`;
+
+export const QUERY_ALL_STOREs = gql`
+ {
+    stores {
+        mallID
+        storeName
+        category
+        description
+        url
+        mall {
+            mallName
+        }
+
+    }
  }
 `;
 
