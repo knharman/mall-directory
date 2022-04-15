@@ -3,20 +3,40 @@ const { signToken } = require('../utils/auth');
 const { Developer, Mall, Store, Category } = require('../models');
 
 const resolvers = {
-    // developer: async (parent, args, context) => {
-    //     if (context.developer) {
-    //       const developer = await Developer.findById(context.developer._id).populate({
-    //         path: "",
-    //         populate: "malls",
-    //       });
+    Query: {
+        categories: async () => {
+            return await Category.find();
+        },
+    developer: async (parent, args, context) => {
+        if (context.developer) {
+          const developer = await Developer.findById(context.developer._id).populate({
+            // path: "",
+            populate: "catergory",
+          });
+  
+        //   developer.stores.sort((a, b) => b.purchaseDate - a.purchaseDate);
+  
+          return developer;
+        }
+  
+        throw new AuthenticationError("Not logged in");
+      },
+      store: async (parent, {category, storeName}) => {
+        const params = {};
 
-    //       developer.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+        if (category) {
+            params.category = category.name;
+        }
+        if (storeName) {
+            params.storeName = {
+                $regex: storeName,
+            };
+        }
+        return await Store.find(params).populate('category');
+      },
 
-    //       return developer;
-    //     }
+    },
 
-    //     throw new AuthenticationError("Not logged in");
-    //   },
     Mutation: {
         addDeveloper: async (parent, args) => {
             const developer = await Developer.create(args);
@@ -107,7 +127,6 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         }
     }
-
-};
+}
 
 module.exports = resolvers;
