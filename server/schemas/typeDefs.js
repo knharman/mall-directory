@@ -21,6 +21,10 @@ const typeDefs = gql`
         location: String
         stores: [Store] 
     }
+    # type Location{
+    #     city: String
+    #     state: String
+    # }
 
     type Store{
         storeName: String
