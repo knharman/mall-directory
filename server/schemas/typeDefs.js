@@ -35,6 +35,15 @@ const typeDefs = gql`
         name: String
     }
 
+    type Query{
+        categories: [Category]
+        developer: Developer
+        store: Store
+        mall: Mall
+        stores(mall: ID, storeName: String): [Store]
+
+    }
+
     type Mutation {
         addDeveloper(username: String!, email: String!, password: String!): Auth
         addMall(mallName: String!, style: String!, location: String!): Mall
