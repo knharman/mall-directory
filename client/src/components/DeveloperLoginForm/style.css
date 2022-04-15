@@ -1,0 +1,64 @@
+:root {
+  --developer1: #202c39;
+  --developer2: #283845;
+  --developer3: #b8b08d;
+  --developer4: #f2d492;
+  --developer5: #f29559;
+  --white: #ffffff;
+}
+
+#login-form {
+  background-color: var(--developer2);
+  border-radius: 15px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  width: 50%;
+}
+
+.login-input {
+  color: var(--developer5);
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.error-text {
+  color: red;
+}
+
+.login-button {
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0 1px;
+  margin-top: 5px;
+  color: var(--developer2);
+  background-color: var(--developer4);
+}
+
+.login-button:hover {
+  color: var(--white);
+  background-color: var(--developer5);
+}
+
+.form-control {
+  margin-bottom: 11px;
+  margin-top: 12px;
+  padding: 5px;
+  box-shadow: #526760;
+  width: 96% !important;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+textarea:focus::placeholder {
+  color: transparent;
+}

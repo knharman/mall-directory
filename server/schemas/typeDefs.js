@@ -31,6 +31,12 @@ type Category{
 _id: ID
 name: String
 }
+type Query {
+    developer: Developer
+    categories: [Category]
+    store(mallID: ID!): Mall
+    stores(mall: ID, storeName: String): [Store]
+}
 # type Mutation {
 #     addDeveloper(username: String!, email: String!, password: String!): Auth
 # login(email: String!, password: String!): Auth
