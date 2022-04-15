@@ -7,7 +7,8 @@ const mallSchema = new Schema({
         type: String,
         required: true,
         trim: true
-    }, 
+    },
+    // stores: [Store], 
     style: {
         type: String, 
         required: true, 
