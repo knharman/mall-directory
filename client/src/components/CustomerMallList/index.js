@@ -9,43 +9,49 @@ import { UPDATE_MALLS } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
 function CustomerMallList() {
-  const [state, dispatch] = useStoreContext();
+  //const [state, dispatch] = useStoreContext();
 
   // TODO: figure out How to get element from other file.
-  const slectedLocation = document.getElementByName('selectedCity');
+  //const slectedLocation = document.getElementByName('selectedCity');
 
-  const { loading, data } = useQuery(QUERY_MALLS);
+  const { loading, data, error } = useQuery(QUERY_MALLS);
 
-  useEffect(() => {
-    if (data) {
-      dispatch({
-        type: UPDATE_MALLS,
-        malls: data.malls,
-      });
-      data.malls.forEach((mall) => {
-        idbPromise("malls", "put", mall);
-      });
-    } else if (!loading) {
-      idbPromise("malls", "get").then((malls) => {
-        dispatch({
-          type: UPDATE_MALLS,
-          malls: malls,
-        });
-      });
-    }
-  }, [data, loading, dispatch]);
+  // useEffect(() => {
+  //   if (data) {
+  //     dispatch({
+  //       type: UPDATE_MALLS,
+  //       malls: data.malls,
+  //     });
+  //     data.malls.forEach((mall) => {
+  //       idbPromise("malls", "put", mall);
+  //     });
+  //   } 
+  //   else if (!loading) {
+  //     idbPromise("malls", "get").then((malls) => {
+  //       dispatch({
+  //         type: UPDATE_MALLS,
+  //         malls: malls,
+  //       });
+  //     });
+  //   }
+  //   else if (error) {
+  //     console.log("this is the error", error)
+  //   }
+  // }, [data, loading, error, dispatch]);
 
-  function filterMalls() {
-    if (!slectedLocation) {
-      return state.malls;
-    }
+  // function filterMalls() {
+  //   if (!slectedLocation) {
+  //     return state.malls;
+  //   }
 
-    return state.malls.filter((mall) => mall.location === slectedLocation);
-  }
+  //   return state.malls.filter((mall) => mall.location === slectedLocation);
+  // }
 
+  if(data) console.log(data);
+  if(error) console.log(error);
   return (
     <>
-      <section>
+      {/* <section>
         <div className="box margin50">
           <div className="box inline margin50">
             <h2 className="center">List of Malls</h2>
@@ -63,7 +69,11 @@ function CustomerMallList() {
             ))}
           </ul>
         </div>
-      </section>
+      </section> */}
+      <div>
+        {loading && 'loading...'}
+        {error && 'Had an error'}
+      </div>
     </>
   );
 }
