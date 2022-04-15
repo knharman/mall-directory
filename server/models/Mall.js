@@ -3,12 +3,22 @@ const {Schema} = mongoose;
 // const bcrypt = require('bcrypt');
 
 const mallSchema = new Schema({
-    name: {
+    mallName: {
         type: String,
         required: true,
         trim: true
     },
-    stores: [Store]
+    stores: [Store], 
+    style: {
+        type: String, 
+        required: true, 
+        trim: true
+    }, 
+    location: {
+        type: String, 
+        required: true, 
+        trim: true
+    }
 });
 
 const Mall = mongoose.model('Mall', mallSchema);
