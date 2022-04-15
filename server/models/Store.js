@@ -3,22 +3,30 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const storeSchema = new Schema({
-  name: {
+  storeName: {
     type: String,
     required: true,
     trim: true
   },
-  description: {
-    type: String
-  },
   image: {
-    type: String
+    type: String,
+    required: true,
+    trim: true
   },
- 
   category: {
     type: Schema.Types.ObjectId,
-    ref: 'Mall',
+    ref: 'Category',
     required: true
+  },
+  description: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  url: {
+    type: String,
+    required: true,
+    trim: true
   }
 });
 
