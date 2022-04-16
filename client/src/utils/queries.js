@@ -15,44 +15,46 @@ export const QUERY_MALLS = gql`
 `;
 
 
-export const QUERY_STORE = gql`
- {
+
+
+// export const QUERY_STORE = gql`
+//  {
     
- }
-`;
+//  }
+// `;
 
-export const QUERY_ALL_STORES = gql`
- {
-    stores {
-        mallID
-        storeName
-        category
-        description
-        url
-        mall {
-            mallName
-        }
+// export const QUERY_ALL_STORES = gql`
+//  {
+//     stores {
+//         mallID
+//         storeName
+//         category
+//         description
+//         url
+//         mall {
+//             mallName
+//         }
 
-    }
- }
-`;
+//     }
+//  }
+// `;
 
-export const QUERY_DEVELOPER = gql`
-  {
-    developer {
-      username
-      malls {
-        _id
-        location
-        stores {
-          mallID
-          storeName
-          description
-          category
-         url
-          image
-        }
-      }
-    }
-  }
-`;
+// export const QUERY_DEVELOPER = gql`
+//   {
+//     developer {
+//       username
+//       malls {
+//         _id
+//         location
+//         stores {
+//           mallID
+//           storeName
+//           description
+//           category
+//          url
+//           image
+//         }
+//       }
+//     }
+//   }
+// `;

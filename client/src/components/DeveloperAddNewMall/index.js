@@ -1,40 +1,35 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_MALL } from "../../utils/mutations";
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 import "./style.css";
 
-function DeveloperAddNewMall(onClose) {
+function DeveloperAddNewMall({ onClose }) {
 
-  // TODO: issue with post request rendering (may be linked to mutation)
-  // const mallNameValue = document.getElementByID("mallName");
-  // const styleValue = document.getElementByID("style");
-  // const locationValue = document.getElementByID("location");
-  //   const [formState, setFormState] = useState({
-  //     mallName: {mallNameValue},
-  //     style: {styleValue},
-  //     location: {locationValue},
-  //   });
+  const [formState, setFormState] = useState({
+    mallName: "",
+    style: "",
+    location: "",
+  });
 
+  const [addMall, { error, loading, data }] = useMutation(ADD_MALL);
 
-  //   const [addMall, { error }] = useMutation(ADD_MALL);
+  const submitNewMall = async (event) => {
+    // event.preventDefault();
 
-  // const submitNewMall = async (event) => {
-  //   event.preventDefault();
-
-  //   // use try/catch instead of promises to handle errors
-  //   try {
-  //     // execute addUser mutation and pass in variable data from form
-  //     const { data } = await addMall({
-  //       variables: { ...formState },
-  //     });
-  //     //TODO:create add mall authentication
-  //     Auth.newMall(data.addMall.token);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
-
+    // use try/catch instead of promises to handle errors
+    try {
+      // execute addUser mutation and pass in variable data from form
+      const { data } = await addMall({
+        variables: { ...formState },
+      });
+      onClose();
+      // //TODO:create add mall authentication
+      // Auth.newMall(data.addMall.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <>
@@ -48,31 +43,79 @@ function DeveloperAddNewMall(onClose) {
                 className="modalTextBox"
                 type="text"
                 id="mallName"
-                name="mallName1"
+                name="mallName"
                 placeholder="Enter Your Mall's Name"
+                value={formState.mallName}
+                onChange={(e) => {
+                  const { name, value } = e.target;
+                  setFormState((oldState) => ({ ...oldState, [name]: value }));
+                }}
               ></input>
               {/* Mall style and Drop down */}
               <h1 className="modalTitles storeName">Mall Style:</h1>
               <select className="modalTextBox" id="style">
-                <option value="shoppingCenter">Shopping Center</option>
-                <option value="stripMall">Strip Mall</option>
-                <option value="plaza">Plaza</option>
+                <option
+                  name="style"
+                  value="shoppingCenter"
+                  onClick={(e) => {
+                    const { name, value } = e.target;
+                    setFormState((oldState) => ({
+                      ...oldState,
+                      [name]: value,
+                    }));
+                  }}
+                >
+                  Shopping Center
+                </option>
+                <option
+                  name="style"
+                  value="stripMall"
+                  onClick={(e) => {
+                    const { name, value } = e.target;
+                    setFormState((oldState) => ({
+                      ...oldState,
+                      [name]: value,
+                    }));
+                  }}
+                >
+                  Strip Mall
+                </option>
+                <option
+                  name="style"
+                  value="plaza"
+                  onClick={(e) => {
+                    const { name, value } = e.target;
+                    setFormState((oldState) => ({
+                      ...oldState,
+                      [name]: value,
+                    }));
+                  }}
+                >
+                  Plaza
+                </option>
               </select>
-{/* Mall Location and input box */}
+
+              {/* Mall Location and input box */}
               <h1 className="modalTitles storeName">Mall Location:</h1>
               <input
                 className="modalTextBox"
                 type="text"
-                id="mallName"
-                name="mallName"
+                id="location"
+                name="location"
                 placeholder="City & State ONLY         Ex. Portland OR"
+                value={formState.location}
+                onChange={(e) => {
+                  const { name, value } = e.target;
+                  setFormState((oldState) => ({ ...oldState, [name]: value }));
+                }}
               ></input>
-{/* Save and Cancel boxes */}
+              {/* Save and Cancel boxes */}
               <div>
-                <button 
-                // onClick={submitNewMall()} 
-                onClick={onClose} 
-                type="button">
+                <button
+                  // onClick={submitNewMall()}
+                  onClick={() => submitNewMall()}
+                  type="button"
+                >
                   Submit
                 </button>
                 <button onClick={onClose} type="button">
