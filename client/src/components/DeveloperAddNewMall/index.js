@@ -11,7 +11,7 @@ function DeveloperAddNewMall({ onClose }) {
     style: "",
     location: "",
   });
-
+// TODO: fix and ADD_STORE mutation
   const [addMall, { error, loading, data }] = useMutation(ADD_MALL);
 
   const submitNewMall = async (event) => {
