@@ -25,11 +25,17 @@
     font-weight: bolder;
 }
 
-@media (max-width: 648px) {
+@media (max-width: 768px) {
+    .margin-none{
+        margin-left: 0px !important;
+    }
+    .text-left {
+        text-align: left !important;
+    }
+}
+
+@media (max-width: 348px) {
     .nav-row {
         display: inline;
-    }
-    .nav-title {
-        color: yellow !important;
     }
 }
