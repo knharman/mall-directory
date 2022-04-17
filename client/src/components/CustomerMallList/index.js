@@ -40,6 +40,8 @@ location.location
     <>
       <section>
         <div className="box margin50">
+        {data.length ? (
+          <>
           <div className="box inline margin50">
             <h2 className="center">List of Malls</h2>
 
@@ -75,9 +77,14 @@ location.location
               />
             ))}
           </ul>
+          </>
+          ) : (
+            <h3>There are currently no Malls in the database.</h3>
+          )}
         </div>
       </section>
       <div>
+        
         {loading && "loading..."}
         {error && "Had an error"}
       </div>
