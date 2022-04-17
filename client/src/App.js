@@ -1,3 +1,9 @@
+
+import './App.css';
+import ContactUs from './pages/ContactUs';
+import DeveloperLogin from './pages/DeveloperLogin';
+import CustomerHome from './pages/CustomerHome';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -5,8 +11,8 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
-import "./App.css";
-import CustomerHome from "./pages/CustomerHome";
+
+
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache()
@@ -16,9 +22,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <>
-      <ApolloProvider client={client}>
-      <CustomerHome />
-      </ApolloProvider>
+
+    <ApolloProvider client = {client}>
+    <DeveloperLogin />
+    <ContactUs />
+    <CustomerHome />
+    </ApolloProvider>
     </>
   );
 }

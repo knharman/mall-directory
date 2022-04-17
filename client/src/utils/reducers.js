@@ -9,16 +9,17 @@ import {
 } from './actions';
 
 // Set default state  
-const defaultState = {
-  stores: [],
-  categories: [],
-  currentCategory: '',
-  modal: false,
-  malls:''
-}
+
+// const defaultState = {
+//   stores: [],
+//   categories: [],
+//   currentCategory: '',
+//   modal: false,
+//   malls:''
+// }
 
 // Root reducer
-const reducer = (state=defaultState, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
       // if the action type value is the value of `UPDATE_STORES`, return a new state object with an updated stores array
       case UPDATE_STORES:

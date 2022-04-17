@@ -9,43 +9,47 @@ import { UPDATE_MALLS } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
 function CustomerMallList() {
-  const [state, dispatch] = useStoreContext();
+  
+  // const [state, dispatch] = useStoreContext();
+  // console.log(useStoreContext());
 
-  // TODO: figure out How to get element from other file.
-  const slectedLocation = document.getElementByName('selectedCity');
+  // // TODO: figure out How to get element from other file.
+  const slectedLocation = 'selectedCity';
+  // console.log(slectedLocation);
 
   const { loading, data, error } = useQuery(QUERY_MALLS);
 
-  useEffect(() => {
-    if (data) {
-      dispatch({
-        type: UPDATE_MALLS,
-        malls: data.malls,
-      });
-      data.malls.forEach((mall) => {
-        idbPromise("malls", "put", mall);
-      });
-    } 
-    else if (!loading) {
-      idbPromise("malls", "get").then((malls) => {
-        dispatch({
-          type: UPDATE_MALLS,
-          malls: malls,
-        });
-      });
-    }
-    else if (error) {
-      console.log("this is the error", error)
-    }
-  }, [data, loading, error, dispatch]);
+  // useEffect(() => {
+  //   if (data) {
+  //     dispatch({
+  //       type: UPDATE_MALLS,
+  //       malls: data.malls,
+  //     });
+  //     data.malls.forEach((mall) => {
+  //       idbPromise("malls", "put", mall);
+  //     });
+  //   } 
+  //   else if (!loading) {
+  //     idbPromise("malls", "get").then((malls) => {
+  //       dispatch({
+  //         type: UPDATE_MALLS,
+  //         malls: malls,
+  //       });
+  //     });
+  //   }
+  //   else if (error) {
+  //     console.log("this is the error", error)
+  //   }
+  // }, [data, loading, error, dispatch]);
 
   function filterMalls() {
+    console.log(data);
     if (!slectedLocation) {
-      return state.malls;
+      return data.malls;
     }
 
-    return state.malls.filter((mall) => mall.location === slectedLocation);
-  }
+    return data.malls.filter((mall) => mall.location === slectedLocation);
+ }
 
   if(data) console.log(data);
   if(error) console.log(error);

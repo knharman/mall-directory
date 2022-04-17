@@ -5,6 +5,9 @@ import CustomerMallList from "../components/CustomerMallList";
 const CustomerHome = () => {
     return (
       <>
+
+      <p>hello world</p>
+
         <CustomerMallList />
         </>
     )
