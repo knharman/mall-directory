@@ -1,4 +1,5 @@
 import './App.css';
+
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -27,9 +28,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 function App() {
   return (
     <>
+
       <ApolloProvider client={client}>
         <Router>
           <Switch>
@@ -40,7 +43,7 @@ function App() {
           </Switch>
         </Router>
       </ApolloProvider>
-    </>
+
   );
 }
 
