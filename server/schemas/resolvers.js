@@ -140,15 +140,11 @@ const resolvers = {
                     description,
                     url,
                 };
-                const mall = await Mall.findOneAndUpdate(
-                    { _id: mallID, "stores._id": storeID },
-                    {
-                        $set: {
-                            "stores.$": storeUpdates,
-                        },
-                    },
-                    { new: true }
-                );
+
+                const mall = await Mall.findById(mallID)
+                const store = mall.stores.id(storeID)
+                store.set(storeUpdates)
+                mall.save()
 
                 return mall;
             }
@@ -163,7 +159,7 @@ const resolvers = {
 
                 return mall;
             }
-            // throw new AuthenticationError("Not logged in");
+            throw new AuthenticationError("Not logged in");
         },
     },
 };
