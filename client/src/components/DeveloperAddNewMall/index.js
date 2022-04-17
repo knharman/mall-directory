@@ -11,6 +11,15 @@ function DeveloperAddNewMall({ onClose }) {
     style: "",
     location: "",
   });
+
+  const recieveInput = (e) => {
+    const { name, value } = e.target;
+    setFormState((oldState) => ({
+      ...oldState,
+      [name]: value,
+    }))
+  };
+
 // TODO: fix and ADD_STORE mutation
   const [addMall, { error, loading, data }] = useMutation(ADD_MALL);
 
@@ -46,10 +55,7 @@ function DeveloperAddNewMall({ onClose }) {
                 name="mallName"
                 placeholder="Enter Your Mall's Name"
                 value={formState.mallName}
-                onChange={(e) => {
-                  const { name, value } = e.target;
-                  setFormState((oldState) => ({ ...oldState, [name]: value }));
-                }}
+                onChange={recieveInput}
               ></input>
               {/* Mall style and Drop down */}
               <h1 className="modalTitles storeName">Mall Style:</h1>
@@ -57,39 +63,21 @@ function DeveloperAddNewMall({ onClose }) {
                 <option
                   name="style"
                   value="shoppingCenter"
-                  onClick={(e) => {
-                    const { name, value } = e.target;
-                    setFormState((oldState) => ({
-                      ...oldState,
-                      [name]: value,
-                    }));
-                  }}
+                  onClick={recieveInput}
                 >
                   Shopping Center
                 </option>
                 <option
                   name="style"
                   value="stripMall"
-                  onClick={(e) => {
-                    const { name, value } = e.target;
-                    setFormState((oldState) => ({
-                      ...oldState,
-                      [name]: value,
-                    }));
-                  }}
+                  onClick={recieveInput}
                 >
                   Strip Mall
                 </option>
                 <option
                   name="style"
                   value="plaza"
-                  onClick={(e) => {
-                    const { name, value } = e.target;
-                    setFormState((oldState) => ({
-                      ...oldState,
-                      [name]: value,
-                    }));
-                  }}
+                  onClick={recieveInput}
                 >
                   Plaza
                 </option>
@@ -104,10 +92,7 @@ function DeveloperAddNewMall({ onClose }) {
                 name="location"
                 placeholder="City & State ONLY         Ex. Portland OR"
                 value={formState.location}
-                onChange={(e) => {
-                  const { name, value } = e.target;
-                  setFormState((oldState) => ({ ...oldState, [name]: value }));
-                }}
+                onChange={recieveInput}
               ></input>
               {/* Save and Cancel boxes */}
               <div>
@@ -131,16 +116,3 @@ function DeveloperAddNewMall({ onClose }) {
 }
 
 export default DeveloperAddNewMall;
-
-// <********  Needs to be set above return statement in CustomerStoreList  ********>
-
-
-
-//   <********  Needs to be set inside of return statement in DeveloperMallList  ********>
-
-// {isModalOpen && (
-//   <Modal onClose={toggleModal} />
-// )}
-
-//   <********  Needs to be attached to add new mall button on side bar  ********>
-// onClick={() => toggleModal(addNewMall)}

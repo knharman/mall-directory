@@ -4,7 +4,7 @@ import { ADD_STORE } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import "./style.css";
 
-function DeveloperAddNewMall({ onClose }) {
+function DeveloperAddNewStore({ onClose }) {
   const [formState, setFormState] = useState({
     storeName: "",
     image: "",
@@ -168,7 +168,7 @@ function DeveloperAddNewMall({ onClose }) {
   );
 }
 
-export default DeveloperAddNewMall;
+export default DeveloperAddNewStore;
 
 // <********  Needs to be set above return statement in CustomerStoreList  ********>
 
