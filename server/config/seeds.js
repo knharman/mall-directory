@@ -40,26 +40,26 @@ db.once('open', async () => {
           url: "www.google.com",
           // style: "inperson"
         },
-        // {
-        //  storeName: 'Canned Coffee',
-        //   description:
-        //     'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-        //   image: 'canned-coffee.jpg',
-        //   category: categories[0]._id,
-        //   mallName: malls[0]._id,
-        //   url: "www.google.com",
-        //   style: "inperson"
-        // },
-        // {
-        //   storeName: 'Toilet Paper',
-        //   category: categories[1]._id,
-        //   description:
-        //     'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
-        //   image: 'toilet-paper.jpg',
-        //   mallName: malls[0]._id,
-        //   url: "www.google.com",
-        //   style: "inperson"
-        // } 
+        {
+         storeName: 'Canned Coffee',
+          description:
+            'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
+          image: 'canned-coffee.jpg',
+          category: categories[0]._id,
+          // mallName: malls[0]._id,
+          url: "www.google.com",
+          // style: "inperson"
+        },
+        {
+          storeName: 'Toilet Paper',
+          category: categories[1]._id,
+          description:
+            'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
+          image: 'toilet-paper.jpg',
+          // mallName: malls[0]._id,
+          url: "www.google.com",
+          // style: "inperson"
+        } 
     ]);
     
     console.log('products seeded');
@@ -77,6 +77,30 @@ db.once('open', async () => {
         username: 'Elijah',
         email: 'eholt@testmail.com',
         password: 'password12345'
+      });
+
+      await Developer.create({
+        username: 'Joseph',
+        email: 'JCooper@testmail.com',
+        password: 'joseph'
+      });
+
+      await Developer.create({
+        username: 'Kellie',
+        email: 'KHarman@testmail.com',
+        password: 'kellie'
+      });
+
+      await Developer.create({
+        username: 'Joseph',
+        email: 'JCooper@testmail.com',
+        password: 'joseph'
+      });
+
+      await Developer.create({
+        username: 'Joseph',
+        email: 'JCooper@testmail.com',
+        password: 'joseph'
       });
 
       console.log('developers seeded');
