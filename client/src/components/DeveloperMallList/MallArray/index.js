@@ -1,12 +1,18 @@
 import React from "react";
 
 
-function MallArray(item) {
-  const { name } = item;
+function MallArray({ mallName, style, location }) {
 
   return (
-  <li className="card px-1 py-1">name: {name}</li>
-  )
+      <div className="my-2">
+          <h4>{mallName}</h4>
+          <ul>
+              <li>{location}</li>
+              <li>{style}</li>
+          </ul>
+      </div>
+  );
 }
 
 export default MallArray;
+

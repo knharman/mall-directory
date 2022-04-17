@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DeveloperAddNewMall from '../DeveloperAddNewMall'
-import DeveloperSingleMall from '../DeveloperSingleMall';
+import MallArray from './MallArray';
 import { useQuery } from '@apollo/client';
 import { QUERY_DEVELOPER } from '../../utils/queries';
 
@@ -51,7 +51,7 @@ function DeveloperMallList() {
           <ul className="flex-row">
             {mallList.map((mall, index) => (
               <li key={index}>
-                <DeveloperSingleMall {...mall} />
+                <MallArray {...mall} />
               </li>
             ))}
           </ul>
