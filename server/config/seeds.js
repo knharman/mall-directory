@@ -14,6 +14,7 @@ db.once('open', async () => {
         // {mallName: 'rockville'}
     ])
 
+        console.log('malls seeded');
 
     await Category.deleteMany();
 

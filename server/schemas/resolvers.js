@@ -13,16 +13,31 @@ const resolvers = {
           context.developer._id
         ).populate({
           // path: "",
-          populate: "catergory",
+          populate: "category",
         });
 
         //   developer.stores.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
         return developer;
-      }
+      } 
+
 
       throw new AuthenticationError("Not logged in");
     },
+    mall: async (parent, {store, mallName}) => {
+     const params = {};
+     
+     if (store) {
+       params.store=store.storeName;
+     }
+     if (mallName) {
+       params.mallName = {
+         $regex: mallName,
+       };
+     }
+     return await Mall.find(params).populate('store');
+    },
+
     store: async (parent, { category, storeName }) => {
       const params = {};
 
