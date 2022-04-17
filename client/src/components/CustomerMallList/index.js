@@ -1,65 +1,68 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_MALLS } from "../../utils/queries";
-import LocationFilter from "./LocationFilter";
 import IndividualMall from "./IndividualMall";
 
-import { useStoreContext } from "../../utils/GlobalState";
-import { UPDATE_MALLS } from "../../utils/actions";
-import { idbPromise } from "../../utils/helpers";
-
 function CustomerMallList() {
-  
-  // const [state, dispatch] = useStoreContext();
-  // console.log(useStoreContext());
-
-  // // TODO: figure out How to get element from other file.
-  const slectedLocation = 'selectedCity';
-  // console.log(slectedLocation);
 
   const { loading, data, error } = useQuery(QUERY_MALLS);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     dispatch({
-  //       type: UPDATE_MALLS,
-  //       malls: data.malls,
-  //     });
-  //     data.malls.forEach((mall) => {
-  //       idbPromise("malls", "put", mall);
-  //     });
-  //   } 
-  //   else if (!loading) {
-  //     idbPromise("malls", "get").then((malls) => {
-  //       dispatch({
-  //         type: UPDATE_MALLS,
-  //         malls: malls,
-  //       });
-  //     });
-  //   }
-  //   else if (error) {
-  //     console.log("this is the error", error)
-  //   }
-  // }, [data, loading, error, dispatch]);
+  console.log("data", data);
+  console.log("loading", loading);
+  console.log("error", error);
 
-  function filterMalls() {
+  const unique = data.map((location) => (
+location.location
+  ));
+
+  console.log("unique?", unique)
+
+ const newLocation = '';
+
+  const handleChange = (id) => {
+    const newLocation = id;
+    return newLocation
+  }
+
+   const filterMalls = () => {
+
     console.log(data);
-    if (!slectedLocation) {
+    if (!newLocation) {
       return data.malls;
     }
 
-    return data.malls.filter((mall) => mall.location === slectedLocation);
- }
+    return data.malls.filter((mall) => mall.location === newLocation);
+  };
 
-  if(data) console.log(data);
-  if(error) console.log(error);
+  if (data) console.log("any data", data);
+  if (error) console.log(error);
   return (
     <>
       <section>
         <div className="box margin50">
           <div className="box inline margin50">
             <h2 className="center">List of Malls</h2>
-            <LocationFilter />
+
+            <div className="center">
+              <h4>Filter by Location:</h4>
+              <input
+                className="center"
+                list="select"
+                name="selectCity"
+                placeholder="Select A City"
+              ></input>
+              {/* Maps over locations for drop down filtering */}
+              <datalist className="center" id="select1">
+                {unique.map((loc) => (
+                  <option
+                    value={loc}
+                    onClick={() => {
+                      handleChange(loc);
+                    }}
+                  ></option>
+                ))}
+              </datalist>
+            </div>
           </div>
           <ul className="scrollBox">
             {filterMalls().map((mall) => (
@@ -75,8 +78,8 @@ function CustomerMallList() {
         </div>
       </section>
       <div>
-        {loading && 'loading...'}
-        {error && 'Had an error'}
+        {loading && "loading..."}
+        {error && "Had an error"}
       </div>
     </>
   );
