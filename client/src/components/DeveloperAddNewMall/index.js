@@ -134,10 +134,7 @@ export default DeveloperAddNewMall;
 
 // <********  Needs to be set above return statement in CustomerStoreList  ********>
 
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-//   const toggleModal = (addNewMall) => {
-//     setIsModalOpen(!isModalOpen);
-//   };
+
 
 //   <********  Needs to be set inside of return statement in DeveloperMallList  ********>
 

@@ -9,6 +9,7 @@ import CustomerHome from './pages/CustomerHome'
 import ContactUs from './pages/ContactUs';
 import DeveloperLogin from './pages/DeveloperLogin';
 import DeveloperHome from './pages/DeveloperHome'
+import DeveloperMallList from './components/DeveloperMallList'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -36,14 +37,15 @@ function App() {
     <>
 
       <ApolloProvider client={client}>
-        <Router>
+      <DeveloperMallList />
+        {/* <Router>
           <Switch>
             <Route exact path="/" component={CustomerHome} />
             <Route exact path="/login" component={DeveloperLogin} />
             <Route exact path="/contact" component={ContactUs} />
             <Route exact path="/dashboard" component={DeveloperHome} />
           </Switch>
-        </Router>
+        </Router> */}
       </ApolloProvider>
 
 </>
