@@ -21,8 +21,9 @@ const resolvers = {
         return developer;
       }
 
-      throw new AuthenticationError("Not logged in");
+      // throw new AuthenticationError("Not logged in");
     },
+
     store: async (parent, { category, storeName }) => {
       const params = {};
 
@@ -35,6 +36,20 @@ const resolvers = {
         };
       }
       return await Store.find(params).populate("category");
+    },
+
+    mall: async (parent, { store, mallName }) => {
+      const params = {};
+
+      if (store) {
+        params.store = store.name;
+      }
+      if (mallName) {
+        params.mallName = {
+          $regex: mallName,
+        };
+      }
+      return await Mall.find(params).populate("store");
     },
   },
 
@@ -54,7 +69,7 @@ const resolvers = {
 
         return { mall };
       }
-      throw new AuthenticationError("Not logged in");
+      // throw new AuthenticationError("Not logged in");
     },
     login: async (parent, { email, password }) => {
       const developer = await Developer.findOne({ email });
@@ -78,17 +93,17 @@ const resolvers = {
       if (context.user) {
         return await Mall.findByIdAndUpdate(_id, updates, { new: true });
       }
-      throw new AuthenticationError("Not logged in");
+      // throw new AuthenticationError("Not logged in");
     },
     removeMall: async (parent, { _id }, context) => {
       if (context.user) {
         return await Mall.findOneAndDelete({ _id });
       }
-      throw new AuthenticationError("Not logged in");
+      // throw new AuthenticationError("Not logged in");
     },
     addStore: async (
       parent,
-      { mallID, storeName, image, category, description, url },
+      { _id, storeName, image, category, description, url },
       context
     ) => {
       if (context.user) {
@@ -101,11 +116,11 @@ const resolvers = {
           url,
         });
 
-        await Mall.findByIdAndUpdate(mallID, { $push: { stores: store } });
+        await Mall.findByIdAndUpdate(_id, { $push: { stores: store } });
 
         return store;
       }
-      throw new AuthenticationError("Not logged in");
+      // throw new AuthenticationError("Not logged in");
     },
     updateStore: async (
       parent,
@@ -138,7 +153,7 @@ const resolvers = {
 
         return mall;
       }
-      throw new AuthenticationError("Not logged in");
+      // throw new AuthenticationError("Not logged in");
     },
     removeStore: async (parent, { mallID, storeID }, context) => {
       if (context.user) {
@@ -149,7 +164,7 @@ const resolvers = {
 
         return mall;
       }
-      throw new AuthenticationError("Not logged in");
+      // throw new AuthenticationError("Not logged in");
     },
   },
 };

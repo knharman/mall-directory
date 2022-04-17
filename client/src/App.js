@@ -25,8 +25,8 @@ function App() {
 
     <ApolloProvider client = {client}>
     <DeveloperLogin />
-    <ContactUs />
-    <CustomerHome />
+    {/* <ContactUs />
+    <CustomerHome /> */}
     </ApolloProvider>
     </>
   );

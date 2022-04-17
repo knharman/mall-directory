@@ -50,7 +50,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         updateMall(_id: ID!, mallName: String!, style: String!, location: String!): Mall
         removeMall(_id: ID!): Mall
-        addStore(mallID: ID!, storeName: String!, image: String!, category: String!, description: String!, url: String!): Store
+        addStore(storeName: String!, image: String!, category: String!, description: String!, url: String!): Store
         updateStore(mallID: ID!, storeID: ID!, storeName: String!, image: String!, category: String!, description: String!, url: String!): Mall
         removeStore(mallID: ID!, storeID: ID!): Mall
     }
