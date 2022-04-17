@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_MALLS } from "../../utils/queries";
 import IndividualMall from "./IndividualMall";
+import CustomerStoreList from "../CustomerStoreList";
 
 function CustomerMallList() {
   const { loading, data, error } = useQuery(QUERY_MALLS);
@@ -86,8 +87,7 @@ function CustomerMallList() {
         </div>
       </section>
       <div>
-        {loading && "loading..."}
-        {error && "Had an error"}
+      <CustomerStoreList/>
       </div>
     </>
   );

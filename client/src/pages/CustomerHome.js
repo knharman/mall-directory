@@ -1,16 +1,19 @@
 import React from "react";
 
-import CustomerMallList from "../components/CustomerMallList";
+import CustomerStoreList from "../components/CustomerStoreList";
+import AppNavbar from "../components/NavBar";
+import CustomerStoreModal from "../components/CustomerStoreModal";
 
 const CustomerHome = () => {
     return (
-      <>
-
-      <p>hello world</p>
-
-        <CustomerMallList />
+        <>
+        <AppNavbar />
+        <CustomerStoreModal />
+        <CustomerStoreList />
         </>
     )
-}
+};
 
 export default CustomerHome;
+
+
