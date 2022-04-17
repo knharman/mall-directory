@@ -122,7 +122,7 @@ const resolvers = {
                 console.log(store)
                 return store;
             }
-            
+
             throw new AuthenticationError("Not logged in");
         },
         updateStore: async (
@@ -146,17 +146,13 @@ const resolvers = {
                         $set: {
                             "stores.$": storeUpdates,
                         },
-                    }
+                    },
+                    { new: true }
                 );
-
-                // const mall = await Mall.findById(mallID)
-                // const store = mall.stores.id(storeID)
-                // store.set(storeUpdates)
-                // mall.save()
 
                 return mall;
             }
-            // throw new AuthenticationError("Not logged in");
+            throw new AuthenticationError("Not logged in");
         },
         removeStore: async (parent, { mallID, storeID }, context) => {
             if (context.user) {
