@@ -3,7 +3,7 @@ import DeveloperAddNewMall from '../DeveloperAddNewMall'
 import { useQuery } from '@apollo/client';
 import { QUERY_DEVELOPER} from '../../utils/queries';
 
-import MallArray from './MallArray';
+// import MallArray from './MallArray';
 
 function DeveloperMallList() {
 
