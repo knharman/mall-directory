@@ -37,15 +37,15 @@ function App() {
     <>
 
       <ApolloProvider client={client}>
-      <DeveloperMallList />
-        {/* <Router>
+      {/* <DeveloperMallList /> */}
+        <Router>
           <Switch>
             <Route exact path="/" component={CustomerHome} />
             <Route exact path="/login" component={DeveloperLogin} />
             <Route exact path="/contact" component={ContactUs} />
             <Route exact path="/dashboard" component={DeveloperHome} />
           </Switch>
-        </Router> */}
+        </Router>
       </ApolloProvider>
 
 </>
