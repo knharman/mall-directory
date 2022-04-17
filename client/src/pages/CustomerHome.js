@@ -1,13 +1,17 @@
 import React from "react";
 
 import AppNavbar from "../components/NavBar";
-import CustomerStoreModal from "../components/CustomerStoreModal";
+
+import Footer from "../components/Footer";
+
 
 const CustomerHome = () => {
     return (
         <>
-        <AppNavbar />
-        <CustomerStoreModal />
+
+            <AppNavbar />
+            <Footer />
+
         </>
     )
 };

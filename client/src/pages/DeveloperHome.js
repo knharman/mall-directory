@@ -1,9 +1,17 @@
 import React from "react";
-import DeveloperAddNewStore from "../components/DeveloperAddNewStore";
+
+import AppNavbar from "../components/NavBar";
+import DeveloperMallList from "../components/DeveloperMallList";
+import Footer from "../components/Footer";
 
 const DeveloperHome = () => {
     return (
-        <DeveloperAddNewStore />
+        <>
+            <AppNavbar />
+            <DeveloperMallList />
+            <Footer />
+        </>
+
     )
 };
 
