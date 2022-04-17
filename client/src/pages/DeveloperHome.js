@@ -1,9 +1,9 @@
 import React from "react";
-import DeveloperAddNewMall from "../components/DeveloperAddNewMall";
+import DeveloperAddNewStore from "../components/DeveloperAddNewStore";
 
 const DeveloperHome = () => {
     return (
-        <DeveloperAddNewMall />
+        <DeveloperAddNewStore />
     )
 };
 

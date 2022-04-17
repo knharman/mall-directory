@@ -49,8 +49,27 @@ function DeveloperAddNewMall({ onClose }) {
     setFormState((oldState) => ({
       ...oldState,
       [name]: value,
-    }));
+    }))
   };
+
+  const recieveInputs = (e) => {
+    const { name, value } = e.target;
+    console.log("whats my category", value)
+    setFormState((oldState) => ({
+      ...oldState,
+      [name]: value,
+    })).then((value) => {
+      const imaged = value.slice(0, 4);
+      console.log("consoling image", imaged)
+      setFormState((oldState) => ({
+        ...oldState,
+        image: imaged,
+    }));
+  })};
+  
+
+
+
 
 // TODO: fix and ADD_STORE mutation
   const [addStore, { error, loading, data }] = useMutation(ADD_STORE);
@@ -97,7 +116,7 @@ function DeveloperAddNewMall({ onClose }) {
                   <option
                     name={catName}
                     value={catName}
-                    onClick={recieveInput}
+                    onClick={recieveInputs}
                   >
                     {catName}
                   </option>
