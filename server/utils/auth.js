@@ -12,7 +12,7 @@ module.exports = {
             return req;
         }
         try {
-            const { data } = jwt.verify(token, secret, { madAge: expiration });
+            const { data } = jwt.verify(token, secret, { maxAge: expiration });
             req.user = data;
         } catch {
             console.log('Invalid Token');
@@ -20,8 +20,8 @@ module.exports = {
 
         return req;
     },
-    signToken: function ({ firstName, email, _id }) {
-        const payload = { firstName, email, _id };
+    signToken: function ({ username, email, _id }) {
+        const payload = { username, email, _id };
 
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },

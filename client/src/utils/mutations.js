@@ -30,3 +30,22 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_MALL = gql`
+  mutation addMall(
+    $mallName: String!
+    $style: String!
+    $location: String!
+  ) {
+    addMall(
+      mallName: $mallName
+      style: $style
+      location: $location
+    ) {
+      token
+      user{
+        _id
+      }
+    }
+  }
+`;
