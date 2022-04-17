@@ -19,7 +19,11 @@ const developerSchema = new Schema({
         required: true,
         minLength: 7
     },
-    malls: [Mall.schema]
+    malls: {
+        type: Schema.Types.ObjectId,
+        ref: 'Mall',
+        required: false
+      }
 });
 
 // set middleware for creating admin password

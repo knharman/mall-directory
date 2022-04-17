@@ -8,20 +8,14 @@ const resolvers = {
             return await Category.find();
         },
         developer: async (parent, args, context) => {
-            if (context.developer) {
+            if (context.user) {
                 const developer = await Developer.findById(
-                    context.developer._id
-                ).populate({
-                    // path: "",
-                    populate: "category",
-                });
-
-                //   developer.stores.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
+                    context.user._id
+                )
                 return developer;
             }
 
-            // throw new AuthenticationError("Not logged in");
+            throw new AuthenticationError("Not logged in");
         },
 
         store: async (parent, { category, storeName }) => {
