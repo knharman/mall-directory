@@ -1,10 +1,16 @@
 import React from "react";
+
+import AppNavbar from "../components/NavBar";
 import CustomerStoreModal from "../components/CustomerStoreModal";
 
-const ContactUs = () => {
+const CustomerHome = () => {
     return (
+        <>
+        <AppNavbar />
         <CustomerStoreModal />
+        </>
     )
-}
+};
 
-export default ContactUs;
+export default CustomerHome;
+
