@@ -93,17 +93,17 @@ const resolvers = {
             if (context.user) {
                 return await Mall.findByIdAndUpdate(_id, updates, { new: true });
             }
-            // throw new AuthenticationError("Not logged in");
+            throw new AuthenticationError("Not logged in");
         },
         removeMall: async (parent, { _id }, context) => {
             if (context.user) {
                 return await Mall.findOneAndDelete({ _id });
             }
-            // throw new AuthenticationError("Not logged in");
+            throw new AuthenticationError("Not logged in");
         },
         addStore: async (
             parent,
-            { _id, storeName, image, category, description, url },
+            { mallID, storeName, image, category, description, url },
             context
         ) => {
             if (context.user) {
@@ -116,11 +116,14 @@ const resolvers = {
                     url,
                 });
 
-                await Mall.findByIdAndUpdate(_id, { $push: { stores: store } });
+                await Mall.findByIdAndUpdate(mallID, { $push: { stores: store } });
 
+                store.category = cat
+                console.log(store)
                 return store;
             }
-            // throw new AuthenticationError("Not logged in");
+            
+            throw new AuthenticationError("Not logged in");
         },
         updateStore: async (
             parent,
