@@ -9,7 +9,7 @@ const resolvers = {
     },
     developer: async (parent, args, context) => {
       if (context.user) {
-        const developer = await Developer.findById(context.user._id)
+        const developer = await Developer.findById(context.user._id).populate({path: 'malls', populate: { path: "stores.category"}})
         return developer;
       }
 
