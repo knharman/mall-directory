@@ -41,10 +41,10 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={CustomerHome} />
-            {/* <Route exact path="/login" component={DeveloperLogin} />
+            <Route exact path="/login" component={DeveloperLogin} />
             <Route exact path="/contact" component={ContactUs} />
             <Route exact path="/dashboard" component={DeveloperHome} />
-            <Route component={NoMatch} /> */}
+            <Route component={NoMatch} />
           </Switch>
         </Router>
       </ApolloProvider>
