@@ -1,0 +1,28 @@
+:root {
+  --customer1: #c5fffd;
+  --customer2: #88d9e6;
+  --customer3: #8b8bae;
+  --customer4: #526760;
+  --customer5: #374b4a;
+  --developer1: #202c39;
+  --developer2: #283845;
+  --developer3: #b8b08d;
+  --developer4: #f2d492;
+  --developer5: #f29559;
+  --white: #ffffff;
+}
+
+.footer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: larger;
+  font-weight: bolder;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--customer5);
+  color: var(--customer2);
+  text-align: center;
+}

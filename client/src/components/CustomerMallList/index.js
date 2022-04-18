@@ -1,84 +1,84 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_MALLS } from "../../utils/queries";
-import LocationFilter from "./LocationFilter";
-import IndividualMall from "./IndividualMall";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 
-import { useStoreContext } from "../../utils/GlobalState";
-import { UPDATE_MALLS } from "../../utils/actions";
-import { idbPromise } from "../../utils/helpers";
+import { GET_MALLS } from "../../utils/queries";
+import IndividualMall from "./IndividualMall";
+import CustomerStoreList from "../CustomerStoreList";
 
 function CustomerMallList() {
-  
-  // const [state, dispatch] = useStoreContext();
-  // console.log(useStoreContext());
+  const { loading, data, error } = useQuery(GET_MALLS);
+  const [locationFilter, setLocationFilter] = useState("")
 
-  // // TODO: figure out How to get element from other file.
-  const slectedLocation = 'selectedCity';
-  // console.log(slectedLocation);
-
-  const { loading, data, error } = useQuery(QUERY_MALLS);
-
-  // useEffect(() => {
-  //   if (data) {
-  //     dispatch({
-  //       type: UPDATE_MALLS,
-  //       malls: data.malls,
-  //     });
-  //     data.malls.forEach((mall) => {
-  //       idbPromise("malls", "put", mall);
-  //     });
-  //   } 
-  //   else if (!loading) {
-  //     idbPromise("malls", "get").then((malls) => {
-  //       dispatch({
-  //         type: UPDATE_MALLS,
-  //         malls: malls,
-  //       });
-  //     });
-  //   }
-  //   else if (error) {
-  //     console.log("this is the error", error)
-  //   }
-  // }, [data, loading, error, dispatch]);
-
-  function filterMalls() {
-    console.log(data);
-    if (!slectedLocation) {
-      return data.malls;
-    }
-
-    return data.malls.filter((mall) => mall.location === slectedLocation);
+  const uniqueLocations = () => {
+    let uniques = []
+    data.malls.forEach(mall => {
+      if (!uniques.includes(mall.location)) {
+        uniques.push(mall.location)
+      }
+    });
+    return uniques
   }
 
-  if(data) console.log(data);
-  if(error) console.log(error);
-  return (
-    <>
-      <section>
-        <div className="box margin50">
-          <div className="box inline margin50">
-            <h2 className="center">List of Malls</h2>
-            <LocationFilter />
-          </div>
-          <ul className="scrollBox">
-            {filterMalls().map((mall) => (
-              <IndividualMall
-                key={mall._id}
-                _id={mall._id}
-                style={mall.style}
-                location={mall.location}
-                store={[mall.store]}
-              />
-            ))}
-          </ul>
-        </div>
-      </section>
-      <div>
-        {loading && 'loading...'}
-        {error && 'Had an error'}
+  const filterMalls = () => {
+    let matchingMalls = []
+
+    data.malls.forEach(mall => {
+      if (locationFilter == mall.location) {
+        matchingMalls.push(mall)
+      }
+    });
+
+    return matchingMalls
+  }
+
+  const updateStores = (index, store) => {
+    return (
+      <div key={index}>
+        <CustomerStoreList {...store} />
       </div>
-    </>
+    );
+  };
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+  if (error) {
+    console.error(error)
+    return <div>Error</div>
+  }
+
+  return (
+    <section>
+      <div className="box margin50">
+        <div className="box inline margin50">
+          <h2 className="center">List of Malls</h2>
+          <div className="center">
+            {
+              uniqueLocations().length === 0 ? (
+                <h3>No malls have been added yet!</h3>
+              ) : (
+                <>
+                  <h4>Filter by Location:</h4>
+                  <DropdownButton id="dropdown-basic-button" title="Select a City">
+                    {
+                      uniqueLocations().map((uniqueLocation, index) => <Dropdown.Item href="#" key={index} onClick={() => { setLocationFilter(uniqueLocation) }}>{uniqueLocation}</Dropdown.Item>)
+                    }
+                  </DropdownButton>
+                </>
+              )
+            }
+          </div>
+        </div>
+        <ul className="scrollBox">
+          {filterMalls().map((mall, index) => (
+            <li key={index} onClick={() => updateStores(mall, index)}>
+              <IndividualMall {...mall} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }
 

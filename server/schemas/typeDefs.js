@@ -23,6 +23,7 @@ const typeDefs = gql`
     }
 
     type Store{
+        _id: ID
         storeName: String
         image: String
         category: Category
@@ -38,10 +39,8 @@ const typeDefs = gql`
     type Query{
         categories: [Category]
         developer: Developer
-        store: Store
-        mall: Mall
-        stores(mall: ID, storeName: String): [Store]
-
+        mall(mallID: ID!): Mall
+        malls: [Mall]
     }
 
     type Mutation {
