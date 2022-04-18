@@ -2,6 +2,7 @@
   "name": "mall-directory",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "bootstrap": "^5.1.3",

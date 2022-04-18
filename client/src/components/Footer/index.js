@@ -1,21 +1,28 @@
 import React from "react";
-import '../../index.css'
-import './style.css'
+import Auth from '../../utils/auth';
+import '../../index.css';
+import './style.css';
+// import { Redirect } from "react-router-dom";
 
-function Footer () {
-    const footerMessage = ''
+function Footer() {
     const customerFooter = 'Click here to contact us with questions or sign up to add your mall!'
-    const developerLoginFooter = 'Having trouble signing in? Click here to contact us!'
-    const developerDashboardFooter = 'Having issues with the dashboard? Click here to contact us!'
+    // const developerLoginFooter = 'Having trouble signing in? Click here to contact us!'
+    const developerDashboardFooter = 'Experiencing tech issues? Click here to contact us!'
 
     return (
-        <div class="footer">
-
-                <p>{developerDashboardFooter}</p>
-                <p>{developerLoginFooter}</p>
-                <p>{customerFooter}</p>
-
-        </div>
+        <>
+            <div class="footer">
+                {Auth.loggedIn() ? (
+                    <>
+                        <p>{developerDashboardFooter}</p>
+                    </>
+                ) : (
+                    <>
+                    <p>{customerFooter}</p>
+                    </>
+                )}
+            </div>
+        </>
     )
 }
 
