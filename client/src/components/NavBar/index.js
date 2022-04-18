@@ -4,7 +4,7 @@ import { Container, Navbar, Nav, Row, Col, NavDropdown } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import '../../index.css';
-import DeveloperHome from "../../pages/DeveloperHome";
+// import DeveloperHome from "../../pages/DeveloperHome";
 
 const AppNavbar = () => {
     const logout = event => {

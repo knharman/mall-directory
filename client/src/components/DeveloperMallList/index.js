@@ -34,7 +34,7 @@ function DeveloperMallList() {
       {isModalOpen && (
         <DeveloperAddNewMall onClose={toggleModal} />
       )}
-      <div className="my-2">
+      <div className="my-2 sidenav">
         <h2>Malls:</h2>
         {mallList.length > 0 ? (
 
