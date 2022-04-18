@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import DeveloperAddNewMall from "../DeveloperAddNewMall";
+import DeveloperAddNewStore from "../DeveloperEditStore";
+import DeveloperEditStore from "../DeveloperEditStore";
+import StoreArray from "./StoreArray";
 import { useQuery } from "@apollo/client";
 import { QUERY_DEVELOPER } from "../../utils/queries";
 
@@ -8,47 +10,56 @@ import { QUERY_DEVELOPER } from "../../utils/queries";
 function DeveloperSingleMall(mallSelected) {
   const { mallName, style, location, stores } = mallSelected;
 
-  const mallList = [
-    // ************ uncomment below to get data for map function ***********
-    //     {
-    //     mallName: "Ram",
-    //       age: "20"
-    // }
+  const storeList = [
+    // {
+    //   storeName: "Ram",
+    //   category: "indoor",
+    //   description: "portland",
+    //   url: "urlhere"
+    // },
   ];
 
-  console.log("whats inside?", mallList.length);
+  console.log("whats inside?", storeList.length);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = (addNewMall) => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const editStore = (index, store) => {
+    return (
+      <div key={index}>
+        <DeveloperEditStore {...store} />
+      </div>
+    );
+  };
+
   return (
     <>
-      {isModalOpen && <DeveloperAddNewMall onClose={toggleModal} />}
+      {isModalOpen && <DeveloperAddNewStore onClose={toggleModal} />}
       <div className="my-2">
-        <div>
-          <h2>{mallName}</h2>
-          <p>Mall Style: {style}</p>
-          <p>Location: {location}</p>
+        {/* for testing only need to delete and uncomment commented out part once testing is complete */}
+        {storeList.length > 0 ? (
+          // {mallSelected.length > 0 ? (
+          <div>
+            <div>
+              <h2>{mallName}</h2>
+              <p>Mall Style: {style}</p>
+              <p>Location: {location}</p>
+            </div>
+
+            <ul className="flex-row">
+              {storeList.map((store, index) => (
+                <li key={index} onClick={() => editStore(store, index)}>
+                  <StoreArray {...store} />
+                </li>
+              ))}
+            </ul>
         </div>
-
-        {stores.length > 0 ? (
-          // ************* Here is where it breaks **************
-          <ul className="flex-row">
-            {mallList().map((mall, index) => (
-              <li>
-                {/* TODO: add function to generate Single Mall with all Stores View. */}
-                {mall[index].mallName}
-              </li>
-            ))}
-          </ul>
         ) : (
-          // ************* Good after this point **************
-
-          <h3>You haven't added any malls yet!</h3>
+          <h3>Your mall doesn't have any stores yet!</h3>
         )}
-        <button onClick={() => toggleModal()}>Add New MAll</button>
+        <button onClick={() => toggleModal()}>Add New store</button>
       </div>
     </>
   );

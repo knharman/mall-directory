@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { ADD_STORE } from "../../utils/mutations";
+import { UPDATE_STORE } from "../../utils/mutations";
+import DeleteStoreButton from "./DeleteStoreButton"
 import Auth from "../../utils/auth";
 import "./style.css";
 
-function DeveloperAddNewStore({ onClose }) {
+function DeveloperAddNewStore({ onClose, editStore }) {
+  const {_id, storeName, image, category, description, url} = editStore
+
   const [formState, setFormState] = useState({
-    storeName: "",
-    image: "",
-    category: "",
-    description: "",
-    url: "",
+  storeName: storeName,
+    image: image,
+    category: category,
+    description: description,
+    url: url,
   });
 
   const categories = [
@@ -71,21 +74,18 @@ function DeveloperAddNewStore({ onClose }) {
 
 
 
-// TODO: fix and ADD_STORE mutation
-  const [addStore, { error, loading, data }] = useMutation(ADD_STORE);
+// TODO: fix  mutations
+const [updateStore, { error, loading, data }] = useMutation(UPDATE_STORE);
+  
+  const submitNewUpdate = async (event) => {
 
-  const sumbitNewStore = async (event) => {
-    // event.preventDefault();
-
-    // use try/catch instead of promises to handle errors
     try {
-      // execute addUser mutation and pass in variable data from form
-      const { data } = await addStore({
+
+      const { data } = await updateStore({
         variables: { ...formState },
       });
-      onClose();
-      // //TODO:create add store authentication
-      // Auth.newMall(data.addStore.token);
+      // //TODO:create update store authentication
+      // Auth.newMall(data.updateStore.token);
     } catch (e) {
       console.error(e);
     }
@@ -104,7 +104,7 @@ function DeveloperAddNewStore({ onClose }) {
                 type="text"
                 id="storeName"
                 name="storeName"
-                placeholder="Enter The Store Name"
+                placeholder={storeName}
                 value={formState.storeName}
                 onChange={recieveInput}
               ></input>
@@ -130,7 +130,7 @@ function DeveloperAddNewStore({ onClose }) {
                 type="text"
                 id="description"
                 name="description"
-                placeholder="Add a Description of the Store"
+                placeholder={description}
                 value={formState.description}
                 onChange={recieveInput}
               ></input>
@@ -142,16 +142,17 @@ function DeveloperAddNewStore({ onClose }) {
                 type="text"
                 id="url"
                 name="url"
-                placeholder="Give URL to Stores Wedbsite"
+                placeholder={url}
                 value={formState.url}
                 onChange={recieveInput}
               ></input>
 
               {/* Save and Cancel boxes */}
               <div>
+              <DeleteStoreButton key={_id}/>
                 <button
-                  // onClick={sumbitNewStore()}
-                  onClick={() => sumbitNewStore()}
+                  // onClick={submitNewUpdate()}
+                  onClick={() => submitNewUpdate()}
                   type="button"
                 >
                   Submit
@@ -170,18 +171,3 @@ function DeveloperAddNewStore({ onClose }) {
 
 export default DeveloperAddNewStore;
 
-// <********  Needs to be set above return statement in CustomerStoreList  ********>
-
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-//   const toggleModal = (addNewMall) => {
-//     setIsModalOpen(!isModalOpen);
-//   };
-
-//   <********  Needs to be set inside of return statement in DeveloperSingleMall  ********>
-
-// {isModalOpen && (
-//   <Modal onClose={toggleModal} />
-// )}
-
-//   <********  Needs to be attached to add new mall button in single mall view  ********>
-// onClick={() => toggleModal(addNewMall)}

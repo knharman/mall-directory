@@ -8,33 +8,16 @@ const resolvers = {
       return await Category.find();
     },
     developer: async (parent, args, context) => {
-      if (context.developer) {
-        const developer = await Developer.findById(
-          context.developer._id
-        ).populate({
-          // path: "",
-          populate: "catergory",
-        });
-
-        //   developer.stores.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
+      if (context.user) {
+        const developer = await Developer.findById(context.user._id).populate({path: 'malls', populate: { path: "stores.category"}})
         return developer;
       }
 
       throw new AuthenticationError("Not logged in");
     },
-    store: async (parent, { category, storeName }) => {
-      const params = {};
 
-      if (category) {
-        params.category = category.name;
-      }
-      if (storeName) {
-        params.storeName = {
-          $regex: storeName,
-        };
-      }
-      return await Store.find(params).populate("category");
+    mall: async (parent, { mallID }) => {
+      return await Mall.findById(mallID).populate("stores.category")
     },
   },
 
@@ -45,14 +28,14 @@ const resolvers = {
 
       return { token, user: developer };
     },
-    addMall: async (parent, args, context) => {
+    addMall: async (parent, { mallName, style, location }, context) => {
       if (context.user) {
-        const mall = await Mall.create(args);
+        const mall = await Mall.create({ mallName, style, location });
         await Developer.findByIdAndUpdate(context.user._id, {
           $push: { malls: mall },
         });
 
-        return { mall };
+        return { mallName, style, location };
       }
       throw new AuthenticationError("Not logged in");
     },
@@ -103,8 +86,11 @@ const resolvers = {
 
         await Mall.findByIdAndUpdate(mallID, { $push: { stores: store } });
 
+        store.category = cat
+        console.log(store)
         return store;
       }
+
       throw new AuthenticationError("Not logged in");
     },
     updateStore: async (
@@ -122,19 +108,11 @@ const resolvers = {
           description,
           url,
         };
-        const mall = await Mall.findOneAndUpdate(
-          { _id: mallID, "stores._id": storeID },
-          {
-            $set: {
-              "stores.$": storeUpdates,
-            },
-          }
-        );
 
-        // const mall = await Mall.findById(mallID)
-        // const store = mall.stores.id(storeID)
-        // store.set(storeUpdates)
-        // mall.save()
+        const mall = await Mall.findById(mallID)
+        const store = mall.stores.id(storeID)
+        store.set(storeUpdates)
+        mall.save()
 
         return mall;
       }

@@ -1,4 +1,3 @@
-
 import './App.css';
 
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
@@ -9,7 +8,8 @@ import CustomerHome from './pages/CustomerHome'
 import ContactUs from './pages/ContactUs';
 import DeveloperLogin from './pages/DeveloperLogin';
 import DeveloperHome from './pages/DeveloperHome'
-import DeveloperMallList from './components/DeveloperMallList'
+import DeveloperMallList from './components/DeveloperMallList';
+import NoMatch from './pages/NoMatch';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -35,20 +35,19 @@ const client = new ApolloClient({
 function App() {
   return (
     <>
-
       <ApolloProvider client={client}>
-      {/* <DeveloperMallList /> */}
         <Router>
           <Switch>
             <Route exact path="/" component={CustomerHome} />
-            <Route exact path="/login" component={DeveloperLogin} />
+            {/* <Route exact path="/login" component={DeveloperLogin} />
             <Route exact path="/contact" component={ContactUs} />
             <Route exact path="/dashboard" component={DeveloperHome} />
+            <Route component={NoMatch} /> */}
           </Switch>
         </Router>
       </ApolloProvider>
+    </>
 
-</>
   );
 }
 
