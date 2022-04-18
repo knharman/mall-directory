@@ -21,10 +21,6 @@ const typeDefs = gql`
         location: String
         stores: [Store] 
     }
-    # type Location{
-    #     city: String
-    #     state: String
-    # }
 
     type Store{
         storeName: String
@@ -42,10 +38,7 @@ const typeDefs = gql`
     type Query{
         categories: [Category]
         developer: Developer
-        store: Store
-        mall: Mall
-        stores(mall: ID, storeName: String): [Store]
-
+        mall(mallID: ID!): Mall
     }
 
     type Mutation {
