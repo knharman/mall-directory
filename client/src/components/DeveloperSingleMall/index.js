@@ -22,7 +22,7 @@ function DeveloperSingleMall(mallSelected) {
   console.log("whats inside?", storeList.length);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleModal = (addNewMall) => {
+  const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 

@@ -5,7 +5,6 @@ import Auth from "../../utils/auth";
 import "./style.css";
 
 function DeveloperAddNewMall({ onClose }) {
-
   const [formState, setFormState] = useState({
     mallName: "",
     style: "",
@@ -17,10 +16,10 @@ function DeveloperAddNewMall({ onClose }) {
     setFormState((oldState) => ({
       ...oldState,
       [name]: value,
-    }))
+    }));
   };
 
-// TODO: fix and ADD_STORE mutation
+  // TODO: fix and ADD_STORE mutation
   const [addMall, { error, loading, data }] = useMutation(ADD_MALL);
 
   const submitNewMall = async (event) => {
@@ -67,18 +66,10 @@ function DeveloperAddNewMall({ onClose }) {
                 >
                   Shopping Center
                 </option>
-                <option
-                  name="style"
-                  value="stripMall"
-                  onClick={recieveInput}
-                >
+                <option name="style" value="stripMall" onClick={recieveInput}>
                   Strip Mall
                 </option>
-                <option
-                  name="style"
-                  value="plaza"
-                  onClick={recieveInput}
-                >
+                <option name="style" value="plaza" onClick={recieveInput}>
                   Plaza
                 </option>
               </select>

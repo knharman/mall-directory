@@ -1,21 +1,21 @@
 import React from "react";
-
+import CustomerStoreList from "../components/CustomerStoreList";
+import CustomerMallList from "../components/CustomerMallList";
 import AppNavbar from "../components/NavBar";
-import DeveloperSingleMall from "../components/DeveloperSingleMall"
-import Footer from "../components/Footer";
-
+import CustomerStoreModal from "../components/CustomerStoreModal";
 
 const CustomerHome = () => {
     return (
         <>
-
-            <AppNavbar />
-            <DeveloperSingleMall />
-            <Footer />
+        <AppNavbar />
+        <CustomerStoreModal />
+        <CustomerMallList />
+        <CustomerStoreList />
 
         </>
     )
 };
 
 export default CustomerHome;
+
 

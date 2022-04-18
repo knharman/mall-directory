@@ -65,22 +65,4 @@ function CustomerStoreModal(onClose, currentStore) {
 
 export default CustomerStoreModal;
 
-// <********  Needs to be set above return statement in CustomerStoreList  ********>
-
-// const [currentStore, setCurrentStore] = useState();
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-//   const toggleModal = (store, i) => {
-//     setCurrentStore({ ...store, index: i });
-//     setIsModalOpen(!isModalOpen);
-//   };
-
-//   <********  Needs to be set inside of return statement in CustomerStoreList  ********>
-
-// {isModalOpen && (
-//   <Modal currentStore={currentStore} onClose={toggleModal} />
-// )}
-
-//   <********  Needs to be set inside of map function for stores in CustomerStoreList  ********>
-//   <********  can be attached to name or icon  ********>
-// onClick={() => toggleModal(store, i)}
 

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CustomerHome from './pages/CustomerHome'
 import ContactUs from './pages/ContactUs';
 import DeveloperLogin from './pages/DeveloperLogin';
+
 import DeveloperHome from './pages/DeveloperHome'
 import DeveloperMallList from './components/DeveloperMallList';
 import NoMatch from './pages/NoMatch';
@@ -28,6 +29,7 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
+
 
 });
 
