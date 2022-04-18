@@ -2,13 +2,13 @@ import { gql, useQuery } from "@apollo/client";
 
 
 export const GET_MALLS = gql`
-query GetMalls {
-  mall {
-    _id
+query Malls {
+  malls {
     mallName
     style
     location
     stores {
+      _id
       storeName
       image
       description
