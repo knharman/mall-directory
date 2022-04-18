@@ -8,64 +8,20 @@ const resolvers = {
       return await Category.find();
     },
     developer: async (parent, args, context) => {
-      if (context.developer) {
-        const developer = await Developer.findById(
-          context.developer._id
-        ).populate({
-          // path: "",
-          populate: "category",
+      if (context.user) {
+        const developer = await Developer.findById(context.user._id).populate({
+          path: "malls",
+          populate: { path: "stores.category" },
         });
-
-        //   developer.stores.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
         return developer;
       }
 
-      // throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("Not logged in");
     },
 
-    store: async (parent, { category, storeName }) => {
-      const params = {};
-
-      if (category) {
-        params.category = category.name;
-      }
-      if (storeName) {
-        params.storeName = {
-          $regex: storeName,
-        };
-      }
-      return await Store.find(params).populate("category");
+    mall: async (parent, { mallID }) => {
+      return await Mall.findById(mallID).populate("stores.category");
     },
-
-    mall: async (parent, { store, mallName }) => {
-      const params = {};
-
-      if (store) {
-        params.store = store.name;
-      }
-      if (mallName) {
-        params.mallName = {
-          $regex: mallName,
-        };
-      }
-      return await Mall.find(params).populate("store");
-    },
-  },
-  developer: async (parent, args, context) => {
-    if (context.user) {
-      const developer = await Developer.findById(context.user._id).populate({
-        path: "malls",
-        populate: { path: "stores.category" },
-      });
-      return developer;
-    }
-
-    throw new AuthenticationError("Not logged in");
-  },
-
-  mall: async (parent, { mallID }) => {
-    return await Mall.findById(mallID).populate("stores.category");
   },
 
   Mutation: {
@@ -178,4 +134,5 @@ const resolvers = {
     },
   },
 };
+
 module.exports = resolvers;

@@ -1,37 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import DeveloperAddNewMall from '../DeveloperAddNewMall'
 import MallArray from './MallArray';
-import { useQuery } from '@apollo/client';
 import { GET_DEVELOPER } from '../../utils/queries';
 
 function DeveloperMallList() {
 
-
-
-  // ***********   Can you also look over make sure what I have commented out will return the right info for mall list?  ********
-  // ***********  I want mall list to look like the hard code example I have below when I uncomment it. **********
-    const { loading, data } = useQuery(GET_DEVELOPER);
-    console.log("whats inside data ?", data)
-    const mallList = data.malls;
-  console.log("whats inside?", mallList)
-
-//   const mallList = [
-//     {
-//       mallName: "Ram",
-//       style: "indoor", 
-//       location: "portland"
-//     },
-//     {
-//       mallName: "Galleria",
-//       style: "outdoor", 
-//       location: "Anaheim"
-//     },
-//     {
-//       mallName: "Mainplace",
-//       style: "indoor", 
-//       location: "Garden Grove"
-//     }
-//   ]
+  const mallList = [
+    {
+      mallName: "Ram",
+      style: "indoor", 
+      location: "portland"
+    },
+    {
+      mallName: "Galleria",
+      style: "outdoor", 
+      location: "Anaheim"
+    },
+    {
+      mallName: "Mainplace",
+      style: "indoor", 
+      location: "Garden Grove"
+    }
+  ]
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
