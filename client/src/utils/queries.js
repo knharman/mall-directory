@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 
 
 export const GET_MALLS = gql`
-query GetMall {
+query GetMalls {
   mall {
     _id
     mallName
