@@ -14,20 +14,22 @@ function CustomerMallList() {
   // ********* need the following properly syntaxed *******
   // const mallLists = data.malls;
   const mallLists = [];
-  console.log("malllist", mallLists)
+  console.log("malllist", mallLists);
 
   // **** Need function that will filter and pull all mall location and place in array called unique
-  const unique = ["map","car"]
+  const unique = ["map", "car"];
 
   // console.log("unique?", unique);
 
   const newLocation = "";
 
+  //gets input from location drop down and asssigned that value to the variable new Location
   const handleChange = (id) => {
     const newLocation = id;
     return newLocation;
   };
 
+  // runs a filter to check if newLocation variable is still set to empty string if not filter by malls with that location string
   const filterMalls = () => {
     console.log(data);
     if (!newLocation) {
@@ -39,6 +41,18 @@ function CustomerMallList() {
 
   if (data) console.log("any data", data);
   if (error) console.log(error);
+
+  // ************ I think this will work below but need to test once other bugs are worked out ************
+
+  // send mall ID to stores section to map all stores in the malls stores section.
+  const updateStores = (index, store) => {
+    return (
+      <div key={index}>
+        <CustomerStoreList {...store} />
+      </div>
+    );
+  };
+
   return (
     <>
       <section>
@@ -70,14 +84,10 @@ function CustomerMallList() {
                 </div>
               </div>
               <ul className="scrollBox">
-                {filterMalls().map((mall) => (
-                  <IndividualMall
-                    key={mall._id}
-                    _id={mall._id}
-                    style={mall.style}
-                    location={mall.location}
-                    store={[mall.store]}
-                  />
+                {filterMalls().map((mall, index) => (
+                  <li key={index} onClick={() => updateStores(mall, index)}>
+                    <IndividualMall {...mall} />
+                  </li>
                 ))}
               </ul>
             </>
@@ -86,9 +96,6 @@ function CustomerMallList() {
           )}
         </div>
       </section>
-      <div>
-      <CustomerStoreList/>
-      </div>
     </>
   );
 }

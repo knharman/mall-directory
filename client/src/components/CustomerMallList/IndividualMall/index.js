@@ -13,13 +13,13 @@ function IndividualMall(mall) {
             
   return (
     
-    <li className="box center" id={_id}>
+    <div className="box center" id={_id}>
         <h5>{mallName}</h5>
         <div>
           <p>Style: {style}</p>
           <p>Location: {location}</p>
         </div>
-    </li>
+    </div>
   );
 }
 

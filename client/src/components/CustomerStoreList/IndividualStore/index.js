@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 function IndividualStore(store) {
 
   const {
-    image,
+    category,
     storeName,
   } = store;
+
+  const image = category.substr(0, 3)
 
   // TODO: connect Link to modal to generate modal with required fields.
             
@@ -16,7 +18,7 @@ function IndividualStore(store) {
       <Link to={`model.id`}>
         <img
           alt={storeName}
-          src={`/images/${image}`}
+          src={`../../assets/images/${image}`}
         />
         <p>{storeName}</p>
       </Link>
