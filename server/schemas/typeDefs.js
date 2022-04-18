@@ -40,6 +40,7 @@ const typeDefs = gql`
         categories: [Category]
         developer: Developer
         mall(mallID: ID!): Mall
+        malls: [Mall]
     }
 
     type Mutation {

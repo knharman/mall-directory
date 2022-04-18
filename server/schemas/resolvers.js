@@ -22,6 +22,9 @@ const resolvers = {
     mall: async (parent, { mallID }) => {
       return await Mall.findById(mallID).populate("stores.category");
     },
+    malls: async (parent, args) => {
+      return await Mall.find().populate("stores.category")
+    }
   },
 
   Mutation: {
