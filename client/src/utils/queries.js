@@ -1,8 +1,8 @@
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 
 
-export const QUERY_MALLS = gql`
-query mall {
+export const GET_MALLS = gql`
+query GetMall {
   mall {
     _id
     mallName
@@ -22,37 +22,8 @@ query mall {
 }
 `;
 
-
-export const QUERY_STORES = gql`
-  {
-    Store {
-      id
-      mallID
-      storeName
-      image
-      description
-      URL
-      category {
-        _id
-        name
-      }
-    }
-  }
-`;
-
-export const QUERY_CATEGORIES = gql`
-  {
-    categories {
-      _id
-      name
-    }
-  }
-`;
-
-
-
-export const QUERY_DEVELOPER = gql`{
-    developer {
+export const GET_DEVELOPER = gql`{
+    query GetDeveloper {
       _id
       username
       email
@@ -76,3 +47,32 @@ export const QUERY_DEVELOPER = gql`{
     }
   }
   `;
+
+
+// export const QUERY_STORES = gql`
+//   {
+//     Store {
+//       id
+//       mallID
+//       storeName
+//       image
+//       description
+//       URL
+//       category {
+//         _id
+//         name
+//       }
+//     }
+//   }
+// `;
+
+// export const QUERY_CATEGORIES = gql`
+//   {
+//     categories {
+//       _id
+//       name
+//     }
+//   }
+// `;
+
+

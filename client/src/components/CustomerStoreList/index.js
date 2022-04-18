@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { QUERY_STORES } from "../../utils/queries";
-import CategoryFilter from "./CategoryFilter";
+
 import IndividualStore from "./IndividualStore";
 import CustomerStoreModal from "../CustomerStoreModal";
 import CustomerMallList from "../CustomerMallList";
-import { useStoreContext } from "../../utils/GlobalState";
-import { UPDATE_STORES } from "../../utils/actions";
-import { idbPromise } from "../../utils/helpers";
+
 
 // ******** shouldn't need the unused imported files above but leaving till all bugs are gone. *****
 

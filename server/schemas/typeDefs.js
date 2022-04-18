@@ -39,10 +39,7 @@ const typeDefs = gql`
     type Query{
         categories: [Category]
         developer: Developer
-        store: Store
-        mall: Mall
-        stores(mall: ID, storeName: String): [Store]
-
+        mall(mallID: ID!): Mall
     }
 
     type Mutation {
