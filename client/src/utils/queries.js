@@ -1,21 +1,29 @@
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 
-// export const QUERY_MALLS = gql`
-//     query getMalls($developer: ID) {
-//         malls(developer: $developer) {
-//         _id
-//         mallName
-//         style
-//         location
-//         store {
-//             _id
-//         }
-//         }
-//     }
-// `;
 
-export const QUERY_DEVELOPER = gql`{
-    developer {
+export const GET_MALLS = gql`
+query GetMall {
+  mall {
+    _id
+    mallName
+    style
+    location
+    stores {
+      storeName
+      image
+      description
+      url
+      category {
+        _id
+        name
+      }
+    }
+  }
+}
+`;
+
+export const GET_DEVELOPER = gql`{
+    query GetDeveloper {
       _id
       username
       email
@@ -41,44 +49,30 @@ export const QUERY_DEVELOPER = gql`{
   `;
 
 
-// export const QUERY_STORE = gql`
-//  {
-    
-//  }
-// `;
-
-// export const QUERY_ALL_STORES = gql`
-//  {
-//     stores {
-//         mallID
-//         storeName
-//         category
-//         description
-//         url
-//         mall {
-//             mallName
-//         }
-
-//     }
-//  }
-// `;
-
-// export const QUERY_DEVELOPER = gql`
+// export const QUERY_STORES = gql`
 //   {
-//     developer {
-//       username
-//       malls {
+//     Store {
+//       id
+//       mallID
+//       storeName
+//       image
+//       description
+//       URL
+//       category {
 //         _id
-//         location
-//         stores {
-//           mallID
-//           storeName
-//           description
-//           category
-//          url
-//           image
-//         }
+//         name
 //       }
 //     }
 //   }
 // `;
+
+// export const QUERY_CATEGORIES = gql`
+//   {
+//     categories {
+//       _id
+//       name
+//     }
+//   }
+// `;
+
+

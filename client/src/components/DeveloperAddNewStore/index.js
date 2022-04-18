@@ -110,7 +110,7 @@ function DeveloperAddNewStore({ onClose }) {
               ></input>
 
               {/* Store style and Drop down */}
-              <h1 className="modalTitles storeName">Mall Style:</h1>
+              <h1 className="modalTitles storeName">Category:</h1>
               <select className="modalTextBox" id="style">
                 {categories.map((catName) => (
                   <option

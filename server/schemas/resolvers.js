@@ -9,7 +9,10 @@ const resolvers = {
     },
     developer: async (parent, args, context) => {
       if (context.user) {
-        const developer = await Developer.findById(context.user._id).populate({path: 'malls', populate: { path: "stores.category"}})
+        const developer = await Developer.findById(context.user._id).populate({
+          path: "malls",
+          populate: { path: "stores.category" },
+        });
         return developer;
       }
 
@@ -17,7 +20,7 @@ const resolvers = {
     },
 
     mall: async (parent, { mallID }) => {
-      return await Mall.findById(mallID).populate("stores.category")
+      return await Mall.findById(mallID).populate("stores.category");
     },
   },
 
@@ -86,8 +89,8 @@ const resolvers = {
 
         await Mall.findByIdAndUpdate(mallID, { $push: { stores: store } });
 
-        store.category = cat
-        console.log(store)
+        store.category = cat;
+        console.log(store);
         return store;
       }
 
@@ -109,10 +112,10 @@ const resolvers = {
           url,
         };
 
-        const mall = await Mall.findById(mallID)
-        const store = mall.stores.id(storeID)
-        store.set(storeUpdates)
-        mall.save()
+        const mall = await Mall.findById(mallID);
+        const store = mall.stores.id(storeID);
+        store.set(storeUpdates);
+        mall.save();
 
         return mall;
       }

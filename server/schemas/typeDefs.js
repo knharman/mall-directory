@@ -23,6 +23,7 @@ const typeDefs = gql`
     }
 
     type Store{
+        _id: ID
         storeName: String
         image: String
         category: Category
