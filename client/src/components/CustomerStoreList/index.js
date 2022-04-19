@@ -4,6 +4,7 @@ import IndividualStore from "./IndividualStore";
 import CustomerStoreModal from "../CustomerStoreModal";
 import CustomerMallList from "../CustomerMallList";
 import { GET_CATEGORIES } from "../../utils/queries";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 
 
 // ******** shouldn't need the unused imported files above but leaving till all bugs are gone. *****
@@ -106,16 +107,12 @@ function CustomerStoreList({stores = []}) {
 
   // Used to generate store modal when a store is clicked
   const [currentStore, setCurrentStore] = useState();
-  const [currentCategory, setCurrentCategory] = useState();
+  const [currentCategory, setCurrentCategory] = useState({name: ""});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = (store, i) => {
     setCurrentStore({ ...store, index: i });
     setIsModalOpen(!isModalOpen);
   };
-
-  const selectedCategory = () => {
-    
-  }
 
   if (loading) {
     return <h2>Loading Categories...</h2>
@@ -123,6 +120,9 @@ function CustomerStoreList({stores = []}) {
   if (error) {
     return <h2>Sorry, no categories exist.</h2>
   }
+
+  console.log(currentCategory)
+  console.log(stores)
 
   return (
     <>
@@ -137,18 +137,18 @@ function CustomerStoreList({stores = []}) {
             <h3 className="center">Store Names</h3>
             <div className="center">
               <h1 className="modalTitles storeName">Category:</h1>
-              <select className="modalTextBox" id="style">
-                {data.categories.map((category, index) => (
-                  <option name={category} value={category} key={index} onClick={() => { setCurrentCategory(selectedCategory)}}>
+              <DropdownButton title="Choose a Category">
+              {data.categories.map((category, index) => (
+                  <Dropdown.Item name={category} value={category} key={index} onClick={() => {setCurrentCategory(category)}}>
                     {category.name}
-                  </option>
+                  </Dropdown.Item>
                 ))}
-              </select>
+              </DropdownButton>
             </div>
           </div>
 
           <ul className="scrollBox">
-            {stores.map((store, index) => (
+            {stores.filter((store) => store.category.name == currentCategory.name || currentCategory.name == "").map((store, index) => (
               <IndividualStore key={index} onClick={() => toggleModal(store, index)} {...store} />
             ))}
           </ul>
