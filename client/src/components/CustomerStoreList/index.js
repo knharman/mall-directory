@@ -10,6 +10,7 @@ function CustomerStoreList({stores = []}) {
 
   const { loading, data, error } = useQuery(GET_CATEGORIES);
   const [ currentCategory, setCurrentCategory ] = useState({name: ""});
+  const [ currentStore, setCurrentStore ] = useState(null);
 
   if (loading) {
     return <h2>Loading Categories...</h2>
@@ -20,8 +21,8 @@ function CustomerStoreList({stores = []}) {
 
   return (
     <>
-      {isModalOpen && (
-        <CustomerStoreModal currentStore={currentStore} onClose={toggleModal} />
+      {currentStore && (
+        <CustomerStoreModal store={currentStore} />
       )}
 
       <section>
@@ -43,9 +44,9 @@ function CustomerStoreList({stores = []}) {
 
           <ul className="scrollBox">
             {stores.filter((store) => store.category.name == currentCategory.name || currentCategory.name == "").map((store, index) => (
-              <IndividualStore key={index} onClick={() => toggleModal(store, index)} {...store} />
+              <IndividualStore key={index} clickHandler={() => setCurrentStore(store)} {...store} />
             ))}
-          </ul>
+          </ul> 
         </div>
       </section>
     </>
