@@ -1,8 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
 
 export const GET_MALL = gql`
-query Mall {
-  mall {
+query Mall($mallId: ID!) {
+  mall(mallID: $mallId) {
+    _id
     mallName
     style
     location
@@ -10,12 +11,12 @@ query Mall {
       _id
       storeName
       image
-      description
-      url
       category {
         _id
         name
       }
+      description
+      url
     }
   }
 }
@@ -24,6 +25,7 @@ query Mall {
 export const GET_MALLS = gql`
 query Malls {
   malls {
+    _id
     mallName
     style
     location

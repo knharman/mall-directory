@@ -32,22 +32,31 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_MALL = gql`
-  mutation addMall(
-    $mallName: String!
-    $style: String!
-    $location: String!
-  ) {
-    addMall(
-      mallName: $mallName
-      style: $style
-      location: $location
-    ) {
-      token
-      user{
+mutation addMall($mallName: String!, $location: String!, $style: String!) {
+  addMall(mallName: $mallName, location: $location, style: $style) {
+    _id
+    username
+    email
+    password
+    malls {
+      _id
+      mallName
+      style
+      location
+      stores {
         _id
+        storeName
+        image
+        category {
+          _id
+          name
+        }
+        description
+        url
       }
     }
   }
+}
 `;
 
 export const UPDATE_MALL = gql`
