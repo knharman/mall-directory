@@ -79,7 +79,7 @@ function CustomerMallList() {
           </ul>
         </div>
       </section>
-      <CustomerStoreList stores={stores} mallName={selectedMall}/>
+      <CustomerStoreList stores={stores == null ? [] : stores} mallName={selectedMall}/>
     </>
 
   );

@@ -22,7 +22,7 @@ function CustomerStoreList({stores = [], mallName = "Select a Mall"}) {
   return (
     <>
       {currentStore && (
-        <CustomerStoreModal store={currentStore} />
+        <CustomerStoreModal store={currentStore} closeHandler={() => setCurrentStore(null)} />
       )}
 
       <section>
