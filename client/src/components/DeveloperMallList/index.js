@@ -6,7 +6,11 @@ import { GET_DEVELOPER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 
 function DeveloperMallList() {
-  // const {malls} = useQuery(GET_DEVELOPER)
+  const {loading, data, error} = useQuery(GET_DEVELOPER)
+
+
+  console.log("data", data)
+  
   const malls = [
     {
       mallName: "Ram",
