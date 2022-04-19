@@ -8,7 +8,7 @@ function IndividualStore(store) {
     storeName,
   } = store;
 
-  const image = category.substr(0, 3)
+  // const image = category.substr(0, 3)
 
   // TODO: connect Link to modal to generate modal with required fields.
             
@@ -18,7 +18,7 @@ function IndividualStore(store) {
       <Link to={`model.id`}>
         <img
           alt={storeName}
-          src={`../../assets/images/${image}`}
+          // src={`../../assets/images/${image}`}
         />
         <p>{storeName}</p>
       </Link>

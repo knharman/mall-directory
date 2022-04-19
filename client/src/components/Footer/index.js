@@ -10,7 +10,7 @@ function Footer() {
 
     return (
         <>
-            <div class="footer">
+            <div className="footer">
                 {Auth.loggedIn() ? (
                     <>
                         <a href="/contact">{developerDashboardFooter}</a>

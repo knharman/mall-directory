@@ -1,19 +1,10 @@
 import React from "react";
 
-function IndividualMall(mall) {
+function IndividualMall({ _id, mallName, style, location, clickHandler, stores }) {
 
-  const {
-    _id,
-    mallName,
-    style,
-    location
-  } = mall;
-
-  // TODO: connect CustomerStoreList so it will generate filter onto Store List
-            
+           
   return (
-    
-    <div className="box center" id={_id}>
+    <div className="box center" id={_id} onClick={() => clickHandler(stores)}>
         <h5>{mallName}</h5>
         <div>
           <p>Style: {style}</p>
