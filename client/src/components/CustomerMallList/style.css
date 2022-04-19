@@ -16,7 +16,7 @@
     background-color: var(--customer1) !important;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    padding: 5px;
+    padding-top: 10px;
     width: 50%;
     margin-left: 25% !important;
 }
