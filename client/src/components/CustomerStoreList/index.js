@@ -8,7 +8,7 @@ import { GET_CATEGORIES } from "../../utils/queries";
 
 // ******** shouldn't need the unused imported files above but leaving till all bugs are gone. *****
 
-function CustomerStoreList({stores}) {
+function CustomerStoreList({stores = []}) {
 
   const { loading, data, error } = useQuery(GET_CATEGORIES);
 
@@ -106,11 +106,16 @@ function CustomerStoreList({stores}) {
 
   // Used to generate store modal when a store is clicked
   const [currentStore, setCurrentStore] = useState();
+  const [currentCategory, setCurrentCategory] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = (store, i) => {
     setCurrentStore({ ...store, index: i });
     setIsModalOpen(!isModalOpen);
   };
+
+  const selectedCategory = () => {
+    
+  }
 
   if (loading) {
     return <h2>Loading Categories...</h2>
@@ -134,7 +139,7 @@ function CustomerStoreList({stores}) {
               <h1 className="modalTitles storeName">Category:</h1>
               <select className="modalTextBox" id="style">
                 {data.categories.map((category, index) => (
-                  <option name={category} value={category} key={index}>
+                  <option name={category} value={category} key={index} onClick={() => { setCurrentCategory(selectedCategory)}}>
                     {category.name}
                   </option>
                 ))}
@@ -144,9 +149,7 @@ function CustomerStoreList({stores}) {
 
           <ul className="scrollBox">
             {stores.map((store, index) => (
-              <li key={index} onClick={() => toggleModal(store, index)}>
-                <IndividualStore {...store} />
-              </li>
+              <IndividualStore key={index} onClick={() => toggleModal(store, index)} {...store} />
             ))}
           </ul>
         </div>
