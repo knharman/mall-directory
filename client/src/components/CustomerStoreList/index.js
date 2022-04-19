@@ -6,7 +6,7 @@ import CustomerMallList from "../CustomerMallList";
 import { GET_CATEGORIES } from "../../utils/queries";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 
-function CustomerStoreList({stores = []}) {
+function CustomerStoreList({stores = [], mallName = "Select a Mall"}) {
 
   const { loading, data, error } = useQuery(GET_CATEGORIES);
   const [ currentCategory, setCurrentCategory ] = useState({name: ""});
@@ -28,7 +28,7 @@ function CustomerStoreList({stores = []}) {
       <section>
         <div className="box margin50">
           <div className="box inline margin50">
-            <h2 className="center">Name of Mall Selected</h2>
+            <h2 className="center">{mallName}</h2>
             <h3 className="center">Store Names</h3>
             <div className="center">
               <h1 className="modalTitles storeName">Category:</h1>

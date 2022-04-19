@@ -10,6 +10,7 @@ function CustomerMallList() {
   const { loading, data, error } = useQuery(GET_MALLS);
   const [locationFilter, setLocationFilter] = useState("")
   const [stores, setStores] = useState([])
+  const [selectedMall, setSelectedMall] = useState("")
 
   const uniqueLocations = () => {
     let uniques = []
@@ -33,9 +34,9 @@ function CustomerMallList() {
     return matchingMalls
   }
 
-  const handleMallClick = (storeList) => {
-    console.log(storeList)
+  const handleMallClick = (storeList, mallName) => {
     setStores(storeList)
+    setSelectedMall(mallName)
   }
 
   if (loading) {
@@ -78,7 +79,7 @@ function CustomerMallList() {
           </ul>
         </div>
       </section>
-      <CustomerStoreList stores={stores} />
+      <CustomerStoreList stores={stores} mallName={selectedMall}/>
     </>
 
   );

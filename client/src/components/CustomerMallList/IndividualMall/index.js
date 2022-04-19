@@ -4,7 +4,7 @@ function IndividualMall({ _id, mallName, style, location, clickHandler, stores }
 
            
   return (
-    <div className="box center" id={_id} onClick={() => clickHandler(stores)}>
+    <div className="box center" id={_id} onClick={() => clickHandler(stores, mallName)}>
         <h5>{mallName}</h5>
         <div>
           <p>Style: {style}</p>
