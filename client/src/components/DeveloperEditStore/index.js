@@ -98,7 +98,7 @@ function DeveloperAddNewStore({ onClose }) {
           <div className="modalContainer">
             <div className=" inline margin50">
               {/* Store Name and input box */}
-              <h1 className="modalTitles storeName">Store Name:</h1>
+              <h1 className="modalTitles storeName">New Store Name:</h1>
               <input
                 className="modalTextBox"
                 type="text"
@@ -110,7 +110,7 @@ function DeveloperAddNewStore({ onClose }) {
               ></input>
 
               {/* Store style and Drop down */}
-              <h1 className="modalTitles storeName">Category:</h1>
+              <h1 className="modalTitles storeName">New Category:</h1>
               <select className="modalTextBox" id="style">
                 {categories.map((catName) => (
                   <option
@@ -124,7 +124,7 @@ function DeveloperAddNewStore({ onClose }) {
               </select>
 
               {/* Mall Location and input box */}
-              <h1 className="modalTitles storeName">Description:</h1>
+              <h1 className="modalTitles storeName">New Description:</h1>
               <input
                 className="modalTextBox"
                 type="text"
