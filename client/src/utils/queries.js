@@ -1,5 +1,25 @@
 import { gql, useQuery } from "@apollo/client";
 
+export const GET_MALL = gql`
+query Mall {
+  mall {
+    mallName
+    style
+    location
+    stores {
+      _id
+      storeName
+      image
+      description
+      url
+      category {
+        _id
+        name
+      }
+    }
+  }
+}
+`;
 
 export const GET_MALLS = gql`
 query Malls {

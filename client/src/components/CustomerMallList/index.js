@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import { Dropdown, DropdownButton, Container, Col, Row } from "react-bootstrap";
 
 import { GET_MALLS } from "../../utils/queries";
 import IndividualMall from "./IndividualMall";
 import CustomerStoreList from "../CustomerStoreList";
+import './style.css';
 
 function CustomerMallList() {
   const { loading, data, error } = useQuery(GET_MALLS);
@@ -26,7 +27,7 @@ function CustomerMallList() {
     let matchingMalls = []
 
     data.malls.forEach(mall => {
-      if (locationFilter == mall.location) {
+      if (locationFilter === mall.location) {
         matchingMalls.push(mall)
       }
     });
@@ -49,8 +50,9 @@ function CustomerMallList() {
 
   return (
     <>
-      <section>
-        <div className="box margin50">
+      <Container fluid>
+        <Row className="box margin50">
+          <Col>
           <div className="box inline margin50">
             <h2 className="center">List of Malls</h2>
             <div className="center">
@@ -70,6 +72,9 @@ function CustomerMallList() {
               }
             </div>
           </div>
+          </Col>
+
+          <Col>
           <ul className="scrollBox">
             {filterMalls().map((mall, index) => (
               <li key={index}>
@@ -77,11 +82,13 @@ function CustomerMallList() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
+          </Col>
+        </Row>
+        
+          
+      </Container>
       <CustomerStoreList stores={stores == null ? [] : stores} mallName={selectedMall}/>
     </>
-
   );
 }
 
