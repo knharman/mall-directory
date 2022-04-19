@@ -11,6 +11,8 @@ import DeveloperLogin from './pages/DeveloperLogin';
 import DeveloperHome from './pages/DeveloperHome'
 import DeveloperMallList from './components/DeveloperMallList';
 import CustomerMallList from './components/CustomerMallList';
+import NoMatch from './pages/NoMatch';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -42,9 +44,8 @@ function App() {
           <Switch>
             <Route exact path="/" component={CustomerHome} />
 
-            {<Route exact path="/customermalllist" component={CustomerMallList} />
-            /* <Route exact path="/login" component={DeveloperLogin} />
-
+            <Route exact path="/customermalllist" component={CustomerMallList} />
+            <Route exact path="/login" component={DeveloperLogin} />
             <Route exact path="/contact" component={ContactUs} />
             <Route exact path="/dashboard" component={DeveloperHome} />
             <Route component={NoMatch} />
