@@ -37,11 +37,11 @@ function DeveloperStoreList() {
       {isModalOpen && (
         <DeveloperAddNewStore onClose={toggleModal} />
       )}
-      <div className="my-2 sidenav">
+      <div className="center">
         <h2>Stores:</h2>
         {storeList.length > 0 ? (
 
-          <ul className="flex-row">
+          <ul className="">
             {storeList.map((store, index) => (
               <li key={index}>
                 <StoreArray {...store} />

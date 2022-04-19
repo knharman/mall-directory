@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import AppNavbar from "../components/NavBar";
 import DeveloperMallList from "../components/DeveloperMallList";
 import DeveloperSingleMall from "../components/DeveloperSingleMall";
+import DeveloperStoreList from "../components/DeveloperStoreList";
 import Footer from "../components/Footer";
 
 const DeveloperHome = () => {
@@ -12,8 +13,10 @@ const DeveloperHome = () => {
             {Auth.loggedIn() ? (
                 <>
                     <AppNavbar />
+                    <div><DeveloperMallList /></div>
                     <DeveloperMallList />
                     <DeveloperSingleMall />
+                    <div><DeveloperStoreList> DEVELOPER INFI</DeveloperStoreList></div>
                     <Footer />
                 </>
             ) : (
