@@ -1,4 +1,5 @@
 import React from "react";
+import '../style.css';
 
 function IndividualMall(mall) {
 
@@ -13,7 +14,7 @@ function IndividualMall(mall) {
             
   return (
     
-    <div className="box center" id={_id}>
+    <div className="box center single-mall-list-item" id={_id}>
         <h5>{mallName}</h5>
         <div>
           <p>Style: {style}</p>
