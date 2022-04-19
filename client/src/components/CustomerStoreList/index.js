@@ -29,9 +29,8 @@ function CustomerStoreList({stores = [], mallName = "Select a Mall"}) {
         <div className="box margin50">
           <div className="box inline margin50">
             <h2 className="center">{mallName}</h2>
-            <h3 className="center">Store Names</h3>
             <div className="center">
-              <h1 className="modalTitles storeName">Category:</h1>
+              <h3 className="modalTitles storeName">Category:</h3>
               <DropdownButton title="Choose a Category">
               {data.categories.map((category, index) => (
                   <Dropdown.Item name={category} value={category} key={index} onClick={() => {setCurrentCategory(category)}}>
