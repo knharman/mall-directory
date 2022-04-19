@@ -48,6 +48,7 @@
     font-weight: bolder;
     font-style: italic;
     text-shadow: 3px 3px 3px var(--customer5);
+    width: 95%;
 }
 
 .single-mall-list-item {
@@ -61,5 +62,6 @@
 @media (max-width: 768px) {
   .mall-list-container {
       width: 100%;
+      margin-bottom: 100px;
   }
 }
