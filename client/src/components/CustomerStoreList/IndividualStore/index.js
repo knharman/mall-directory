@@ -1,27 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-function IndividualStore(store) {
-
-  const {
-    category,
-    storeName,
-  } = store;
-
-  const image = category.substr(0, 3)
-
-  // TODO: connect Link to modal to generate modal with required fields.
-            
+function IndividualStore(props) {
+           
   return (
     
-    <li className="box center">
-      <Link to={`model.id`}>
-        <img
-          alt={storeName}
-          src={`../../assets/images/${image}`}
+    <li className="box center" onClick={props.clickHandler}>
+      <img
+          alt={props.storeName}
+          src={`${props.image}`}
         />
-        <p>{storeName}</p>
-      </Link>
+        <p>{props.storeName}</p>
     </li>
   );
 }

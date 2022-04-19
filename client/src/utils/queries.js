@@ -86,13 +86,13 @@ export const GET_DEVELOPER = gql`{
 //   }
 // `;
 
-// export const QUERY_CATEGORIES = gql`
-//   {
-//     categories {
-//       _id
-//       name
-//     }
-//   }
-// `;
+export const GET_CATEGORIES = gql`
+  query categories {
+  categories {
+    _id
+    name
+  }
+}
+`;
 
 

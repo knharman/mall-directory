@@ -10,6 +10,8 @@ import './style.css';
 function CustomerMallList() {
   const { loading, data, error } = useQuery(GET_MALLS);
   const [locationFilter, setLocationFilter] = useState("")
+  const [stores, setStores] = useState([])
+  const [selectedMall, setSelectedMall] = useState("")
 
   const uniqueLocations = () => {
     let uniques = []
@@ -33,13 +35,10 @@ function CustomerMallList() {
     return matchingMalls
   }
 
-  const updateStores = (index, store) => {
-    return (
-      <div key={index}>
-        <CustomerStoreList {...store} />
-      </div>
-    );
-  };
+  const handleMallClick = (storeList, mallName) => {
+    setStores(storeList)
+    setSelectedMall(mallName)
+  }
 
   if (loading) {
     return <div>Loading...</div>
@@ -50,40 +49,46 @@ function CustomerMallList() {
   }
 
   return (
-    // <section>
-    <Container fluid>
-      <Col className="mall-list-container" lg={6} md={6}>
-      <div className="mall-dropdown-container box">
-        <Col className="mall-dropdown-box box">
-          <h2 className="center mall-list-title">Mall List</h2>
-          {/* <div className="center"> */}
-            {
-              uniqueLocations().length === 0 ? (
-                <h3>No malls have been added yet!</h3>
-              ) : (
-                <>
-                  <h4 className="mall-list-filter">Filter by Location:</h4>
-                  <DropdownButton id="dropdown-basic-button" title="Select a City">
-                    {
-                      uniqueLocations().map((uniqueLocation, index) => <Dropdown.Item href="#" key={index} onClick={() => { setLocationFilter(uniqueLocation) }}>{uniqueLocation}</Dropdown.Item>)
-                    }
-                  </DropdownButton>
-                </>
-              )
-            }
-          {/* </div> */}
-        </Col>
-        <ol className="scrollBox list-numbers">
-          {filterMalls().map((mall, index) => (
-            <li key={index} onClick={() => updateStores(mall, index)}>
-              <IndividualMall {...mall} />
-            </li>
-          ))}
-        </ol>
-      </div>
-    {/* </section> */}
-    </Col>
-    </Container>
+    <>
+      <Container fluid>
+        <Row className="box margin50">
+          <Col>
+          <div className="box inline margin50">
+            <h2 className="center">List of Malls</h2>
+            <div className="center">
+              {
+                uniqueLocations().length === 0 ? (
+                  <h3>No malls have been added yet!</h3>
+                ) : (
+                  <>
+                    <h4>Filter by Location:</h4>
+                    <DropdownButton id="dropdown-basic-button" title="Select a City">
+                      {
+                        uniqueLocations().map((uniqueLocation, index) => <Dropdown.Item href="#" key={index} onClick={() => { setLocationFilter(uniqueLocation) }}>{uniqueLocation}</Dropdown.Item>)
+                      }
+                    </DropdownButton>
+                  </>
+                )
+              }
+            </div>
+          </div>
+          </Col>
+
+          <Col>
+          <ul className="scrollBox">
+            {filterMalls().map((mall, index) => (
+              <li key={index}>
+                <IndividualMall {...mall} clickHandler={handleMallClick} />
+              </li>
+            ))}
+          </ul>
+          </Col>
+        </Row>
+        
+          
+      </Container>
+      <CustomerStoreList stores={stores == null ? [] : stores} mallName={selectedMall}/>
+    </>
   );
 }
 

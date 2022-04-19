@@ -2,8 +2,8 @@ import React from "react";
 
 import "./style.css";
 
-function CustomerStoreModal(onClose, currentStore) {
-  const { storeName, category, description, url } = currentStore;
+function CustomerStoreModal({closeHandler, store}) {
+  const { storeName, category, description, url } = store;
 
   const linking = () => {
     window.location.href = `https://${url}`;
@@ -15,7 +15,7 @@ function CustomerStoreModal(onClose, currentStore) {
         <div id="myModal" className="modalBackdrop">
           <div className="modalContainer">
             <div className=" inline margin50">
-              <button onClick={onClose} type="button">
+              <button onClick={closeHandler} type="button">
                 &times;
               </button>
               <div className="box">
@@ -33,7 +33,7 @@ function CustomerStoreModal(onClose, currentStore) {
             <br></br> */}
               <div className="box">
                 <h3 className="modalTitles">Category:</h3>
-                <p className="modalText">{category}</p>
+                <p className="modalText">{category.name}</p>
               </div>
 
               <div className="box">
