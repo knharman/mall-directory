@@ -44,30 +44,32 @@ query Malls {
 }
 `;
 
-export const GET_DEVELOPER = gql`{
-    query GetDeveloper {
+export const GET_DEVELOPER = gql`
+query getDeveloper {
+  developer {
+    _id
+    username
+    email
+    password
+    malls {
       _id
-      username
-      email
-      password
-      malls {
+      mallName
+      style
+      location
+      stores {
         _id
-        mallName
-        style
-        location
-        stores {
-          storeName
-          image
-          category {
-            _id
-            name
-          }
-          description
-          url
+        storeName
+        image
+        category {
+          _id
+          name
         }
+        description
+        url
       }
     }
   }
+}
   `;
 
 
