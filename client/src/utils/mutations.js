@@ -122,24 +122,26 @@ mutation Mutation($mallId: ID!, $storeName: String!, $image: String!, $category:
 `;
 
 export const UPDATE_STORE = gql`
-  mutation UpdateStore($mallId: ID!, $storeId: ID!, $storeName: String!, $image: String!, $category: String!, $description: String!, $url: String!) {
-    updateStore(mallID: $mallId, storeID: $storeId, storeName: $storeName, image: $image, category: $category, description: $description, url: $url) {
+mutation updateStore($mallId: ID!, $storeId: ID!, $storeName: String!, $image: String!, $category: String!, $description: String!, $url: String!) {
+  updateStore(mallID: $mallId, storeID: $storeId, storeName: $storeName, image: $image, category: $category, description: $description, url: $url) {
+    _id
+    mallName
+    style
+    location
+    stores {
       _id
-      mallName
-      style
-      location
-      stores {
-        storeName
-        image
-        category {
-          _id
-          name
-        }
-        description
-        url
+      storeName
+      image
+      category {
+        _id
+        name
       }
+      description
+      url
     }
   }
+}
+
 `;
 
 export const REMOVE_STORE = gql`

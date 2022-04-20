@@ -9,7 +9,7 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall" }) {
   const [currentMall, setCurrentMall] = useState({ mallName: mallName });
   const [currentStore, setCurrentStore] = useState();
 
-  console.log("mallName", stores);
+  console.log("mallName", currentStore);
 
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,9 +18,6 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall" }) {
     setIsModalOpen(!isModalOpen);
   };
 
-  const toggleModal2 = () => {
-    setIsModalOpen(!isModalOpen);
-  };
 
   return (
     <>
@@ -46,9 +43,7 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall" }) {
           </Col>
         </Container>
       </div>
-
-
-      {isModalOpen && <DeveloperEditStore onClose={toggleModal2} />}
+      <DeveloperEditStore store={currentStore == null ? {} : currentStore} />
     </>
   );
 }

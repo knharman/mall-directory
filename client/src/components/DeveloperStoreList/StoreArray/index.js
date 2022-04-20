@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../style.css";
 import DeveloperEditStore from "../../DeveloperEditStore";
 
-function StoreArray({ storeName, description, category, url }) {
+function StoreArray({ storeName, description, category, url, clickHandler }) {
   console.log("store name on store array", category);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,7 +21,7 @@ function StoreArray({ storeName, description, category, url }) {
           <li>Description: {description}</li>
           <li>URL: {url}</li>
         </ul>
-        <button onClick={() => toggleModal2()}>Edit</button>
+        <button onClick={clickHandler}>Edit</button>
       </div>
     </>
   );
