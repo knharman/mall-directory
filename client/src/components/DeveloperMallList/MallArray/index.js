@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../style.css'
 import DeveloperStoreList from '../../DeveloperStoreList';
 
-function MallArray({ mallName, style, location, _id }) {
+function MallArray({ _id, mallName, style, location, clickHandler, stores }) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -13,7 +13,7 @@ function MallArray({ mallName, style, location, _id }) {
   return (
     <>
 
-      <div className="my-2">
+      <div className="box center single-mall-list-item" id={_id} onClick={() => clickHandler(stores, mallName)}>
           <h4  onClick={() => toggleModal()}>{mallName}</h4>
           <ul>
               <li key={_id}>{location}</li>

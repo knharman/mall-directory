@@ -5,14 +5,38 @@ import { Dropdown, DropdownButton, Container, Col, Row } from "react-bootstrap";
 import Auth from "../../utils/auth";
 import "./style.css";
 
-function DeveloperEditStore({ onClose, props}) {
+
+
+function DeveloperEditStore({ store = {} }) {
+
+
+
+const catty = store.category || ""
+
+const storeID = store._id || "";
+const storeName = store.storeName || "";
+const image = store.image || "";
+const category = catty.name || "";
+const description = store.description || "";
+const url = store.url || "";
+
+console.log("category", category)
+
+console.log("what is store alone?", storeID)
+
+
   const [formState, setFormState] = useState({
+    _id: storeID,
     storeName: "",
     image: "",
     category: "",
     description: "",
     url: "",
   });
+
+
+  console.log("what is formState?", formState)
+
 
   const categories = [
     "ACCESSORIES",
@@ -44,6 +68,23 @@ function DeveloperEditStore({ onClose, props}) {
     "TOYS & GAMES",
     "TRAVEL",
   ];
+
+  const letsCancel = async (event) => {
+
+    try {
+      const { data } = await updateStore({
+        variables: {     
+          storeName: storeName,
+          image: image,
+          category: category,
+          description: description,
+          url: url,
+      },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const recieveInput = (e) => {
     const { name, value } = e.target;
@@ -84,9 +125,7 @@ const submitDeleteStore = async (event) => {
     const { data } = await deleteStore({
       variables: { ...formState },
     });
-    onClose();
-    // //TODO:create add store authentication
-    // Auth.newMall(data.updateStore.token);
+
   } catch (e) {
     console.error(e);
   }
@@ -100,9 +139,6 @@ const submitEditStore = async (event) => {
     const { data } = await updateStore({
       variables: { ...formState },
     });
-    onClose();
-    // //TODO:create add store authentication
-    // Auth.newMall(data.updateStore.token);
   } catch (e) {
     console.error(e);
   }
@@ -113,27 +149,31 @@ const submitEditStore = async (event) => {
       <Container fluid>
       <Col className="mall-list-container" lg={5} md={5}>
           <div className="">
+
           <Col className="mall-dropdown-box box">
               {/* Store Name and input box */}
-              <h1 className="center mall-list-title">New Store Name:</h1>
+              <h1 className="center mall-list-title">Updating: {storeName}</h1>
+              <p className="modalTitles storeName">Store Name:</p>
               <input
                 className="modalTextBox"
                 type="text"
                 id="storeName"
                 name="storeName"
-                placeholder="Edit Your Store Name"
+                placeholder={storeName}
                 value={formState.storeName}
                 onChange={recieveInput}
               ></input>
 
               {/* Store style and Drop down */}
-              <h1 className="modalTitles storeName">New Category:</h1>
+              <p className="modalTitles storeName">New Category:</p>
               <select className="modalTextBox" id="style">
                 {categories.map((catName) => (
                   <option
-                    name={catName}
+                    name="category"
                     value={catName}
-                    onClick={recieveInputs}
+                    onChange={() => {
+                      recieveInputs();
+                    }}
                   >
                     {catName}
                   </option>
@@ -141,25 +181,25 @@ const submitEditStore = async (event) => {
               </select>
 
               {/* Mall Location and input box */}
-              <h1 className="modalTitles storeName">New Description:</h1>
+              <p className="modalTitles storeName">New Description:</p>
               <input
                 className="modalTextBox"
                 type="text"
                 id="description"
                 name="description"
-                placeholder={formState.description}
+                placeholder={description}
                 value={formState.description}
                 onChange={recieveInput}
               ></input>
 
               {/* Mall Location and input box */}
-              <h1 className="modalTitles storeName">URL:</h1>
+              <p className="modalTitles storeName">URL:</p>
               <input
                 className="modalTextBox"
                 type="text"
                 id="url"
                 name="url"
-                placeholder="Change URL to Stores Website"
+                placeholder={url}
                 value={formState.url}
                 onChange={recieveInput}
               ></input>
@@ -180,7 +220,7 @@ const submitEditStore = async (event) => {
                 >
                   Submit
                 </button>
-                <button onClick={onClose} type="button">
+                <button onClick={() => letsCancel()} type="button">
                   Cancel
                 </button>
               </div>
