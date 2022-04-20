@@ -18,15 +18,15 @@ function DeveloperAddNewStore({ onClose }) {
     "APPAREL",
     "ARTS",
     "BEAUTY",
-    "DEPARTMENT STORE",
+    "DEPARTMENT-STORE",
     "DRINKS",
     "ELECTRONICS",
     "ENTERTAINMENT",
     "FAMILY",
     "FASHION",
     "FOOD",
-    "FROZEN TREATS",
-    "FULL SERVICE RESTRAUNT",
+    "FROZEN-TREATS",
+    "FULL-SERVICE-RESTRAUNT",
     "HAPPY HOUR BAR",
     "HEALTH",
     "HOME",
@@ -38,9 +38,9 @@ function DeveloperAddNewStore({ onClose }) {
     "QUICK BITES",
     "RECREATION",
     "SHOES",
-    "SPECIALTY FOOD",
+    "SPECIALTY-FOOD",
     "THEATER",
-    "TOYS & GAMES",
+    "TOYS-&-GAMES",
     "TRAVEL",
   ];
 
@@ -67,7 +67,7 @@ function DeveloperAddNewStore({ onClose }) {
     }));
   })};
   
-
+console.log("form state sucks!!!", formState)
 
 
 
@@ -84,8 +84,7 @@ function DeveloperAddNewStore({ onClose }) {
         variables: { ...formState },
       });
       onClose();
-      // //TODO:create add store authentication
-      // Auth.newMall(data.addStore.token);
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }
@@ -116,7 +115,7 @@ function DeveloperAddNewStore({ onClose }) {
                   <option
                     name={catName}
                     value={catName}
-                    onClick={recieveInputs}
+                    onSelect={recieveInputs}
                   >
                     {catName}
                   </option>
