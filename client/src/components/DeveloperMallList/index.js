@@ -7,7 +7,8 @@ import { useQuery } from '@apollo/client';
 
 function DeveloperMallList() {
   const {loading, data, error} = useQuery(GET_DEVELOPER)
-
+  const [selectedMall, setSelectedMall] = useState("")
+  const [stores, setStores] = useState([])
 
 
 
@@ -51,6 +52,12 @@ function DeveloperMallList() {
   //   }
   // ]
 
+  const handleMallClick = (stores, mallName) => {
+    console.log("stores", stores)
+    setStores(stores)
+    setSelectedMall(mallName)
+  }
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -68,8 +75,8 @@ function DeveloperMallList() {
 
           <ul className="flex-row">
             {data && data.developer.malls.map((mall, index) => (
-              <li key={index}>
-                <MallArray {...mall} />
+              <li key={index} >
+                <MallArray {...mall} clickHandler={handleMallClick} />
               </li>
             ))}
           </ul>
@@ -82,6 +89,7 @@ function DeveloperMallList() {
       </div>
       <div>
 
+<DeveloperStoreList stores={stores == null ? [] : stores} mallName={selectedMall}/>
     
 
       </div>

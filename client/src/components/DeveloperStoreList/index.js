@@ -1,31 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import DeveloperAddNewStore from '../DeveloperAddNewStore'
-import DeveloperEditStore from '../DeveloperEditStore'
-import StoreArray from './StoreArray';
-import { GET_DEVELOPER } from '../../utils/queries';
+import React, { useEffect, useState } from "react";
+import DeveloperAddNewStore from "../DeveloperAddNewStore";
+import DeveloperEditStore from "../DeveloperEditStore";
+import StoreArray from "./StoreArray";
+import { Dropdown, DropdownButton, Container, Col } from "react-bootstrap";
+import "./style.css";
 
-function DeveloperStoreList() {
+function DeveloperStoreList({ stores = [], mallName = "Select a Mall" }) {
+  const [currentMall, setCurrentMall] = useState({ mallName: mallName });
+  const [currentStore, setCurrentStore] = useState();
 
-  const storeList = [
-    {
-      storeName: "Subway",
-      category: "food", 
-      description: "sandwich",
-      url: "http://google.com/"
-    },
-    {
-      storeName: "nike",
-      category: "clothing", 
-      description: "Apparel",
-      url: "http://google.com/"
-    },
-    {
-      storeName: "Ram",
-      category: "FAMILY", 
-      description: "portland",
-      url: "http://google.com/"
-    }
-  ]
+  console.log("mallName", stores);
+
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,32 +18,37 @@ function DeveloperStoreList() {
     setIsModalOpen(!isModalOpen);
   };
 
+  const toggleModal2 = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <>
-      {isModalOpen && (
-        <DeveloperAddNewStore onClose={toggleModal} />
-      )}
+      {isModalOpen && <DeveloperAddNewStore onClose={toggleModal} />}
       <div className="center">
-        <h2>Stores:</h2>
-        {storeList.length > 0 ? (
+        <Container fluid>
+          <Col className="store-list-container" lg={10} md={10}>
+            <div className="store-dropdown-container box">
+              <Col className="store-dropdown-box box">
+                <h2 className="center store-list-title">{mallName}</h2>
+              </Col>
 
-          <ul className="">
-            {storeList.map((store, index) => (
-              <li key={index}>
-                <StoreArray {...store} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <h3>You haven't added any stores yet!</h3>
-        )}
-        <button onClick={() => toggleModal()}>
-          Add New Store
-        </button>
+              <Col>
+                <ol className="center">
+                  {stores.map((store, index) => (
+                    <li key={index}>
+                      <StoreArray clickHandler={() => setCurrentStore(store)} {...store} />
+                    </li>
+                  ))}
+                </ol>
+              </Col>
+            </div>
+          </Col>
+        </Container>
       </div>
-      <div>
-        <DeveloperEditStore />
-      </div>
+
+
+      {isModalOpen && <DeveloperEditStore onClose={toggleModal2} />}
     </>
   );
 }
