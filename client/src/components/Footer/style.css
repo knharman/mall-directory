@@ -36,13 +36,23 @@
 @media (max-width: 768px) {
   .footer {
     height: 7%;
-    padding-bottom: 25px;
+    /* padding-bottom: 25px; */
+    /* width: 97%; */
+  }
+
+  .footer a {
+    font-size:large;
   }
 }
 
 @media (max-width: 375px) {
   .footer {
     height: 9%;
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
+    /* width: 97%; */
+  }
+
+  .footer a {
+    font-size:medium;
   }
 }

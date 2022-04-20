@@ -1,10 +1,11 @@
 import React from "react";
+import '../style.css'
 
 function IndividualStore(props) {
            
   return (
     
-    <li className="box center" onClick={props.clickHandler}>
+    <li className="box center store-list-item" onClick={props.clickHandler}>
       <img
           alt={props.storeName}
           src={`${props.image}`}
