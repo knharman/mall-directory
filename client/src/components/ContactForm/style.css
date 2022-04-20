@@ -1,0 +1,49 @@
+#contact-form {
+  background-color: #c5fffd;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 8%;
+  width: 74%;
+}
+
+.contact-input {
+  color: #526760;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.error-text {
+  color: red;
+}
+
+.contact-message {
+  margin-bottom: 10px;
+}
+
+.contact-button {
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0 1px;
+  margin-top: 5px;
+  color: #c5fffd;
+  background-color: #526760;
+}
+
+.contact-button:hover {
+  color: #88d9e6;
+  background-color: #8b8bae;
+}
+
+.form-control {
+  margin-bottom: 11px;
+  margin-top: 12px;
+  padding: 5px;
+  box-shadow: #526760;  
+  width: 96% !important;
+}

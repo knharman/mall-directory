@@ -1,0 +1,41 @@
+:root {
+    --customer1: #C5FFFD;
+    --customer2: #88D9E6;
+    --customer3: #8B8BAE;
+    --customer4: #526760;
+    --customer5: #374B4A;
+    --developer1: #202C39;
+    --developer2: #283845;
+    --developer3: #B8B08D;
+    --developer4: #F2D492;
+    --developer5: #F29559;
+    --white: #FFFFFF;
+  }
+
+.nav-bar {
+    background-color: var(--customer4);
+    box-shadow: 0 0 25px 0 black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+}
+
+.nav-title {
+    color: var(--customer2) !important;
+    font-weight: bolder;
+}
+
+@media (max-width: 768px) {
+    .margin-none{
+        margin-left: 0px !important;
+    }
+    .text-left {
+        text-align: left !important;
+    }
+}
+
+@media (max-width: 348px) {
+    .nav-row {
+        display: inline;
+    }
+}
