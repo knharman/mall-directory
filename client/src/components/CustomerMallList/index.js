@@ -50,8 +50,10 @@ function CustomerMallList() {
 
   return (
     <>
+    <Row>
+      <Col>
       <Container fluid>
-        <Col className="mall-list-container" lg={6} md={6}>
+        <Col className="mall-list-container" lg={12} md={12}>
           <div className="mall-dropdown-container box">
             <Col className="mall-dropdown-box box">
               {/* <div className="box inline margin50"> */}
@@ -87,7 +89,11 @@ function CustomerMallList() {
           </div>
         </Col>
       </Container>
-      <CustomerStoreList stores={stores == null ? [] : stores} mallName={selectedMall} />
+      </Col>
+      <Col>
+      <CustomerStoreList stores={stores == null ? [] : stores} mallName={selectedMall}/>
+      </Col>
+      </Row>
     </>
   );
 }

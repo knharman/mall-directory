@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import IndividualStore from "./IndividualStore";
 import CustomerStoreModal from "../CustomerStoreModal";
-import CustomerMallList from "../CustomerMallList";
 import { GET_CATEGORIES } from "../../utils/queries";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import { Dropdown, DropdownButton, Container, Col } from "react-bootstrap";
 import './style.css';
 
 function CustomerStoreList({stores = [], mallName = "Select a Mall"}) {
@@ -26,13 +25,18 @@ function CustomerStoreList({stores = [], mallName = "Select a Mall"}) {
         <CustomerStoreModal store={currentStore} closeHandler={() => setCurrentStore(null)} />
       )}
 
-      <section>
-        <div className="box margin50">
-          <div className="box inline margin50">
-            <h2 className="center">{mallName}</h2>
-            <div className="center">
-              <h3 className="modalTitles storeName">Category:</h3>
-              <DropdownButton title="Choose a Category">
+      <>
+      {/* <section> */}
+      <Container fluid>
+        <Col className="store-list-container" lg={12} md={12}>
+          <div className="store-dropdown-container box">
+            <Col className="store-dropdown-box box">
+        {/* <div className="box margin50"> */}
+          {/* <div className="box inline margin50"> */}
+            <h2 className="center store-list-title">{mallName}</h2>
+            <div className="center store-button-container">
+              <h4 className="store-list-filter">Category:</h4>
+              <DropdownButton id="store-dropdown-basic-button" title="Choose a Category">
               {data.categories.map((category, index) => (
                   <Dropdown.Item name={category} value={category} key={index} onClick={() => {setCurrentCategory(category)}}>
                     {category.name}
@@ -40,15 +44,21 @@ function CustomerStoreList({stores = [], mallName = "Select a Mall"}) {
                 ))}
               </DropdownButton>
             </div>
-          </div>
-
-          <ul className="scrollBox">
-            {stores.filter((store) => store.category.name == currentCategory.name || currentCategory.name == "").map((store, index) => (
+          {/* </div> */}
+          </Col>
+          
+          <Col>
+          <ol className="scrollBox store-list-numbers">
+            {stores.filter((store) => store.category.name === currentCategory.name || currentCategory.name === "").map((store, index) => (
               <IndividualStore key={index} clickHandler={() => setCurrentStore(store)} {...store} />
             ))}
-          </ul> 
+          </ol>
+          </Col> 
         </div>
-      </section>
+        </Col>
+        </Container>
+      {/* </section> */}
+      </>
     </>
   );
 }

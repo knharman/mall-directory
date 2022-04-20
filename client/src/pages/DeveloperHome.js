@@ -4,7 +4,9 @@ import { Redirect } from 'react-router-dom';
 import AppNavbar from "../components/NavBar";
 import DeveloperMallList from "../components/DeveloperMallList";
 import DeveloperSingleMall from "../components/DeveloperSingleMall";
-import DeveloperStoreList from "../components/DeveloperStoreList";
+
+import DeveloperAddNewStore from "../components/DeveloperAddNewStore";
+
 import Footer from "../components/Footer";
 
 const DeveloperHome = () => {
@@ -16,7 +18,9 @@ const DeveloperHome = () => {
                     <div><DeveloperMallList /></div>
                     <DeveloperMallList />
                     <DeveloperSingleMall />
-                    <div><DeveloperStoreList> DEVELOPER INFI</DeveloperStoreList></div>
+
+                    {/* <DeveloperAddNewStore /> */}
+
                     <Footer />
                 </>
             ) : (

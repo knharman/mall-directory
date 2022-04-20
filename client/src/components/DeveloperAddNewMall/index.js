@@ -45,8 +45,6 @@ function DeveloperAddNewMall({ onClose }) {
         variables: { ...mallObj },
       });
       onClose();
-      //TODO:create add mall authentication
-      // Auth.newMall(data.addMall.token);
     } catch (e) {
       console.error(e);
     }

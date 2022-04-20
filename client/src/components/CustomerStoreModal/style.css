@@ -1,55 +1,63 @@
 :root {
-  --customer1: #C5FFFD;
-  --customer2: #88D9E6;
-  --customer3: #8B8BAE;
+  --customer1: #c5fffd;
+  --customer2: #88d9e6;
+  --customer3: #8b8bae;
   --customer4: #526760;
-  --customer5: #374B4A;
-  --developer1: #202C39;
+  --customer5: #374b4a;
+  --developer1: #202c39;
   --developer2: #283845;
-  --developer3: #B8B08D;
-  --developer4: #F2D492;
-  --developer5: #F29559;
-  --white: #FFFFFF;
+  --developer3: #b8b08d;
+  --developer4: #f2d492;
+  --developer5: #f29559;
+  --white: #ffffff;
 }
 
-
 .modalContainer {
-	background: var(--customer5);
-	border-radius: 5px;
-	max-width: 100%;
-	margin: 50px auto;
-	padding: 15px;
-	width: 960px;
+  background: var(--customer3) !important;
+  border: solid;
+  border-radius: 5px;
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 15px;
+  width: 960px;
+}
+
+.cust-modal-box {
+	background-color: var(--customer4) !important;
 }
 
 .modalTitle {
-	font-size: 18px;
-	font-weight: 600;
-	margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
 }
 
-button {
-	background: var(--customer2);
-	border: 0;
-	border-radius: 5px;
-	color: #fff;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: 600;
-	margin-bottom: 30px;
-	padding: 10px 15px;	
+#button {
+  background: var(--customer2);
+  border: 0;
+  border-radius: 5px;
+  color: var(--customer5);
+  cursor: pointer;
+  font-size: large;
+  font-weight: bolder;
+  margin-bottom: 30px;
+  padding: 10px 15px;
 }
 
+#button:hover {
+	background-color: var(--customer5);
+	color: var(--customer1);
+}
 
 .modalBackdrop {
-	background: transparent;
-	bottom: 0;
-	left: 0;
-	overflow: auto;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 1;
+  background: transparent;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
 }
 
 .box {
@@ -63,26 +71,132 @@ button {
   display: flexbox;
   width: 100%;
   vertical-align: top;
-
 }
 
 .modalTitles {
-	font-size: 22px;
-	font-weight: 600;
-	margin-bottom: 25px;
+  font-size: 22px;
+  font-weight: 600;
+  /* margin-bottom: 25px; */
   margin-left: 20px;
-  color: var(--customer5);
+  color: var(--customer2) !important;
 }
 
 .modalText {
-	font-size: 14px;
-	font-weight: 600;
-	margin-bottom: 25px;
+  font-size: larger;
+  font-weight: bolder;
+  /* margin-bottom: 25px; */
   margin-left: 30px;
-  margin-right: 30px;
-  color: var(--customer3);
+  /* margin-right: 30px; */
+  color: var(--customer1);
 }
 
-.storeName{
+.storeName {
   font-size: 35px;
+}
+
+.store-link {
+	cursor: pointer;
+}
+
+.store-link:hover {
+	color: var(--customer1) !important;
+}
+
+@media (max-width: 912px) {
+	#myModal {
+		height: 75%;
+		width: 74%;
+		margin-left: 13%;
+		margin-top: 20%;
+	}
+}
+
+@media (max-width: 820px) {
+	#myModal {
+		height: 75%;
+		width: 74%;
+		margin-left: 13%;
+		margin-top: 20%;
+	}
+}
+
+@media (max-width: 768px) {
+	#myModal {
+		height: 75%;
+		width: 74%;
+		margin-left: 13%;
+		margin-top: 20%;
+	}
+}
+
+@media (max-width: 540px) {
+	#myModal {
+		/* height: 50%; */
+		width: 75%;
+		/* margin-left: 13%; */
+		/* margin-top: 20%; */
+	}
+
+	.modalTitles {
+		font-size: 15px !important;
+		font-weight: 600;
+		margin-bottom: 25px;
+	}
+
+	.modalText {
+		font-size: small;
+		font-weight: bolder;
+		/* margin-bottom: 25px; */
+		margin-left: 30px;
+		/* margin-right: 30px; */
+		color: var(--customer1);
+	  }
+}
+
+@media (max-width: 375px) {
+	#myModal {
+		/* height: 50%; */
+		width: 75%;
+		/* margin-left: 13%; */
+		/* margin-top: 20%; */
+	}
+
+	.modalTitles {
+		font-size: 15px !important;
+		font-weight: 600;
+		margin-bottom: 25px;
+	}
+
+	.modalText {
+		font-size: small;
+		font-weight: bolder;
+		/* margin-bottom: 25px; */
+		margin-left: 30px;
+		/* margin-right: 30px; */
+		color: var(--customer1);
+	  }
+}
+
+@media (max-width: 280px) {
+	#myModal {
+		height: 100%;
+		width: 80%;
+		margin-left: 10%;
+		/* margin-top: 20%; */
+	}
+
+	.modalTitles {
+		font-size: 15px !important;
+		font-weight: 600;
+		margin-bottom: 25px;
+	}
+
+	.modalText {
+		font-size: smaller;
+		font-weight: bold;
+		/* margin-bottom: 25px; */
+		margin-left: 30px;
+		/* margin-right: 30px; */
+		color: var(--customer1);
+	  }
 }
