@@ -30,6 +30,6 @@ const storeSchema = new Schema({
   }
 });
 
-const Store = mongoose.model('Store',storeSchema);
+// const Store = mongoose.model('Store',storeSchema);
 
-module.exports = Store;
+module.exports = storeSchema;

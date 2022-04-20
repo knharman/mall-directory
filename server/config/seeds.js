@@ -6,9 +6,9 @@ db.once('open', async () => {
 
   const malls = await Mall.insertMany([
     {
-      mallName: 'Spencers',
-      style: 'primary',
-      location: "arkansas",
+      mallName: 'TEST MALL 1',
+      style: 'Shopping Center',
+      location: "Portland OR",
       stores: []
     },
     // {mallName: 'Marshalls'},
@@ -19,49 +19,72 @@ db.once('open', async () => {
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
-    { name: 'Food' },
-    { name: 'Household Supplies' },
-    { name: 'Electronics' },
-    { name: 'Books' },
-    { name: 'Toys' }
+    { name: "ACCESSORIES" },
+    { name: "APPAREL" },
+    { name: "ARTS" },
+    { name: "BEAUTY" },
+    { name: "DEPARTMENT STORE" },
+    { name: "DRINKS" },
+    { name: "ELECTRONICS" },
+    { name: "ENTERTAINMENT" },
+    { name: "FAMILY" },
+    { name: "FASHION" },
+    { name: "FOOD" },
+    { name: "FROZEN TREATS" },
+    { name: "FULL SERVICE RESTRAUNT" },
+    { name: "HAPPY HOUR BAR" },
+    { name: "HEALTH" },
+    { name: "HOME" },
+    { name: "KIDS APPAREL" },
+    { name: "LIFESTYLE" },
+    { name: "LUXURY" },
+    { name: "OTHER" },
+    { name: "PETS" },
+    { name: "QUICK BITES" },
+    { name: "RECREATION" },
+    { name: "SHOES" },
+    { name: "SPECIALTY FOOD" },
+    { name: "THEATER" },
+    { name: "TOYS & GAMES" },
+    { name: "TRAVEL" },
   ]);
 
   console.log('categories seeded');
 
-  await Store.deleteMany();
+  // await Store.deleteMany();
 
-  const stores = await Store.insertMany([
-    {
-      storeName: 'Tin of Cookies',
-      description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
-      category: categories[0]._id,
-      // mallName: malls[0]._id,
-      url: "www.google.com",
-      // style: "inperson"
-    },
-    {
-      storeName: 'Canned Coffee',
-      description:
-        'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'canned-coffee.jpg',
-      category: categories[0]._id,
-      // mallName: malls[0]._id,
-      url: "www.google.com",
-      // style: "inperson"
-    },
-    {
-      storeName: 'Toilet Paper',
-      category: categories[1]._id,
-      description:
-        'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
-      image: 'toilet-paper.jpg',
-      // mallName: malls[0]._id,
-      url: "www.google.com",
-      // style: "inperson"
-    }
-  ]);
+  // const stores = await Store.insertMany([
+  //   {
+  //     storeName: 'Tin of Cookies',
+  //     description:
+  //       'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+  //     image: 'cookie-tin.jpg',
+  //     category: categories[0]._id,
+  //     // mallName: malls[0]._id,
+  //     url: "www.google.com",
+  //     // style: "inperson"
+  //   },
+  //   {
+  //     storeName: 'Canned Coffee',
+  //     description:
+  //       'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
+  //     image: 'canned-coffee.jpg',
+  //     category: categories[0]._id,
+  //     // mallName: malls[0]._id,
+  //     url: "www.google.com",
+  //     // style: "inperson"
+  //   },
+  //   {
+  //     storeName: 'Toilet Paper',
+  //     category: categories[1]._id,
+  //     description:
+  //       'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
+  //     image: 'toilet-paper.jpg',
+  //     // mallName: malls[0]._id,
+  //     url: "www.google.com",
+  //     // style: "inperson"
+  //   }
+  // ]);
 
   console.log('products seeded');
 

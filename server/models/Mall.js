@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
-const Store = require('./Store')
+const storeSchema = require('./Store')
 
 const mallSchema = new Schema({
     mallName: {
@@ -8,10 +8,7 @@ const mallSchema = new Schema({
         required: true,
         trim: true
     },
-    stores: {
-        type: [Store.schema], 
-        default: undefined
-    }, 
+    stores: [storeSchema], 
     style: {
         type: String, 
         required: true, 

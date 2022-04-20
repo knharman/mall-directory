@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DeveloperAddNewMall from '../DeveloperAddNewMall'
 import MallArray from './MallArray';
+import DeveloperStoreList from '../DeveloperStoreList'
 import { GET_DEVELOPER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 
@@ -10,7 +11,25 @@ function DeveloperMallList() {
     {
       mallName: "Ram",
       style: "indoor", 
-      location: "portland"
+      location: "portland",
+      stores: [    {
+        storeName: "Subway",
+        category: "food", 
+        description: "sandwich",
+        url: "http://google.com/"
+      },
+      {
+        storeName: "nike",
+        category: "clothing", 
+        description: "Apparel",
+        url: "http://google.com/"
+      },
+      {
+        storeName: "Ram",
+        category: "FAMILY", 
+        description: "portland",
+        url: "http://google.com/"
+      }]
     },
     {
       mallName: "Galleria",
@@ -52,6 +71,11 @@ function DeveloperMallList() {
         <button onClick={() => toggleModal()}>
           Add New Mall
         </button>
+      </div>
+      <div>
+
+    
+
       </div>
     </>
   );

@@ -5,6 +5,7 @@ import CustomerStoreModal from "../CustomerStoreModal";
 import CustomerMallList from "../CustomerMallList";
 import { GET_CATEGORIES } from "../../utils/queries";
 import { Dropdown, DropdownButton } from "react-bootstrap";
+import './style.css';
 
 function CustomerStoreList({stores = [], mallName = "Select a Mall"}) {
 

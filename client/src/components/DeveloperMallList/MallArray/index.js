@@ -12,9 +12,7 @@ function MallArray({ mallName, style, location }) {
 
   return (
     <>
-    {isModalOpen && (
-    <DeveloperStoreList onClose={toggleModal} />
-  )}
+
       <div className="my-2">
           <h4  onClick={() => toggleModal()}>{mallName}</h4>
           <ul>
