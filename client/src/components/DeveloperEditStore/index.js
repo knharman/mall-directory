@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { UPDATE_STORE } from "../../utils/mutations";
+import { UPDATE_STORE, REMOVE_STORE } from "../../utils/mutations";
+import { Dropdown, DropdownButton, Container, Col, Row } from "react-bootstrap";
 import Auth from "../../utils/auth";
 import "./style.css";
 
-function DeveloperAddNewStore({ onClose }) {
+function DeveloperEditStore({ onClose, props}) {
   const [formState, setFormState] = useState({
     storeName: "",
     image: "",
@@ -72,33 +73,49 @@ function DeveloperAddNewStore({ onClose }) {
 
 
 // TODO: fix and ADD_STORE mutation
-  const [updateStore, { error, loading, data }] = useMutation(UPDATE_STORE);
+const [updateStore] = useMutation(UPDATE_STORE);
+const [deleteStore] = useMutation(REMOVE_STORE);
 
-  const submitEditStore = async (event) => {
-    // event.preventDefault();
+const submitDeleteStore = async (event) => {
+  // event.preventDefault();
 
-    // use try/catch instead of promises to handle errors
-    try {
-      // execute addUser mutation and pass in variable data from form
-      const { data } = await updateStore({
-        variables: { ...formState },
-      });
-      onClose();
-      // //TODO:create add store authentication
-      // Auth.newMall(data.updateStore.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  // use try/catch instead of promises to handle errors
+  try {
+    const { data } = await deleteStore({
+      variables: { ...formState },
+    });
+    onClose();
+    // //TODO:create add store authentication
+    // Auth.newMall(data.updateStore.token);
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const submitEditStore = async (event) => {
+  // event.preventDefault();
+
+  // use try/catch instead of promises to handle errors
+  try {
+    const { data } = await updateStore({
+      variables: { ...formState },
+    });
+    onClose();
+    // //TODO:create add store authentication
+    // Auth.newMall(data.updateStore.token);
+  } catch (e) {
+    console.error(e);
+  }
+};
 
   return (
     <>
-      <section>
-        <div id="addNewStore" className="modalBackdrop">
-          <div className="modalContainer">
-            <div className=" inline margin50">
+      <Container fluid>
+      <Col className="mall-list-container" lg={5} md={5}>
+          <div className="">
+          <Col className="mall-dropdown-box box">
               {/* Store Name and input box */}
-              <h1 className="modalTitles storeName">New Store Name:</h1>
+              <h1 className="center mall-list-title">New Store Name:</h1>
               <input
                 className="modalTextBox"
                 type="text"
@@ -130,7 +147,7 @@ function DeveloperAddNewStore({ onClose }) {
                 type="text"
                 id="description"
                 name="description"
-                placeholder="Edit the Description of the Store"
+                placeholder={formState.description}
                 value={formState.description}
                 onChange={recieveInput}
               ></input>
@@ -149,6 +166,13 @@ function DeveloperAddNewStore({ onClose }) {
 
               {/* Save and Cancel boxes */}
               <div>
+              <button
+                  // onClick={submitEditStore()}
+                  onClick={() => submitDeleteStore()}
+                  type="button"
+                >
+                  Delete
+                </button>
                 <button
                   // onClick={submitEditStore()}
                   onClick={() => submitEditStore()}
@@ -160,28 +184,12 @@ function DeveloperAddNewStore({ onClose }) {
                   Cancel
                 </button>
               </div>
-            </div>
+              </Col>
           </div>
-        </div>
-      </section>
+        </Col>
+        </Container>
     </>
   );
 }
 
-export default DeveloperAddNewStore;
-
-// <********  Needs to be set above return statement in CustomerStoreList  ********>
-
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-//   const toggleModal = (addNewMall) => {
-//     setIsModalOpen(!isModalOpen);
-//   };
-
-//   <********  Needs to be set inside of return statement in DeveloperSingleMall  ********>
-
-// {isModalOpen && (
-//   <Modal onClose={toggleModal} />
-// )}
-
-//   <********  Needs to be attached to add new mall button in single mall view  ********>
-// onClick={() => toggleModal(addNewMall)}
+export default DeveloperEditStore;

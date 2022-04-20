@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DeveloperAddNewStore from '../DeveloperAddNewStore'
+import DeveloperEditStore from '../DeveloperEditStore'
 import StoreArray from './StoreArray';
 import { GET_DEVELOPER } from '../../utils/queries';
 
@@ -37,11 +38,11 @@ function DeveloperStoreList() {
       {isModalOpen && (
         <DeveloperAddNewStore onClose={toggleModal} />
       )}
-      <div className="my-2 sidenav">
+      <div className="center">
         <h2>Stores:</h2>
         {storeList.length > 0 ? (
 
-          <ul className="flex-row">
+          <ul className="">
             {storeList.map((store, index) => (
               <li key={index}>
                 <StoreArray {...store} />
@@ -54,6 +55,9 @@ function DeveloperStoreList() {
         <button onClick={() => toggleModal()}>
           Add New Store
         </button>
+      </div>
+      <div>
+        <DeveloperEditStore />
       </div>
     </>
   );

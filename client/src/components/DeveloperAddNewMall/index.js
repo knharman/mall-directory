@@ -35,7 +35,7 @@ function DeveloperAddNewMall({ onClose }) {
 
     // use try/catch instead of promises to handle errors
     try {
-      // execute addUser mutation and pass in variable data from form
+      // execute addMall mutation and pass in variable data from form
      const mallObj ={
        ...formState,
        style: dropdown
