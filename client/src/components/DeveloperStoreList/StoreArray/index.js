@@ -31,4 +31,3 @@ function StoreArray({ storeName, description, category, url }) {
 }
 
 export default StoreArray;
-
