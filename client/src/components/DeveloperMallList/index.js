@@ -6,42 +6,50 @@ import { GET_DEVELOPER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 
 function DeveloperMallList() {
-  // const {malls} = useQuery(GET_DEVELOPER)
-  const malls = [
-    {
-      mallName: "Ram",
-      style: "indoor", 
-      location: "portland",
-      stores: [    {
-        storeName: "Subway",
-        category: "food", 
-        description: "sandwich",
-        url: "http://google.com/"
-      },
-      {
-        storeName: "nike",
-        category: "clothing", 
-        description: "Apparel",
-        url: "http://google.com/"
-      },
-      {
-        storeName: "Ram",
-        category: "FAMILY", 
-        description: "portland",
-        url: "http://google.com/"
-      }]
-    },
-    {
-      mallName: "Galleria",
-      style: "outdoor", 
-      location: "Anaheim"
-    },
-    {
-      mallName: "Mainplace",
-      style: "indoor", 
-      location: "Garden Grove"
-    }
-  ]
+  const {loading, data, error} = useQuery(GET_DEVELOPER)
+
+
+
+
+  if (data) console.log(data);
+  if (error) console.log(error)
+
+
+  // const malls = [
+  //   {
+  //     mallName: "Ram",
+  //     style: "indoor", 
+  //     location: "portland",
+  //     stores: [    {
+  //       storeName: "Subway",
+  //       category: "food", 
+  //       description: "sandwich",
+  //       url: "http://google.com/"
+  //     },
+  //     {
+  //       storeName: "nike",
+  //       category: "clothing", 
+  //       description: "Apparel",
+  //       url: "http://google.com/"
+  //     },
+  //     {
+  //       storeName: "Ram",
+  //       category: "FAMILY", 
+  //       description: "portland",
+  //       url: "http://google.com/"
+  //     }]
+  //   },
+  //   {
+  //     mallName: "Galleria",
+  //     style: "outdoor", 
+  //     location: "Anaheim"
+  //   },
+  //   {
+  //     mallName: "Mainplace",
+  //     style: "indoor", 
+  //     location: "Garden Grove"
+  //   }
+  // ]
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -56,10 +64,10 @@ function DeveloperMallList() {
       )}
       <div className="my-2 sidenav">
         <h2>Malls:</h2>
-        {malls.length > 0 ? (
+        {data && data.developer.malls.length > 0 ? (
 
           <ul className="flex-row">
-            {malls.map((mall, index) => (
+            {data && data.developer.malls.map((mall, index) => (
               <li key={index}>
                 <MallArray {...mall} />
               </li>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DeveloperAddNewStore from '../DeveloperAddNewStore'
+import DeveloperEditStore from '../DeveloperEditStore'
 import StoreArray from './StoreArray';
 import { GET_DEVELOPER } from '../../utils/queries';
 
@@ -54,6 +55,9 @@ function DeveloperStoreList() {
         <button onClick={() => toggleModal()}>
           Add New Store
         </button>
+      </div>
+      <div>
+        <DeveloperEditStore />
       </div>
     </>
   );

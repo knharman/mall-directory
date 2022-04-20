@@ -14,9 +14,9 @@ function StoreArray({ storeName, description, category, url }) {
 
   return (
       <>
-    {isModalOpen && (
+    {/* {isModalOpen && (
         <DeveloperEditStore onClose={toggleModal} />
-      )}
+      )} */}
       <div className="my-2">
           <h4>{storeName}</h4>
           <ul>
