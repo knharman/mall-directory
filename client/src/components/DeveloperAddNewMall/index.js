@@ -45,6 +45,7 @@ function DeveloperAddNewMall({ onClose }) {
         variables: { ...mallObj },
       });
       onClose();
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }
