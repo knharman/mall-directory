@@ -1,55 +1,56 @@
 :root {
-  --customer1: #C5FFFD;
-  --customer2: #88D9E6;
-  --customer3: #8B8BAE;
+  --customer1: #c5fffd;
+  --customer2: #88d9e6;
+  --customer3: #8b8bae;
   --customer4: #526760;
-  --customer5: #374B4A;
-  --developer1: #202C39;
+  --customer5: #374b4a;
+  --developer1: #202c39;
   --developer2: #283845;
-  --developer3: #B8B08D;
-  --developer4: #F2D492;
-  --developer5: #F29559;
-  --white: #FFFFFF;
+  --developer3: #b8b08d;
+  --developer4: #f2d492;
+  --developer5: #f29559;
+  --white: #ffffff;
 }
 
+#addNewMall {
+  z-index: 1;
+}
 
 .modalContainer {
-	background: var(--developer5);
-	border-radius: 5px;
-	max-width: 100%;
-	margin: 50px auto;
-	padding: 15px;
-	width: 960px;
+  background: var(--developer5);
+  border-radius: 5px;
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 15px;
+  width: 960px;
 }
 
 .modalTitle {
-	font-size: 18px;
-	font-weight: 600;
-	margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
 }
 
 button {
-	background: var(--developer1);
-	border: 0;
-	border-radius: 5px;
-	color: #fff;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: 600;
-	margin-bottom: 30px;
-	padding: 10px 15px;	
+  background: var(--developer1);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  padding: 10px 15px;
 }
 
-
 .modalBackdrop {
-	background: transparent;
-	bottom: 0;
-	left: 0;
-	overflow: auto;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 1;
+  background: transparent;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 
 .box {
@@ -63,30 +64,29 @@ button {
   display: flexbox;
   width: 100%;
   vertical-align: top;
-
 }
 
 .modalTitles {
-	font-size: 22px;
-	font-weight: 600;
-	margin-bottom: 25px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
   margin-left: 20px;
   color: var(--customer5);
 }
 
 .modalTextBox {
-	border: solid;
+  border: solid;
   border-radius: 5px;
   background-color: var(--developer4);
   margin: 10px;
-	font-size: 20px;
-	font-weight: 600;
-	margin: 0px 30px 25px 30px;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0px 30px 25px 30px;
   color: var(--developer1);
-	width: 90%;
-	height: 60px;
+  width: 90%;
+  height: 60px;
 }
 
-.storeName{
+.storeName {
   font-size: 35px;
 }
