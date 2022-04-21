@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./style.css";
 
 function CustomerStoreModal(onClose, currentStore) {
@@ -21,16 +20,7 @@ function CustomerStoreModal(onClose, currentStore) {
               <div className="box">
                 <h1 className="modalTitles storeName">{storeName}</h1>
               </div>
-              {/* V2 we can link store image here
-            <br></br>
-            <div className="center">
-              <img
-                className="pic"
-                src="assets/images/icon.jpg"
-                alt="icon of store"
-              ></img>
-            </div>
-            <br></br> */}
+
               <div className="box">
                 <h3 className="modalTitles">Category:</h3>
                 <p className="modalText">{category}</p>
@@ -39,7 +29,7 @@ function CustomerStoreModal(onClose, currentStore) {
               <div className="box">
                 <h3 className="modalTitles">Description:</h3>
                 <p className="modalText">
-             {description}
+                  {description}
                 </p>
               </div>
               <div className="box">
@@ -64,5 +54,3 @@ function CustomerStoreModal(onClose, currentStore) {
 }
 
 export default CustomerStoreModal;
-
-

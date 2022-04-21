@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Auth from '../../utils/auth';
-import { Container, Navbar, Nav, Row, Col, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import '../../index.css';
-// import DeveloperHome from "../../pages/DeveloperHome";
 
 const AppNavbar = () => {
     const logout = event => {

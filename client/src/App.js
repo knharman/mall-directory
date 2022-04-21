@@ -7,12 +7,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CustomerHome from './pages/CustomerHome'
 import ContactUs from './pages/ContactUs';
 import DeveloperLogin from './pages/DeveloperLogin';
-
 import DeveloperHome from './pages/DeveloperHome'
-import DeveloperMallList from './components/DeveloperMallList';
-import CustomerMallList from './components/CustomerMallList';
 import NoMatch from './pages/NoMatch';
-
 
 const httpLink = createHttpLink({
   uri: '/graphql',

@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DeveloperAddNewStore from "../DeveloperAddNewStore";
 import DeveloperEditStore from "../DeveloperEditStore";
 import StoreArray from "./StoreArray";
-import { Dropdown, DropdownButton, Container, Col } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import "./style.css";
 
 function DeveloperStoreList({ stores = [], mallName = "Select a Mall", mallId }) {
   const [currentStore, setCurrentStore] = useState();
-  console.log("DeveloperStoreList", mallId, mallName, currentStore)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 

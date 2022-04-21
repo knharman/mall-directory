@@ -3,8 +3,6 @@ import Auth from "../utils/auth";
 import { Redirect } from 'react-router-dom';
 import AppNavbar from "../components/NavBar";
 import DeveloperMallList from "../components/DeveloperMallList";
-
-import DeveloperStoreList from "../components/DeveloperStoreList";
 import Footer from "../components/Footer";
 
 const DeveloperHome = () => {
@@ -14,8 +12,6 @@ const DeveloperHome = () => {
                 <>
                     <AppNavbar />
                     <div><DeveloperMallList /></div>
-
-                    {/* <div><DeveloperStoreList /></div> */}
                     <Footer />
                 </>
             ) : (

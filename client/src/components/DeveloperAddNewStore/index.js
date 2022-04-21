@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_STORE } from "../../utils/mutations";
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-import Auth from "../../utils/auth";
 import "./style.css";
 
 function DeveloperAddNewStore({ mallId, onClose }) {
@@ -13,37 +12,6 @@ function DeveloperAddNewStore({ mallId, onClose }) {
     description: "",
     url: "",
   });
-  const [dropdown, setDropdown] = useState('');
-  // const categories = [
-  //   "ACCESSORIES",
-  //   "APPAREL",
-  //   "ARTS",
-  //   "BEAUTY",
-  //   "DEPARTMENT-STORE",
-  //   "DRINKS",
-  //   "ELECTRONICS",
-  //   "ENTERTAINMENT",
-  //   "FAMILY",
-  //   "FASHION",
-  //   "FOOD",
-  //   "FROZEN-TREATS",
-  //   "FULL-SERVICE-RESTRAUNT",
-  //   "HAPPY HOUR BAR",
-  //   "HEALTH",
-  //   "HOME",
-  //   "KIDS APPAREL",
-  //   "LIFESTYLE",
-  //   "LUXURY",
-  //   "OTHER",
-  //   "PETS",
-  //   "QUICK BITES",
-  //   "RECREATION",
-  //   "SHOES",
-  //   "SPECIALTY-FOOD",
-  //   "THEATER",
-  //   "TOYS-&-GAMES",
-  //   "TRAVEL",
-  // ];
 
   const setFormValue = (name, value) => {
     setFormState((oldState) => ({
@@ -61,36 +29,11 @@ function DeveloperAddNewStore({ mallId, onClose }) {
     setFormValue("category", value)
   }
 
-
-  // const receiveInputs = (e) => {
-  //   const { name, value } = e.target;
-  //   console.log("whats my category", value)
-  //   setFormState((oldState) => ({
-  //     ...oldState,
-  //     [name]: value,
-  //   })).then((value) => {
-  //     const imaged = value.slice(0, 4);
-  //     console.log("consoling image", imaged)
-  //     setFormState((oldState) => ({
-  //       ...oldState,
-  //       image: imaged,
-  //   }));
-  // })};
-
-  console.log("form state sucks!!!", formState)
-
-
-
-  // TODO: fix and ADD_STORE mutation
-  const [addStore, { error, loading, data }] = useMutation(ADD_STORE);
+  const [addStore] = useMutation(ADD_STORE);
 
   const sumbitNewStore = async (event) => {
-    // event.preventDefault();
-
-    // use try/catch instead of promises to handle errors
     try {
-      // execute addUser mutation and pass in variable data from form
-      const { data } = await addStore({
+      await addStore({
         variables: { ...formState },
       });
       onClose();
@@ -103,23 +46,22 @@ function DeveloperAddNewStore({ mallId, onClose }) {
   const [errorMessage, setErrorMessage] = useState('');
 
   function handleChange(e) {
-    
-        if (!e.target.value.length) {
-            setErrorMessage(`All fields are required!`);
-        } else {
-            setErrorMessage('');
-        }
+
+    if (!e.target.value.length) {
+      setErrorMessage(`All fields are required!`);
+    } else {
+      setErrorMessage('');
     }
+  }
 
   return (
     <>
       <section>
         <div id="addNewStore" className="modalBackdrop">
-   
+
           <div className="modalContainer">
-          <h1 className="modalNames" >Adding a new Store</h1>
+            <h1 className="modalNames" >Adding a new Store</h1>
             <div className=" inline margin50">
-              {/* Store Name and input box */}
               <h1 className="modalTitles storeName">Store Name:</h1>
               <input
                 className="modalTextBox"
@@ -132,25 +74,12 @@ function DeveloperAddNewStore({ mallId, onClose }) {
                 onBlur={handleChange}
               ></input>
 
-              {/* Store style and Drop down */}
               <h1 className="modalTitles storeName">Category:</h1>
-              {/* <select className="modalTextBox" id="style">
-                {categories.map((catName) => (
-                  <option
-                    name={catName}
-                    value={catName}
-                    onSelect={recieveInputs}
-                  >
-                    {catName}
-                  </option>
-                ))}
-              </select> */}
               <DropdownButton
                 id="style-dropdown-button"
                 alignRight
                 name="category"
                 title="Select Category"
-                // id="dropdown-menu-align-right"
                 onSelect={handleCategorySelect}
               >
                 <Dropdown.Item className="mall-style-choice" eventKey="ACCESSORIES">ACCESSORIES</Dropdown.Item>
@@ -183,7 +112,6 @@ function DeveloperAddNewStore({ mallId, onClose }) {
                 <Dropdown.Item className="mall-style-choice" eventKey="TRAVEL">TRAVEL</Dropdown.Item>
               </DropdownButton>
 
-              {/* Mall Location and input box */}
               <h1 className="modalTitles storeName">Description:</h1>
               <input
                 className="modalTextBox"
@@ -196,7 +124,6 @@ function DeveloperAddNewStore({ mallId, onClose }) {
                 onBlur={handleChange}
               ></input>
 
-              {/* Mall Location and input box */}
               <h1 className="modalTitles storeName">URL:</h1>
               <input
                 className="modalTextBox"
@@ -209,17 +136,15 @@ function DeveloperAddNewStore({ mallId, onClose }) {
                 onBlur={handleChange}
               ></input>
               {errorMessage && (
-                        <>
-                            <p className="error-text">{errorMessage}</p>
-                        </>
-                    )}
+                <>
+                  <p className="error-text">{errorMessage}</p>
+                </>
+              )}
 
-              {/* Save and Cancel boxes */}
               <div>
                 <button className="add-mall-modal-button"
-                  // onClick={sumbitNewStore()}
                   onClick={() => sumbitNewStore()}
-                  
+
                   type="button"
                 >
                   Submit
@@ -237,19 +162,3 @@ function DeveloperAddNewStore({ mallId, onClose }) {
 }
 
 export default DeveloperAddNewStore;
-
-// <********  Needs to be set above return statement in CustomerStoreList  ********>
-
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-//   const toggleModal = (addNewMall) => {
-//     setIsModalOpen(!isModalOpen);
-//   };
-
-//   <********  Needs to be set inside of return statement in DeveloperSingleMall  ********>
-
-// {isModalOpen && (
-//   <Modal onClose={toggleModal} />
-// )}
-
-//   <********  Needs to be attached to add new mall button in single mall view  ********>
-// onClick={() => toggleModal(addNewMall)}

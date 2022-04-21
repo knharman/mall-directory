@@ -41,7 +41,7 @@ function CustomerStoreList({ stores = [], mallName = "Select a Mall" }) {
                     <h4 className="store-list-filter">Category:</h4>
                     <DropdownButton
                       id="store-dropdown-basic-button"
-                     
+
                       title="Choose a Category"
                     >
                       {data.categories.map((category, index) => (
@@ -64,7 +64,7 @@ function CustomerStoreList({ stores = [], mallName = "Select a Mall" }) {
                     >
                       {currentCategory.name || ""}
                     </button>
-                    
+
                   </Col>
 
                   <Col>

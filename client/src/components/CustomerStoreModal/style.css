@@ -23,7 +23,7 @@
 }
 
 .cust-modal-box {
-	background-color: var(--customer4) !important;
+  background-color: var(--customer4) !important;
 }
 
 .modalTitle {
@@ -45,8 +45,8 @@
 }
 
 #button:hover {
-	background-color: var(--customer5);
-	color: var(--customer1);
+  background-color: var(--customer5);
+  color: var(--customer1);
 }
 
 .modalBackdrop {
@@ -95,108 +95,108 @@
 }
 
 .store-link {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .store-link:hover {
-	color: var(--customer1) !important;
+  color: var(--customer1) !important;
 }
 
 @media (max-width: 912px) {
-	#myModal {
-		height: 75%;
-		width: 74%;
-		margin-left: 13%;
-		margin-top: 20%;
-	}
+  #myModal {
+    height: 75%;
+    width: 74%;
+    margin-left: 13%;
+    margin-top: 20%;
+  }
 }
 
 @media (max-width: 820px) {
-	#myModal {
-		height: 75%;
-		width: 74%;
-		margin-left: 13%;
-		margin-top: 20%;
-	}
+  #myModal {
+    height: 75%;
+    width: 74%;
+    margin-left: 13%;
+    margin-top: 20%;
+  }
 }
 
 @media (max-width: 768px) {
-	#myModal {
-		height: 75%;
-		width: 74%;
-		margin-left: 13%;
-		margin-top: 20%;
-	}
+  #myModal {
+    height: 75%;
+    width: 74%;
+    margin-left: 13%;
+    margin-top: 20%;
+  }
 }
 
 @media (max-width: 540px) {
-	#myModal {
-		/* height: 50%; */
-		width: 75%;
-		/* margin-left: 13%; */
-		/* margin-top: 20%; */
-	}
+  #myModal {
+    /* height: 50%; */
+    width: 75%;
+    /* margin-left: 13%; */
+    /* margin-top: 20%; */
+  }
 
-	.modalTitles {
-		font-size: 15px !important;
-		font-weight: 600;
-		margin-bottom: 25px;
-	}
+  .modalTitles {
+    font-size: 15px !important;
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
 
-	.modalText {
-		font-size: small;
-		font-weight: bolder;
-		/* margin-bottom: 25px; */
-		margin-left: 30px;
-		/* margin-right: 30px; */
-		color: var(--customer1);
-	  }
+  .modalText {
+    font-size: small;
+    font-weight: bolder;
+    /* margin-bottom: 25px; */
+    margin-left: 30px;
+    /* margin-right: 30px; */
+    color: var(--customer1);
+  }
 }
 
 @media (max-width: 375px) {
-	#myModal {
-		/* height: 50%; */
-		width: 75%;
-		/* margin-left: 13%; */
-		/* margin-top: 20%; */
-	}
+  #myModal {
+    /* height: 50%; */
+    width: 75%;
+    /* margin-left: 13%; */
+    /* margin-top: 20%; */
+  }
 
-	.modalTitles {
-		font-size: 15px !important;
-		font-weight: 600;
-		margin-bottom: 25px;
-	}
+  .modalTitles {
+    font-size: 15px !important;
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
 
-	.modalText {
-		font-size: small;
-		font-weight: bolder;
-		/* margin-bottom: 25px; */
-		margin-left: 30px;
-		/* margin-right: 30px; */
-		color: var(--customer1);
-	  }
+  .modalText {
+    font-size: small;
+    font-weight: bolder;
+    /* margin-bottom: 25px; */
+    margin-left: 30px;
+    /* margin-right: 30px; */
+    color: var(--customer1);
+  }
 }
 
 @media (max-width: 280px) {
-	#myModal {
-		height: 100%;
-		width: 80%;
-		margin-left: 10%;
-		/* margin-top: 20%; */
-	}
+  #myModal {
+    height: 100%;
+    width: 80%;
+    margin-left: 10%;
+    /* margin-top: 20%; */
+  }
 
-	.modalTitles {
-		font-size: 15px !important;
-		font-weight: 600;
-		margin-bottom: 25px;
-	}
+  .modalTitles {
+    font-size: 15px !important;
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
 
-	.modalText {
-		font-size: smaller;
-		font-weight: bold;
-		/* margin-bottom: 25px; */
-		margin-left: 30px;
-		/* margin-right: 30px; */
-		color: var(--customer1);
-	  }
+  .modalText {
+    font-size: smaller;
+    font-weight: bold;
+    /* margin-bottom: 25px; */
+    margin-left: 30px;
+    /* margin-right: 30px; */
+    color: var(--customer1);
+  }
 }
