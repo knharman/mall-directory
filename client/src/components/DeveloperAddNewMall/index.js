@@ -54,9 +54,9 @@ function DeveloperAddNewMall({ onClose }) {
   return (
     <>
       <section>
-        <div id="addNewMall" className="modalBackdrop">
+        <div id="addNewMall" className="modalBackdrop mall-modal">
           <div className="modalContainer">
-            <div className=" inline margin50">
+            <div className="inline margin50">
               {/* Mall Name and input box */}
               <h1 className="modalTitles storeName">Mall Name:</h1>
               <input
@@ -69,8 +69,8 @@ function DeveloperAddNewMall({ onClose }) {
                 onChange={recieveInput}
               ></input>
               {/* Mall style and Drop down */}
-              {/* <h1 className="modalTitles storeName">Mall Style:</h1>
-              <select className="modalTextBox" id="style" onSelect={handleSelect}>
+              <h1 className="modalTitles storeName">Mall Style:</h1>
+              {/* <select className="modalTextBox" id="style" onSelect={handleSelect}>
                 <option
                   name="style"
                   value="shoppingCenter"
@@ -86,14 +86,15 @@ function DeveloperAddNewMall({ onClose }) {
                 </option>
               </select> */}
               <DropdownButton
+              id="style-dropdown-button"
               alignRight
               title="Select Mall Type"
-              id="dropdown-menu-align-right"
+              // id="dropdown-menu-align-right"
               onSelect={handleSelect}
               >
-                <Dropdown.Item eventKey="Shopping-Center">Shopping Center</Dropdown.Item>
-                <Dropdown.Item eventKey="Strip-Mall">Strip Mall</Dropdown.Item>
-                <Dropdown.Item eventKey="Plaza">Plaza</Dropdown.Item>                
+                <Dropdown.Item className="mall-style-choice" eventKey="Shopping-Center">Shopping Center</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="Strip-Mall">Strip Mall</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="Plaza">Plaza</Dropdown.Item>                
               </DropdownButton>
 
               {/* Mall Location and input box */}
@@ -109,14 +110,14 @@ function DeveloperAddNewMall({ onClose }) {
               ></input>
               {/* Save and Cancel boxes */}
               <div>
-                <button
+                <button className="add-mall-modal-button"
                   // onClick={submitNewMall()}
                   onClick={() => submitNewMall()}
                   type="button"
                 >
                   Submit
                 </button>
-                <button onClick={onClose} type="button">
+                <button className="add-mall-modal-button" onClick={onClose} type="button">
                   Cancel
                 </button>
               </div>
