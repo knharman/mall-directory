@@ -25,7 +25,8 @@ Contact the site administrators to become a Developer and publish your shopping 
 * [Contribution](#contribution)
 
 ## **Screenshots**
-![Mall Direct homepage screenshot](./client/assets/mall-direct-customer-homepage.jpg)
+![Developer Dashboard screenshot](./client/assets/mall-direct-developer-dashboard.jpg)
+![Customer Home screenshot](./client/assets/mall-direct-customer-homepage.jpg)
 
 ## **Programs**
 * Apollo
