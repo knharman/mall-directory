@@ -7,17 +7,15 @@
   --white: #ffffff;
 }
 
-
 .center {
   margin-left: 11%;
-
 }
 
-.store-title{
+.store-title {
   text-align: center;
- color: var(--developer1);
- font-weight: bolder;
- border-color: var(--developer5);
+  color: var(--developer1);
+  font-weight: bolder;
+  border-color: var(--developer5);
 }
 
 .dropdown-box {
@@ -50,7 +48,6 @@
   font-weight: bold;
   outline: solid;
   margin-top: 15px;
-
 }
 
 .mall-list-button3:hover {

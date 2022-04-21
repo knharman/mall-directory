@@ -1,29 +1,13 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { UPDATE_STORE, REMOVE_STORE } from "../../utils/mutations";
-import { Dropdown, DropdownButton, Container, Col, Row } from "react-bootstrap";
-import Auth from "../../utils/auth";
+import { Dropdown, DropdownButton, Container, Col } from "react-bootstrap";
 import "./style.css";
 
-
-
 function DeveloperEditStore({ mallId, store = {} }) {
-
-  console.log("DeveloperEditStore", store)
-
-  const catty = store.category || ""
-
-  const storeID = store._id || "";
   const storeName = store.storeName || "";
-  const image = store.image || "";
-  const category = catty.name || "";
   const description = store.description || "";
   const url = store.url || "";
-
-  // console.log("category", category)
-
-  // console.log("what is store alone?", storeID)
-
 
   const [formState, setFormState] = useState({
     storeName: "",
@@ -32,41 +16,6 @@ function DeveloperEditStore({ mallId, store = {} }) {
     description: "",
     url: "",
   });
-
-
-  // console.log("what is formState?", formState)
-
-
-  const categories = [
-    "ACCESSORIES",
-    "APPAREL",
-    "ARTS",
-    "BEAUTY",
-    "DEPARTMENT STORE",
-    "DRINKS",
-    "ELECTRONICS",
-    "ENTERTAINMENT",
-    "FAMILY",
-    "FASHION",
-    "FOOD",
-    "FROZEN TREATS",
-    "FULL SERVICE RESTRAUNT",
-    "HAPPY HOUR BAR",
-    "HEALTH",
-    "HOME",
-    "KIDS APPAREL",
-    "LIFESTYLE",
-    "LUXURY",
-    "OTHER",
-    "PETS",
-    "QUICK BITES",
-    "RECREATION",
-    "SHOES",
-    "SPECIALTY FOOD",
-    "THEATER",
-    "TOYS & GAMES",
-    "TRAVEL",
-  ];
 
   const letsCancel = async (event) => {
     window.location.reload();
@@ -88,20 +37,12 @@ function DeveloperEditStore({ mallId, store = {} }) {
     setFormValue("category", value)
   }
 
-
-
-
-
-  // TODO: fix and ADD_STORE mutation
   const [updateStore] = useMutation(UPDATE_STORE);
   const [deleteStore] = useMutation(REMOVE_STORE);
 
   const submitDeleteStore = async (event) => {
-    // event.preventDefault();
-
-    // use try/catch instead of promises to handle errors
     try {
-      const { data } = await deleteStore({
+      await deleteStore({
         variables: { mallId, storeId: store._id },
       });
 
@@ -110,13 +51,8 @@ function DeveloperEditStore({ mallId, store = {} }) {
     }
     window.location.reload();
   };
-  console.log("formState", formState)
 
-  console.log("store._id", store._id);
   const submitEditStore = async (event) => {
-    // event.preventDefault();
-
-    // use try/catch instead of promises to handle errors
     try {
       await updateStore({
         variables: { ...formState, mallId, storeId: store._id },
@@ -145,9 +81,8 @@ function DeveloperEditStore({ mallId, store = {} }) {
           <Col className="list-container" lg={9} md={9}>
             <div className="dropdown-container box">
               <Col className="dropdown-box box">
-              {/* Store Name and input box */}
-              <h1 className="store-title">Updating: {storeName}</h1>
-              <p className="modalTitles storeName">Store Name:</p>
+              <h1 className="store-title">UPDATE: {storeName}</h1>
+              <p className="modalTitles storeName edit-store-input-title">New Store Name:</p>
               <input
                 className="modalTextBox"
                 type="text"
@@ -159,28 +94,13 @@ function DeveloperEditStore({ mallId, store = {} }) {
                 onBlur={handleChange}
               ></input>
 
-              {/* Store style and Drop down */}
-              <p className="modalTitles storeName">New Category:</p>
-              {/* <select className="modalTextBox" id="style">
-                {categories.map((catName) => (
-                  <option
-                    name="category"
-                    value={catName}
-                    onChange={() => {
-                      receiveInputs();
-                    }}
-                  >
-                    {catName}
-                  </option>
-                ))}
-              </select> */}
+              <p className="modalTitles storeName edit-store-input-title">New Category:</p>
               <DropdownButton
                 id="style-dropdown-button"
                 alignRight
                 name="category"
                 title="Select Category"
                 value={formState.category}
-                // id="dropdown-menu-align-right"
                 onSelect={handleCategorySelect}
               >
                 <Dropdown.Item className="mall-style-choice" eventKey="ACCESSORIES">ACCESSORIES</Dropdown.Item>
@@ -215,7 +135,7 @@ function DeveloperEditStore({ mallId, store = {} }) {
 
 
               {/* Mall Location and input box */}
-              <p className="modalTitles storeName">New Description:</p>
+              <p className="modalTitles storeName edit-store-input-title">New Description:</p>
               <input
                 className="modalTextBox"
                 type="text"
@@ -228,7 +148,7 @@ function DeveloperEditStore({ mallId, store = {} }) {
               ></input>
 
               {/* Mall Location and input box */}
-              <p className="modalTitles storeName">URL:</p>
+              <p className="modalTitles storeName edit-store-input-title">New URL:</p>
               <input
                 className="modalTextBox"
                 type="text"
@@ -248,14 +168,12 @@ function DeveloperEditStore({ mallId, store = {} }) {
               {/* Save and Cancel boxes */}
               <div>
                 <button className='mall-list-button2'
-                  // onClick={submitEditStore()}
                   onClick={() => submitDeleteStore()}
                   type="button"
                 >
                   Delete
                 </button>
                 <button className='mall-list-button2'
-                  // onClick={submitEditStore()}
                   onClick={() => submitEditStore()}
                   type="button"
                 >

@@ -1,9 +1,6 @@
 function DeveloperSingleMall({ mallName, style, location }) {
 
-  
-    
     return (
-       
         <div className="my-2">
             <h4>{mallName}</h4>
             <ul>
@@ -11,7 +8,6 @@ function DeveloperSingleMall({ mallName, style, location }) {
                 <li>{style}</li>
             </ul>
         </div>
-       
     );
 }
 
