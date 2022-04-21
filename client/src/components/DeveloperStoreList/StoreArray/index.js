@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../style.css";
 import DeveloperEditStore from "../../DeveloperEditStore";
 
 function StoreArray({ storeName, description, category, url, clickHandler }) {
-  // console.log("store name on store array", category);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal2 = () => {

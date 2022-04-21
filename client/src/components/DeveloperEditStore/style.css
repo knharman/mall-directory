@@ -7,17 +7,16 @@
   --white: #ffffff;
 }
 
-
 .center2 {
   margin-left: 0%;
   margin-bottom: 5%;
 }
 
-.store-title{
+.store-title {
   text-align: center;
- color: var(--developer1);
- font-weight: bolder;
- border-color: var(--developer5);
+  color: var(--developer1);
+  font-weight: bolder;
+  border-color: var(--developer5);
 }
 
 .dropdown-box {
@@ -50,7 +49,6 @@
   font-weight: bold;
   outline: solid;
   margin-top: 15px;
-
 }
 
 .mall-list-button3:hover {
@@ -59,6 +57,7 @@
   outline: solid;
 }
 
-.storeName {
+.edit-store-input-title {
   color: var(--developer2) !important;
+  font-weight: bold;
 }

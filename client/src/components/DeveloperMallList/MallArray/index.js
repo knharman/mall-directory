@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import '../style.css'
-import DeveloperStoreList from '../../DeveloperStoreList';
+import React, { useState } from 'react';
+import '../style.css';
 
 function MallArray({ _id, mallName, style, location, clickHandler, stores }) {
-  console.log("MallArray", _id, mallName)
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -25,4 +23,3 @@ function MallArray({ _id, mallName, style, location, clickHandler, stores }) {
 }
 
 export default MallArray;
-

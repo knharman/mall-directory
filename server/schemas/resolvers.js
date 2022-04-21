@@ -95,7 +95,6 @@ const resolvers = {
         await Mall.findByIdAndUpdate({ _id: mallID }, { $push: { stores: store } });
 
         store.category = cat;
-        console.log(store);
         return store;
       }
 
