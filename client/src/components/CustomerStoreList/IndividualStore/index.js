@@ -1,17 +1,17 @@
 import React from "react";
-import '../style.css'
+import "../style.css";
 
 function IndividualStore(props) {
-           
   return (
     <div>
-    <li className="box store-list-numbers store-list-item" onClick={props.clickHandler}>
-      <img
-          alt={props.storeName}
-          src={`${props.image}`}
-        />
-        <p>{props.storeName}</p>
-    </li>
+      <li
+        className="box store-list-numbers store-list-item"
+        onClick={props.clickHandler}
+      >
+        <h5>{props.storeName}</h5>
+        <p>{props.category.name}</p>
+        <p>{props.url}</p>
+      </li>
     </div>
   );
 }

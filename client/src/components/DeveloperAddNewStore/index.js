@@ -100,6 +100,17 @@ function DeveloperAddNewStore({ mallId, onClose }) {
     }
   };
 
+  const [errorMessage, setErrorMessage] = useState('');
+
+  function handleChange(e) {
+    
+        if (!e.target.value.length) {
+            setErrorMessage(`All fields are required!`);
+        } else {
+            setErrorMessage('');
+        }
+    }
+
   return (
     <>
       <section>
@@ -116,6 +127,7 @@ function DeveloperAddNewStore({ mallId, onClose }) {
                 placeholder="Enter The Store Name"
                 value={formState.storeName}
                 onChange={receiveEventInput}
+                onBlur={handleChange}
               ></input>
 
               {/* Store style and Drop down */}
@@ -179,6 +191,7 @@ function DeveloperAddNewStore({ mallId, onClose }) {
                 placeholder="Add a Description of the Store"
                 value={formState.description}
                 onChange={receiveEventInput}
+                onBlur={handleChange}
               ></input>
 
               {/* Mall Location and input box */}
@@ -191,13 +204,20 @@ function DeveloperAddNewStore({ mallId, onClose }) {
                 placeholder="Give URL to Stores Wedbsite"
                 value={formState.url}
                 onChange={receiveEventInput}
+                onBlur={handleChange}
               ></input>
+              {errorMessage && (
+                        <>
+                            <p className="error-text">{errorMessage}</p>
+                        </>
+                    )}
 
               {/* Save and Cancel boxes */}
               <div>
                 <button
                   // onClick={sumbitNewStore()}
                   onClick={() => sumbitNewStore()}
+                  
                   type="button"
                 >
                   Submit

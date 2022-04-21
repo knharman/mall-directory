@@ -69,14 +69,7 @@ function DeveloperEditStore({ mallId, store = {} }) {
   ];
 
   const letsCancel = async (event) => {
-
-    try {
-      await updateStore({
-        variables: formState,
-      });
-    } catch (e) {
-      console.error(e);
-    }
+    window.location.reload();
   };
 
   const setFormValue = (name, value) => {
@@ -132,6 +125,17 @@ function DeveloperEditStore({ mallId, store = {} }) {
     }
   };
 
+  const [errorMessage, setErrorMessage] = useState('');
+
+  function handleChange(e) {
+    
+        if (!e.target.value.length) {
+            setErrorMessage(`All fields are required!`);
+        } else {
+            setErrorMessage('');
+        }
+    }
+
   return (
     <>
       <Container fluid>
@@ -150,6 +154,7 @@ function DeveloperEditStore({ mallId, store = {} }) {
                 placeholder={storeName}
                 value={formState.storeName}
                 onChange={receiveEventInput}
+                onBlur={handleChange}
               ></input>
 
               {/* Store style and Drop down */}
@@ -172,6 +177,7 @@ function DeveloperEditStore({ mallId, store = {} }) {
                 alignRight
                 name="category"
                 title="Select Category"
+                value={formState.category}
                 // id="dropdown-menu-align-right"
                 onSelect={handleCategorySelect}
               >
@@ -216,6 +222,7 @@ function DeveloperEditStore({ mallId, store = {} }) {
                 placeholder={description}
                 value={formState.description}
                 onChange={receiveEventInput}
+                onBlur={handleChange}
               ></input>
 
               {/* Mall Location and input box */}
@@ -228,7 +235,13 @@ function DeveloperEditStore({ mallId, store = {} }) {
                 placeholder={url}
                 value={formState.url}
                 onChange={receiveEventInput}
+                onBlur={handleChange}
               ></input>
+              {errorMessage && (
+                        <>
+                            <p className="error-text">{errorMessage}</p>
+                        </>
+                    )}
 
               {/* Save and Cancel boxes */}
               <div>
