@@ -7,26 +7,25 @@ import "./style.css";
 
 
 
-function DeveloperEditStore({ store = {} }) {
+function DeveloperEditStore({ mallId, store = {} }) {
 
+  console.log("DeveloperEditStore", store)
 
+  const catty = store.category || ""
 
-const catty = store.category || ""
+  const storeID = store._id || "";
+  const storeName = store.storeName || "";
+  const image = store.image || "";
+  const category = catty.name || "";
+  const description = store.description || "";
+  const url = store.url || "";
 
-const storeID = store._id || "";
-const storeName = store.storeName || "";
-const image = store.image || "";
-const category = catty.name || "";
-const description = store.description || "";
-const url = store.url || "";
+  // console.log("category", category)
 
-console.log("category", category)
-
-console.log("what is store alone?", storeID)
+  // console.log("what is store alone?", storeID)
 
 
   const [formState, setFormState] = useState({
-    _id: storeID,
     storeName: "",
     image: "",
     category: "",
@@ -35,7 +34,7 @@ console.log("what is store alone?", storeID)
   });
 
 
-  console.log("what is formState?", formState)
+  // console.log("what is formState?", formState)
 
 
   const categories = [
@@ -72,85 +71,74 @@ console.log("what is store alone?", storeID)
   const letsCancel = async (event) => {
 
     try {
-      const { data } = await updateStore({
-        variables: {     
-          storeName: storeName,
-          image: image,
-          category: category,
-          description: description,
-          url: url,
-      },
+      await updateStore({
+        variables: formState,
       });
     } catch (e) {
       console.error(e);
     }
   };
 
-  const recieveInput = (e) => {
-    const { name, value } = e.target;
+  const setFormValue = (name, value) => {
     setFormState((oldState) => ({
       ...oldState,
       [name]: value,
     }))
+  }
+
+  const receiveEventInput = (e) => {
+    const { name, value } = e.target;
+    setFormValue(name, value)
   };
 
-  const recieveInputs = (e) => {
-    const { name, value } = e.target;
-    console.log("whats my category", value)
-    setFormState((oldState) => ({
-      ...oldState,
-      [name]: value,
-    })).then((value) => {
-      const imaged = value.slice(0, 4);
-      console.log("consoling image", imaged)
-      setFormState((oldState) => ({
-        ...oldState,
-        image: imaged,
-    }));
-  })};
-  
-
-
-
-
-// TODO: fix and ADD_STORE mutation
-const [updateStore] = useMutation(UPDATE_STORE);
-const [deleteStore] = useMutation(REMOVE_STORE);
-
-const submitDeleteStore = async (event) => {
-  // event.preventDefault();
-
-  // use try/catch instead of promises to handle errors
-  try {
-    const { data } = await deleteStore({
-      variables: { ...formState },
-    });
-
-  } catch (e) {
-    console.error(e);
+  const handleCategorySelect = (value) => {
+    setFormValue("category", value)
   }
-};
 
-const submitEditStore = async (event) => {
-  // event.preventDefault();
 
-  // use try/catch instead of promises to handle errors
-  try {
-    const { data } = await updateStore({
-      variables: { ...formState },
-    });
-  } catch (e) {
-    console.error(e);
-  }
-};
+
+
+
+  // TODO: fix and ADD_STORE mutation
+  const [updateStore] = useMutation(UPDATE_STORE);
+  const [deleteStore] = useMutation(REMOVE_STORE);
+
+  const submitDeleteStore = async (event) => {
+    // event.preventDefault();
+
+    // use try/catch instead of promises to handle errors
+    try {
+      const { data } = await deleteStore({
+        variables: { mallId, storeId: store._id },
+      });
+
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  console.log("formState", formState)
+
+  console.log("store._id", store._id);
+  const submitEditStore = async (event) => {
+    // event.preventDefault();
+
+    // use try/catch instead of promises to handle errors
+    try {
+      await updateStore({
+        variables: { ...formState, mallId, storeId: store._id },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <>
       <Container fluid>
-      <Col className="mall-list-container" lg={5} md={5}>
+        <Col className="mall-list-container" lg={5} md={5}>
           <div className="">
 
-          <Col className="mall-dropdown-box box">
+            <Col className="mall-dropdown-box box">
               {/* Store Name and input box */}
               <h1 className="center mall-list-title">Updating: {storeName}</h1>
               <p className="modalTitles storeName">Store Name:</p>
@@ -161,24 +149,62 @@ const submitEditStore = async (event) => {
                 name="storeName"
                 placeholder={storeName}
                 value={formState.storeName}
-                onChange={recieveInput}
+                onChange={receiveEventInput}
               ></input>
 
               {/* Store style and Drop down */}
               <p className="modalTitles storeName">New Category:</p>
-              <select className="modalTextBox" id="style">
+              {/* <select className="modalTextBox" id="style">
                 {categories.map((catName) => (
                   <option
                     name="category"
                     value={catName}
                     onChange={() => {
-                      recieveInputs();
+                      receiveInputs();
                     }}
                   >
                     {catName}
                   </option>
                 ))}
-              </select>
+              </select> */}
+              <DropdownButton
+                id="style-dropdown-button"
+                alignRight
+                name="category"
+                title="Select Category"
+                // id="dropdown-menu-align-right"
+                onSelect={handleCategorySelect}
+              >
+                <Dropdown.Item className="mall-style-choice" eventKey="ACCESSORIES">ACCESSORIES</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="APPAREL">APPAREL</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="ARTS">ARTS</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="BEAUTY">BEAUTY</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="DEPARTMENT-STORE">DEPARTMENT STORE</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="DRINKS">DRINKS</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="ELECTRONICS">ELECTRONICS</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="ENTERTAINMENT">ENTERTAINMENT</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="FAMILY">FAMILY</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="FASHION">FASHION</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="FOOD">FOOD</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="FROZEN-TREATS">FROZEN TREATS</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="FULL-SERVICE-RESTAURANT">FULL SERVICE RESTAURANT</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="HAPPY-HOUR-BAR">HAPPY HOUR BAR</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="HEALTH">HEALTH</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="HOME">HOME</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="KIDS-APPAREL">KIDS APPAREL</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="LIFESTYLE">LIFESTYLE</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="LUXURY">LUXURY</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="OTHER">OTHER</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="PETS">PETS</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="QUICK-BITES">QUICK BITES</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="RECREATION">RECREATION</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="SHOES">SHOES</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="SPECIALTY-FOOD">SPECIALTY FOOD</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="THEATER">THEATER</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="TOYS-&-GAMES">TOYS & GAMES</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="TRAVEL">TRAVEL</Dropdown.Item>
+              </DropdownButton>
+
 
               {/* Mall Location and input box */}
               <p className="modalTitles storeName">New Description:</p>
@@ -189,7 +215,7 @@ const submitEditStore = async (event) => {
                 name="description"
                 placeholder={description}
                 value={formState.description}
-                onChange={recieveInput}
+                onChange={receiveEventInput}
               ></input>
 
               {/* Mall Location and input box */}
@@ -201,12 +227,12 @@ const submitEditStore = async (event) => {
                 name="url"
                 placeholder={url}
                 value={formState.url}
-                onChange={recieveInput}
+                onChange={receiveEventInput}
               ></input>
 
               {/* Save and Cancel boxes */}
               <div>
-              <button
+                <button
                   // onClick={submitEditStore()}
                   onClick={() => submitDeleteStore()}
                   type="button"
@@ -224,10 +250,10 @@ const submitEditStore = async (event) => {
                   Cancel
                 </button>
               </div>
-              </Col>
+            </Col>
           </div>
         </Col>
-        </Container>
+      </Container>
     </>
   );
 }

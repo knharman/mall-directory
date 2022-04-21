@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_MALL } from "../../utils/mutations";
-import {Dropdown, DropdownButton} from 'react-bootstrap'
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import Auth from "../../utils/auth";
 import "./style.css";
 
@@ -20,28 +20,26 @@ function DeveloperAddNewMall({ onClose }) {
       [name]: value,
     }));
   };
- 
+
   // TODO: fix and ADD_STORE mutation
   const [addMall, { error }] = useMutation(ADD_MALL);
 
-  const handleSelect =(e)=>{
+  const handleSelect = (e) => {
     // console.log(e)
     setDropdown(e)
-  
   }
-// console.log(formState)
+  // console.log(formState)
   const submitNewMall = async (event) => {
     // event.preventDefault();
 
     // use try/catch instead of promises to handle errors
     try {
       // execute addMall mutation and pass in variable data from form
-     const mallObj ={
-       ...formState,
-       style: dropdown
-     }
-     console.log(mallObj)
-      const { data } = await addMall({
+      const mallObj = {
+        ...formState,
+        style: dropdown
+      }
+      await addMall({
         variables: { ...mallObj },
       });
       onClose();
@@ -86,15 +84,15 @@ function DeveloperAddNewMall({ onClose }) {
                 </option>
               </select> */}
               <DropdownButton
-              id="style-dropdown-button"
-              alignRight
-              title="Select Mall Type"
-              // id="dropdown-menu-align-right"
-              onSelect={handleSelect}
+                id="style-dropdown-button"
+                alignRight
+                title="Select Mall Type"
+                // id="dropdown-menu-align-right"
+                onSelect={handleSelect}
               >
                 <Dropdown.Item className="mall-style-choice" eventKey="Shopping-Center">Shopping Center</Dropdown.Item>
                 <Dropdown.Item className="mall-style-choice" eventKey="Strip-Mall">Strip Mall</Dropdown.Item>
-                <Dropdown.Item className="mall-style-choice" eventKey="Plaza">Plaza</Dropdown.Item>                
+                <Dropdown.Item className="mall-style-choice" eventKey="Plaza">Plaza</Dropdown.Item>
               </DropdownButton>
 
               {/* Mall Location and input box */}
