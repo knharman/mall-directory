@@ -1,49 +1,7 @@
 const db = require('./connection');
-const { Developer, Mall, Category, Store } = require('../models');
+const { Developer, Category } = require('../models');
 
 db.once('open', async () => {
-  await Mall.deleteMany();
-
-  const malls = await Mall.insertMany([
-    {
-      mallName: 'Gateway Plaza',
-      style: 'Plaza',
-      location: "Portland OR",
-      stores: []
-    },
-    {
-      mallName: 'Waterbury Mall',
-      style: 'Shopping Center',
-      location: "Portland OR",
-      stores: []
-    },
-    {
-      mallName: 'Lincoln Center',
-      style: 'Strip Mall',
-      location: "Portland OR",
-      stores: []
-    },
-    {
-      mallName: 'Gateway Plaza',
-      style: 'Plaza',
-      location: "Portland OR",
-      stores: []
-    },
-    {
-      mallName: 'Seabreeze Shops',
-      style: 'Shopping Center',
-      location: "Seattle WA",
-      stores: []
-    },
-    {
-      mallName: 'Liberty Galleria',
-      style: 'Shopping Center',
-      location: "Seattle WA",
-      stores: []
-    }
-  ])
-
-
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
@@ -77,33 +35,55 @@ db.once('open', async () => {
     { name: "TRAVEL" },
   ]);
 
-  console.log('categories seeded');
-
-  console.log('products seeded');
+  console.log('Categories seeded!');
 
   await Developer.deleteMany();
 
   await Developer.create({
-    username: 'TEST',
-    email: 'test@gmail.com',
-    password: 'password',
+    username: 'Chris',
+    email: 'chris@gmail.com',
+    password: 'secret-password',
     malls: []
   });
 
   await Developer.create({
-    username: 'Pamela',
-    email: 'pamela@testmail.com',
-    password: 'password123',
+    username: 'Kellie',
+    email: 'kellie@gmail.com',
+    password: 'secret-password',
     malls: []
   });
 
   await Developer.create({
-    username: 'Elijah',
-    email: 'eholt@testmail.com',
-    password: 'password12345'
+    username: 'Joseph',
+    email: 'joseph@gmail.com',
+    password: 'secret-password'
   });
 
-  console.log('developers seeded');
+  await Developer.create({
+    username: 'Zachary',
+    email: 'zachary@gmail.com',
+    password: 'secret-password'
+  });
+
+  await Developer.create({
+    username: 'Maryus',
+    email: 'maryus@gmail.com',
+    password: 'secret-password'
+  });
+
+  await Developer.create({
+    username: 'Mac',
+    email: 'mac@gmail.com',
+    password: 'secret-password'
+  });
+
+  await Developer.create({
+    username: 'Christian',
+    email: 'christian@gmail.com',
+    password: 'secret-password'
+  });
+
+  console.log('Developers seeded!');
   process.exit();
 
 });
