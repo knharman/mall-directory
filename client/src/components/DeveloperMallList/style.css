@@ -79,3 +79,7 @@
     color: var(--developer2);
     outline: solid;
   }
+
+  .marginAdjust{
+    margin-top: 4% !important;
+  }

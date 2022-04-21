@@ -1,3 +1,60 @@
+:root {
+  --developer1: #202c39;
+  --developer2: #283845;
+  --developer3: #b8b08d;
+  --developer4: #f2d492;
+  --developer5: #f29559;
+  --white: #ffffff;
+}
+
+
 .center {
+  margin-left: 11%;
+  padding-top: 2.5%;
+}
+
+.store-title{
+  text-align: center;
+ color: var(--developer1);
+ font-weight: bolder;
+ border-color: var(--developer5);
+}
+
+.dropdown-box {
   margin-left: 20%;
+  margin-right: 20%;
+}
+
+.dropdown-container {
+  background-color: var(--developer2) !important;
+  color: var(--developer4);
+}
+
+.mall-list-button2 {
+  background-color: var(--developer5);
+  color: var(--developer1);
+  font-weight: bold;
+  outline: solid;
+  margin-top: 15px;
+  margin-left: 13%;
+}
+
+.mall-list-button2:hover {
+  background-color: var(--developer4);
+  color: var(--developer2);
+  outline: solid;
+}
+.mall-list-button3 {
+  background-color: var(--developer5);
+  color: var(--developer1);
+  font-weight: bold;
+  outline: solid;
+  margin-top: 15px;
+
+}
+
+.mall-list-button3:hover {
+  background-color: var(--developer4);
+  color: var(--developer2);
+  outline: solid;
 }
