@@ -7,7 +7,8 @@ import { useQuery } from '@apollo/client';
 
 function DeveloperMallList() {
   const {loading, data, error} = useQuery(GET_DEVELOPER)
-
+  const [selectedMall, setSelectedMall] = useState("")
+  const [stores, setStores] = useState([])
 
 
 
@@ -51,6 +52,12 @@ function DeveloperMallList() {
   //   }
   // ]
 
+  const handleMallClick = (stores, mallName) => {
+    console.log("stores", stores)
+    setStores(stores)
+    setSelectedMall(mallName)
+  }
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -62,26 +69,27 @@ function DeveloperMallList() {
       {isModalOpen && (
         <DeveloperAddNewMall onClose={toggleModal} />
       )}
-      <div className="my-2 sidenav">
-        <h2>Malls:</h2>
+      <div className="my-5 sidenav" lg={12}>
+        <h2 className='mall-list-title'>Malls:</h2>
         {data && data.developer.malls.length > 0 ? (
 
-          <ul className="flex-row">
+          <ol className="flex-row">
             {data && data.developer.malls.map((mall, index) => (
-              <li key={index}>
-                <MallArray {...mall} />
+              <li key={index} >
+                <MallArray {...mall} clickHandler={handleMallClick} />
               </li>
             ))}
-          </ul>
+          </ol>
         ) : (
           <h3>You haven't added any malls yet!</h3>
         )}
-        <button onClick={() => toggleModal()}>
+        <button className='mall-list-button' onClick={() => toggleModal()}>
           Add New Mall
         </button>
       </div>
       <div>
 
+<DeveloperStoreList stores={stores == null ? [] : stores} mallName={selectedMall}/>
     
 
       </div>
