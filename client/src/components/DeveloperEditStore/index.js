@@ -108,6 +108,7 @@ function DeveloperEditStore({ mallId, store = {} }) {
     } catch (e) {
       console.error(e);
     }
+    window.location.reload();
   };
   console.log("formState", formState)
 
@@ -123,6 +124,7 @@ function DeveloperEditStore({ mallId, store = {} }) {
     } catch (e) {
       console.error(e);
     }
+    window.location.reload();
   };
 
   const [errorMessage, setErrorMessage] = useState('');
