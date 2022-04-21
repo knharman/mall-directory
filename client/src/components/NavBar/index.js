@@ -13,25 +13,42 @@ const AppNavbar = () => {
 
     return (
         <>
-            <Container className="nav-bar sticky" fluid>
+           {Auth.loggedIn() ? (
+            <Container className="nav-bar nav-bar1 sticky" fluid>
                 <Row lg={12} className="nav-row">
-                    <Col md={6}><Nav.Link href="/" className='nav-title'>Mall Direct</Nav.Link></Col>
-                    <Col md={6}>
-                        <Nav className="container-fluid">
-                            {Auth.loggedIn() ? (
+                    <Col md={3}><Nav.Link href="/" className='nav-title nav-title1'>Mall Direct</Nav.Link></Col>
+                    <Col md={9}>
+                        <Nav className="">
+                         
                                 <>
-                                    <Nav.Link href="/" className="ms-auto margin-none nav-title">Customer Home</Nav.Link>
-                                    <Nav.Link href="/dashboard" className="ms-auto margin-none nav-title">Dashboard</Nav.Link>
-                                    <Nav.Link onClick={logout} className="ms-auto margin-none nav-title">Logout</Nav.Link>
+                                    <Nav.Link href="/" className="ms-auto margin-none nav-title nav-title1">Customer Home</Nav.Link>
+                                    <Nav.Link href="/dashboard" className="ms-auto margin-none nav-title nav-title1">Dashboard</Nav.Link>
+                                    <Nav.Link onClick={logout} className="ms-auto margin-none nav-title nav-title1">Logout</Nav.Link>
                                 </>
-                            ) : (
-                                <>
-                                </>
-                            )}
+                          
                         </Nav>
                     </Col>
                 </Row>
             </Container>
+
+
+
+            ) : (
+                <>
+           
+
+            <Container className="nav-bar nav-bar2 sticky" fluid>
+                <Row lg={12} className="nav-row">
+                    <Col md={3}><Nav.Link href="/" className='nav-title nav-title2'>Mall Direct</Nav.Link></Col>
+                    <Col md={9}>
+                    </Col>
+                </Row>
+            </Container>
+
+            </>
+            )}
+
+
         </>
     )
 }

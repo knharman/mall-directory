@@ -25,12 +25,12 @@ function DeveloperEditStore({ mallId, store = {} }) {
     setFormState((oldState) => ({
       ...oldState,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const receiveEventInput = (e) => {
     const { name, value } = e.target;
-    setFormValue(name, value)
+    setFormValue(name, value);
   };
 
   const handleCategorySelect = (value) => {
@@ -45,7 +45,6 @@ function DeveloperEditStore({ mallId, store = {} }) {
       await deleteStore({
         variables: { mallId, storeId: store._id },
       });
-
     } catch (e) {
       console.error(e);
     }
@@ -63,25 +62,25 @@ function DeveloperEditStore({ mallId, store = {} }) {
     window.location.reload();
   };
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handleChange(e) {
-    
-        if (!e.target.value.length) {
-            setErrorMessage(`All fields are required!`);
-        } else {
-            setErrorMessage('');
-        }
+    if (!e.target.value.length) {
+      setErrorMessage(`All fields are required!`);
+    } else {
+      setErrorMessage("");
     }
+  }
 
   return (
     <>
-    <div className="center">
-    <Container className="center2" fluid>
+      <div className="center">
+        <Container className="center2" fluid>
           <Col className="list-container" lg={9} md={9}>
             <div className="dropdown-container box">
               <Col className="dropdown-box box">
-              <h1 className="store-title">UPDATE: {storeName}</h1>
+              <h1 className="store-title">UPDATING:</h1>
+              <h1 className="store-title">{storeName}</h1>
               <p className="modalTitles storeName edit-store-input-title">New Store Name:</p>
               <input
                 className="modalTextBox"

@@ -5,10 +5,12 @@
   --developer4: #f2d492;
   --developer5: #f29559;
   --white: #ffffff;
+  z-index: -2;
 }
 
 .center {
   margin-left: 11%;
+  margin-right: 11%;
 }
 
 .store-title {
@@ -54,4 +56,11 @@
   background-color: var(--developer4);
   color: var(--developer2);
   outline: solid;
+}
+
+@media (max-width: 515px) {
+.center{
+  width: 85%;
+  margin-left: 15%
+}
 }

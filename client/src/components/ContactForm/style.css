@@ -1,9 +1,16 @@
 #contact-form {
-  background-color: #c5fffd;
+
   border-radius: 15px;
   padding: 20px;
   margin: 8%;
   width: 74%;
+}
+.CF1 {
+  background-color: #b8b08d;
+}
+
+.CF2 {
+  background-color: #c5fffd;
 }
 
 .contact-input {
