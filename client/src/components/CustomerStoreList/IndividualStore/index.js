@@ -8,7 +8,7 @@ function IndividualStore(props) {
         className="box store-list-numbers store-list-item"
         onClick={props.clickHandler}
       >
-        <h5>{props.storeName}</h5>
+        <h3>{props.storeName}</h3>
         <p>{props.category.name}</p>
         <p>{props.url}</p>
       </li>
