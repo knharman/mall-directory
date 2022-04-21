@@ -59,6 +59,17 @@
   text-shadow: 1px 1px 1px var(--customer3);
 }
 
+.catBtn {
+  background: var(--customer1);
+  color: var(--customer5);
+}
+
+.catBtn {
+  background: var(--customer1);
+  color: var(--customer5);
+
+}
+
 @media (max-width: 955px) {
   .store-list-container {
     width: 100%;
