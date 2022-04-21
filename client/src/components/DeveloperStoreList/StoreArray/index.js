@@ -13,7 +13,7 @@ function StoreArray({ storeName, description, category, url, clickHandler }) {
 
   return (
     <>
-      {/* {isModalOpen && <DeveloperEditStore onClose={toggleModal2} />} */}
+      {isModalOpen && <DeveloperEditStore onClose={toggleModal2} />}
       <div className="my-2">
         <h4>{storeName}</h4>
         <ul>

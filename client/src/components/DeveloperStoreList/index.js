@@ -11,13 +11,11 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall" }) {
 
   console.log("mallName", currentStore);
 
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
-
 
   return (
     <>
@@ -34,10 +32,14 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall" }) {
                 <ol className="center">
                   {stores.map((store, index) => (
                     <li key={index}>
-                      <StoreArray clickHandler={() => setCurrentStore(store)} {...store} />
+                      <StoreArray
+                        clickHandler={() => setCurrentStore(store)}
+                        {...store}
+                      />
                     </li>
                   ))}
                 </ol>
+                <button onClick={() => toggleModal()}>Add New Store</button>
               </Col>
             </div>
           </Col>
