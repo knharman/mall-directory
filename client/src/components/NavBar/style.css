@@ -13,7 +13,6 @@
 }
 
 .nav-bar {
-  background-color: var(--customer4);
   box-shadow: 0 0 25px 0 black;
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
@@ -21,8 +20,24 @@
 }
 
 .nav-title {
-  color: var(--customer2) !important;
   font-weight: bolder;
+  margin-right: 0px;
+}
+
+.nav-bar1 {
+  background-color: var(--developer4);
+}
+
+.nav-title1 {
+  color: var(--developer1) !important;
+}
+
+.nav-bar2 {
+  background-color: var(--customer4);
+}
+
+.nav-title2 {
+  color: var(--customer2) !important;
 }
 
 @media (max-width: 768px) {

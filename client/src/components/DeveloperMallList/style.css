@@ -8,7 +8,7 @@
 }
 
 .sidenav {
-  height: 90%;
+  height: 100%;
   width: 20%;
   position: fixed;
   top: 0;
@@ -29,6 +29,10 @@
 
 .sidenav a:hover {
   color: #f1f1f1;
+}
+
+.mall-list-title {
+  margin-top: 50px;
 }
 
 .dev-mall-list-item {
@@ -72,3 +76,81 @@
   color: var(--developer2);
   outline: solid;
 }
+
+.my-5 {
+  margin-top: 0px !important;
+  z-index: -1;
+}
+
+
+@media (max-width: 768px) {
+  .mall-list-title {
+    margin-top: 110px;
+  }
+  .marginLeft {
+    margin-left: -30%;
+  }
+  .dev-mall-list-item {
+    width: 95%;
+  }
+  .dev-mall-list-item-descrip {
+    color: var(--white);
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px var(--developer2);
+   margin-left: -30%;
+
+  }
+  ::marker{
+    color: var(--developer5);
+  }
+  }
+
+  @media (max-width: 600px) {
+    .marginLeft {
+      margin-left: -53%;
+      margin-right: 1%;
+    }
+    .dev-mall-list-item {
+      width: 100%;
+    }
+    .dev-mall-list-item-descrip {
+     margin-left: -45%;
+  
+    }
+
+    }
+
+    @media (max-width: 515px) {
+      .mall-list-title {
+        margin-top: 160px;
+      }
+      .marginLeft {
+        margin-left: -59%;
+        margin-right: 1%;
+      }
+      .dev-mall-list-item {
+        width: 100%;
+      }
+      .dev-mall-list-item-descrip {
+       margin-left: -55%;
+    
+      }
+  
+      }
+
+      @media (max-width: 400px) {
+
+        .marginLeft {
+          margin-left: -80%;
+          margin-right: -1%;
+        }
+        .dev-mall-list-item {
+          width: 100%;
+        }
+        .dev-mall-list-item-descrip {
+         margin-left: -80%;
+      
+        }
+    
+        }

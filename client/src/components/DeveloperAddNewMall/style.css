@@ -19,7 +19,7 @@
 .modalContainer {
   background: var(--developer2) !important;
   border-radius: 5px;
-  max-width: 100%;
+  max-width: 80%;
   margin: 50px auto;
   padding: 15px;
   width: 960px;

@@ -79,7 +79,8 @@ function DeveloperEditStore({ mallId, store = {} }) {
           <Col className="list-container" lg={9} md={9}>
             <div className="dropdown-container box">
               <Col className="dropdown-box box">
-              <h1 className="store-title">UPDATE: {storeName}</h1>
+              <h1 className="store-title">UPDATING:</h1>
+              <h1 className="store-title">{storeName}</h1>
               <p className="modalTitles storeName edit-store-input-title">New Store Name:</p>
               <input
                 className="modalTextBox"

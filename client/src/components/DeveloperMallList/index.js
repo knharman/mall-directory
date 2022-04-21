@@ -32,7 +32,7 @@ function DeveloperMallList() {
         <h2 className='mall-list-title'>Malls:</h2>
         {data && data.developer.malls.length > 0 ? (
 
-          <ol className="flex-row">
+          <ol className="flex-row marginLeft">
             {data && data.developer.malls.map((mall) => (
               <li key={mall._id} >
                 <MallArray {...mall} clickHandler={handleMallClick} />

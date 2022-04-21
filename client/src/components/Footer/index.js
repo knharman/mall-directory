@@ -4,21 +4,29 @@ import '../../index.css';
 import './style.css';
 
 function Footer() {
-    const customerFooter = 'Have any burning questions? Interested in adding your mall to our site? Click here to contact us!'
-    const developerDashboardFooter = 'Experiencing any tech issues? Click here to contact us!'
+    const customerFooter = <p className="maringSpacing">Have any burning questions? Interested in adding your mall to our site? Click here to contact us!</p>
+    const developerDashboardFooter = <p>Experiencing any tech issues? Click here to contact us!</p>
 
     return (
         <>
-            <div className="footer">
-                {Auth.loggedIn() ? (
-                    <>
-                        <a href="/contact">{developerDashboardFooter}</a>
-                    </>
-                ) : (
-                    <>
-                    <a href="/contact">{customerFooter}</a>
-                    </>
-                )}
+            <div>
+            {Auth.loggedIn() ? (
+        <>
+          <div className="footer2 footer">
+            <a className="a2 a" href="/contact">
+              {developerDashboardFooter}
+            </a>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="footer1 footer">
+            <a className="a1 a" href="/contact">
+              {customerFooter}
+            </a>
+          </div>
+        </>
+      )}
             </div>
         </>
     )

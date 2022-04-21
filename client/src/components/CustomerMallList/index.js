@@ -68,7 +68,7 @@ function CustomerMallList() {
                             uniqueLocations().map((uniqueLocation, index) => <Dropdown.Item href="#" key={index} onClick={() => { setLocationFilter(uniqueLocation) }}>{uniqueLocation}</Dropdown.Item>)
                           }
                         </DropdownButton>
-                        <button className="catBtn"></button>
+                        <p className="catBtn">{locationFilter}</p>
                       </>
                     )
                   }
