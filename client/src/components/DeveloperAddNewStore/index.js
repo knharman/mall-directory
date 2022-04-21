@@ -115,7 +115,9 @@ function DeveloperAddNewStore({ mallId, onClose }) {
     <>
       <section>
         <div id="addNewStore" className="modalBackdrop">
+   
           <div className="modalContainer">
+          <h1 className="modalNames" >Adding a new Store</h1>
             <div className=" inline margin50">
               {/* Store Name and input box */}
               <h1 className="modalTitles storeName">Store Name:</h1>
@@ -214,7 +216,7 @@ function DeveloperAddNewStore({ mallId, onClose }) {
 
               {/* Save and Cancel boxes */}
               <div>
-                <button
+                <button className="add-mall-modal-button"
                   // onClick={sumbitNewStore()}
                   onClick={() => sumbitNewStore()}
                   
@@ -222,7 +224,7 @@ function DeveloperAddNewStore({ mallId, onClose }) {
                 >
                   Submit
                 </button>
-                <button onClick={onClose} type="button">
+                <button className="add-mall-modal-button" onClick={onClose} type="button">
                   Cancel
                 </button>
               </div>

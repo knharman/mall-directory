@@ -140,13 +140,13 @@ function DeveloperEditStore({ mallId, store = {} }) {
 
   return (
     <>
-      <Container fluid>
-        <Col className="mall-list-container" lg={5} md={5}>
-          <div className="">
-
-            <Col className="mall-dropdown-box box">
+    <div className="center">
+    <Container className="center2" fluid>
+          <Col className="list-container" lg={9} md={9}>
+            <div className="dropdown-container box">
+              <Col className="dropdown-box box">
               {/* Store Name and input box */}
-              <h1 className="center mall-list-title">Updating: {storeName}</h1>
+              <h1 className="store-title">Updating: {storeName}</h1>
               <p className="modalTitles storeName">Store Name:</p>
               <input
                 className="modalTextBox"
@@ -247,21 +247,21 @@ function DeveloperEditStore({ mallId, store = {} }) {
 
               {/* Save and Cancel boxes */}
               <div>
-                <button
+                <button className='mall-list-button2'
                   // onClick={submitEditStore()}
                   onClick={() => submitDeleteStore()}
                   type="button"
                 >
                   Delete
                 </button>
-                <button
+                <button className='mall-list-button2'
                   // onClick={submitEditStore()}
                   onClick={() => submitEditStore()}
                   type="button"
                 >
                   Submit
                 </button>
-                <button onClick={() => letsCancel()} type="button">
+                <button className='mall-list-button2' onClick={() => letsCancel()} type="button">
                   Cancel
                 </button>
               </div>
@@ -269,6 +269,7 @@ function DeveloperEditStore({ mallId, store = {} }) {
           </div>
         </Col>
       </Container>
+      </div>
     </>
   );
 }

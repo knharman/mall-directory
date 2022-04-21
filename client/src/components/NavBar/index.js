@@ -14,7 +14,7 @@ const AppNavbar = () => {
 
     return (
         <>
-            <Container className="nav-bar" fluid>
+            <Container className="nav-bar sticky" fluid>
                 <Row lg={12} className="nav-row">
                     <Col md={6}><Nav.Link href="/" className='nav-title'>Mall Direct</Nav.Link></Col>
                     <Col md={6}>

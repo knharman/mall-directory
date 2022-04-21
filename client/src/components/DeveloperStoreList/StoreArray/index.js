@@ -21,7 +21,7 @@ function StoreArray({ storeName, description, category, url, clickHandler }) {
           <li>Description: {description}</li>
           <li>URL: {url}</li>
         </ul>
-        <button onClick={clickHandler}>Edit</button>
+        <button className='mall-list-button3' onClick={clickHandler}>Edit</button>
       </div>
     </>
   );

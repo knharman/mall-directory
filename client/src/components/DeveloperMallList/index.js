@@ -73,7 +73,7 @@ function DeveloperMallList() {
       {isModalOpen && (
         <DeveloperAddNewMall onClose={toggleModal} />
       )}
-      <div className="my-5 sidenav" lg={12}>
+      <div className="my-5 marginAdjust sidenav" lg={12}>
         <h2 className='mall-list-title'>Malls:</h2>
         {data && data.developer.malls.length > 0 ? (
 

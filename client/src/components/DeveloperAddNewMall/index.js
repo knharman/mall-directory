@@ -65,6 +65,7 @@ function DeveloperAddNewMall({ onClose }) {
       <section>
         <div id="addNewMall" className="modalBackdrop mall-modal">
           <div className="modalContainer">
+          <h1 className="modalNames" >Adding a New Mall</h1>
             <div className="inline margin50">
               {/* Mall Name and input box */}
               <h1 className="modalTitles storeName">Mall Name:</h1>

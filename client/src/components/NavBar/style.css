@@ -25,6 +25,8 @@
     font-weight: bolder;
 }
 
+
+
 @media (max-width: 768px) {
     .margin-none{
         margin-left: 0px !important;

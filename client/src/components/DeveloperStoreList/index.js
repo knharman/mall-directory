@@ -19,11 +19,11 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall", mallId })
     <>
       {isModalOpen && <DeveloperAddNewStore mallId={mallId} onClose={toggleModal} />}
       <div className="center">
-        <Container fluid>
-          <Col className="store-list-container" lg={10} md={10}>
-            <div className="store-dropdown-container box">
-              <Col className="store-dropdown-box box">
-                <h2 className="center store-list-title">{mallName}</h2>
+        <Container className="center" fluid>
+          <Col className="list-container" lg={8} md={8}>
+            <div className="dropdown-container box">
+              <Col className="dropdown-box box">
+                <h2 className="store-title">{mallName}</h2>
               </Col>
 
               <Col>
@@ -37,7 +37,7 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall", mallId })
                     </li>
                   ))}
                 </ol>
-                <button onClick={() => toggleModal()}>Add New Store</button>
+                <button className='mall-list-button2' onClick={() => toggleModal()}>Add New Store</button>
               </Col>
             </div>
           </Col>

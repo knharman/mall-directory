@@ -17,7 +17,7 @@
   }
 
 .modalContainer {
-  background: var(--developer5);
+  background: var(--developer2) !important;
   border-radius: 5px;
   max-width: 100%;
   margin: 50px auto;
@@ -36,6 +36,11 @@
   color: var(--developer4);
   font-weight: bold;
   margin-left: 35px;
+}
+
+.modalNames {
+  font-weight: bolder;
+  color: var(--developer5) !important;
 }
 
 .mall-style-choice {
@@ -109,7 +114,7 @@ button {
   font-weight: 600;
   margin-bottom: 25px;
   margin-left: 20px;
-  color: var(--customer5);
+  color: var(--developer2);
 }
 
 .modalTextBox {
@@ -127,6 +132,7 @@ button {
 
 .storeName {
   font-size: 35px;
+  color: var(--developer3) !important;
 }
 
 @media (max-width: 912px) {
