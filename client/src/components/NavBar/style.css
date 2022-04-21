@@ -17,6 +17,8 @@
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
+  z-index: 100 !important;
+  overflow-x: hidden;
 }
 
 .nav-title {
@@ -25,11 +27,11 @@
 }
 
 .nav-bar1 {
-  background-color: var(--developer4);
+  background-color: var(--developer2);
 }
 
 .nav-title1 {
-  color: var(--developer1) !important;
+  color: var(--developer4) !important;
 }
 
 .nav-bar2 {

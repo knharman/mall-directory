@@ -39,16 +39,16 @@ p {
 }
 
 .a1 {
-  color: var(--customer2);
+  color: var(--customer);
 }
 
 
 .footer2 {
-  background-color: var(--developer4);
+  background-color: var(--developer2);
 }
 
 .a2 {
-  color: var(--developer1);
+  color: var(--developer4);
 }
 
 

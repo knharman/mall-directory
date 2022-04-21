@@ -46,7 +46,7 @@ function DeveloperMallList() {
           Add New Mall
         </button>
       </div>
-      <div>
+      <div className="backwords">
         <DeveloperStoreList stores={stores == null ? [] : stores} mallName={selectedMall} mallId={selectedMallId} />
       </div>
     </>
