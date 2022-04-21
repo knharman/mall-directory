@@ -25,11 +25,7 @@
     font-weight: bolder;
 }
 
-.sticky {
-    position: fixed;
-    margin-top: -3.5%;
-    padding-top: 4%;
-}
+
 
 @media (max-width: 768px) {
     .margin-none{
