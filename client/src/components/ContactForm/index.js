@@ -36,17 +36,17 @@ function ContactForm() {
                 <Form id="contact-form" target="_blank" action="https://formsubmit.co/8dfa36473550abfc2499eaf5bcafa6eb" method="POST">
                     <Form.Group controlId="form.Name">
                         <Form.Label className="contact-input" htmlFor="name">Name:</Form.Label>
-                        <br/>
+                        <br />
                         <Form.Control type="text" className="col-lg-12" defaultValue={name} name="name" onBlur={handleChange} placeholder="Enter your name" />
                     </Form.Group>
                     <Form.Group controlId="form.Email">
                         <Form.Label className="contact-input" htmlFor="email">Email address:</Form.Label>
-                        <br/>
+                        <br />
                         <Form.Control type="email" defaultValue={email} name="email" onBlur={handleChange} placeholder="name@example.com" />
                     </Form.Group>
                     <Form.Group controlId="form.Textarea">
                         <Form.Label className="contact-input" htmlFor="message">Message:</Form.Label>
-                        <br/>
+                        <br />
                         <Form.Control className="contact-message" as="textarea" name="message" defaultValue={message} rows="6" onBlur={handleChange} placeholder="Enter your question or request here" />
                     </Form.Group>
                     {errorMessage && (
@@ -57,7 +57,7 @@ function ContactForm() {
                     <button className="contact-button" type="submit">Submit</button>
                 </Form>
             </Container>
-            </>
+        </>
     )
 }
 

@@ -49,6 +49,17 @@ function DeveloperAddNewMall({ onClose }) {
     }
   };
 
+  const [errorMessage, setErrorMessage] = useState('');
+
+  function handleChange(e) {
+    
+        if (!e.target.value.length) {
+            setErrorMessage(`All fields are required!`);
+        } else {
+            setErrorMessage('');
+        }
+    }
+
   return (
     <>
       <section>
@@ -66,6 +77,7 @@ function DeveloperAddNewMall({ onClose }) {
                 placeholder="Enter Your Mall's Name"
                 value={formState.mallName}
                 onChange={recieveInput}
+                onBlur={handleChange}
               ></input>
               {/* Mall style and Drop down */}
               <h1 className="modalTitles storeName">Mall Style:</h1>
@@ -106,7 +118,14 @@ function DeveloperAddNewMall({ onClose }) {
                 placeholder="City & State ONLY         Ex. Portland OR"
                 value={formState.location}
                 onChange={recieveInput}
+                onBlur={handleChange}
               ></input>
+              {errorMessage && (
+                        <>
+                            <p className="error-text">{errorMessage}</p>
+                        </>
+                    )}
+
               {/* Save and Cancel boxes */}
               <div>
                 <button className="add-mall-modal-button"
