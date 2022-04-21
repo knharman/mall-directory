@@ -11,8 +11,6 @@
 .center2 {
   margin-left: 0%;
   margin-bottom: 5%;
-
-
 }
 
 .store-title{
@@ -59,4 +57,8 @@
   background-color: var(--developer4);
   color: var(--developer2);
   outline: solid;
+}
+
+.storeName {
+  color: var(--developer2) !important;
 }
