@@ -3,7 +3,7 @@ import "../style.css";
 import DeveloperEditStore from "../../DeveloperEditStore";
 
 function StoreArray({ storeName, description, category, url, clickHandler }) {
-  console.log("store name on store array", category);
+  // console.log("store name on store array", category);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -10,7 +10,7 @@ const storeSchema = new Schema({
   },
   image: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   category: {

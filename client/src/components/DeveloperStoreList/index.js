@@ -5,11 +5,9 @@ import StoreArray from "./StoreArray";
 import { Dropdown, DropdownButton, Container, Col } from "react-bootstrap";
 import "./style.css";
 
-function DeveloperStoreList({ stores = [], mallName = "Select a Mall" }) {
-  const [currentMall, setCurrentMall] = useState({ mallName: mallName });
+function DeveloperStoreList({ stores = [], mallName = "Select a Mall", mallId }) {
   const [currentStore, setCurrentStore] = useState();
-
-  console.log("mallName", currentStore);
+  console.log("DeveloperStoreList", mallId, mallName, currentStore)
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,7 +17,7 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall" }) {
 
   return (
     <>
-      {isModalOpen && <DeveloperAddNewStore onClose={toggleModal} />}
+      {isModalOpen && <DeveloperAddNewStore mallId={mallId} onClose={toggleModal} />}
       <div className="center">
         <Container fluid>
           <Col className="store-list-container" lg={10} md={10}>
@@ -45,7 +43,9 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall" }) {
           </Col>
         </Container>
       </div>
-      <DeveloperEditStore store={currentStore == null ? {} : currentStore} />
+      <div className="center">
+        {currentStore && <DeveloperEditStore mallId={mallId} store={currentStore} />}
+      </div>
     </>
   );
 }

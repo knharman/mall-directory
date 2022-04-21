@@ -14,6 +14,8 @@
 
 .error-text {
   color: red;
+  font-weight: bold;
+  background-color: var(--white);
 }
 
 .contact-message {
@@ -44,6 +46,6 @@
   margin-bottom: 11px;
   margin-top: 12px;
   padding: 5px;
-  box-shadow: #526760;  
+  box-shadow: #526760;
   width: 96% !important;
 }

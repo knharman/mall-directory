@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_MALL } from "../../utils/mutations";
-import {Dropdown, DropdownButton} from 'react-bootstrap'
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import Auth from "../../utils/auth";
 import "./style.css";
 
@@ -20,28 +20,26 @@ function DeveloperAddNewMall({ onClose }) {
       [name]: value,
     }));
   };
- 
+
   // TODO: fix and ADD_STORE mutation
   const [addMall, { error }] = useMutation(ADD_MALL);
 
-  const handleSelect =(e)=>{
+  const handleSelect = (e) => {
     // console.log(e)
     setDropdown(e)
-  
   }
-// console.log(formState)
+  // console.log(formState)
   const submitNewMall = async (event) => {
     // event.preventDefault();
 
     // use try/catch instead of promises to handle errors
     try {
       // execute addMall mutation and pass in variable data from form
-     const mallObj ={
-       ...formState,
-       style: dropdown
-     }
-     console.log(mallObj)
-      const { data } = await addMall({
+      const mallObj = {
+        ...formState,
+        style: dropdown
+      }
+      await addMall({
         variables: { ...mallObj },
       });
       onClose();
@@ -50,6 +48,17 @@ function DeveloperAddNewMall({ onClose }) {
       console.error(e);
     }
   };
+
+  const [errorMessage, setErrorMessage] = useState('');
+
+  function handleChange(e) {
+    
+        if (!e.target.value.length) {
+            setErrorMessage(`All fields are required!`);
+        } else {
+            setErrorMessage('');
+        }
+    }
 
   return (
     <>
@@ -67,6 +76,7 @@ function DeveloperAddNewMall({ onClose }) {
                 placeholder="Enter Your Mall's Name"
                 value={formState.mallName}
                 onChange={recieveInput}
+                onBlur={handleChange}
               ></input>
               {/* Mall style and Drop down */}
               <h1 className="modalTitles storeName">Mall Style:</h1>
@@ -86,15 +96,15 @@ function DeveloperAddNewMall({ onClose }) {
                 </option>
               </select> */}
               <DropdownButton
-              id="style-dropdown-button"
-              alignRight
-              title="Select Mall Type"
-              // id="dropdown-menu-align-right"
-              onSelect={handleSelect}
+                id="style-dropdown-button"
+                alignRight
+                title="Select Mall Type"
+                // id="dropdown-menu-align-right"
+                onSelect={handleSelect}
               >
                 <Dropdown.Item className="mall-style-choice" eventKey="Shopping-Center">Shopping Center</Dropdown.Item>
                 <Dropdown.Item className="mall-style-choice" eventKey="Strip-Mall">Strip Mall</Dropdown.Item>
-                <Dropdown.Item className="mall-style-choice" eventKey="Plaza">Plaza</Dropdown.Item>                
+                <Dropdown.Item className="mall-style-choice" eventKey="Plaza">Plaza</Dropdown.Item>
               </DropdownButton>
 
               {/* Mall Location and input box */}
@@ -107,7 +117,14 @@ function DeveloperAddNewMall({ onClose }) {
                 placeholder="City & State ONLY         Ex. Portland OR"
                 value={formState.location}
                 onChange={recieveInput}
+                onBlur={handleChange}
               ></input>
+              {errorMessage && (
+                        <>
+                            <p className="error-text">{errorMessage}</p>
+                        </>
+                    )}
+
               {/* Save and Cancel boxes */}
               <div>
                 <button className="add-mall-modal-button"

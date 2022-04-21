@@ -6,14 +6,16 @@ import { GET_DEVELOPER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 
 function DeveloperMallList() {
-  const {loading, data, error} = useQuery(GET_DEVELOPER)
+  const { loading, data, error } = useQuery(GET_DEVELOPER)
   const [selectedMall, setSelectedMall] = useState("")
+  const [selectedMallId, setSelectedMallId] = useState("")
   const [stores, setStores] = useState([])
 
+  console.log("selectedMall", selectedMall)
+  console.log("selectedMallId", selectedMallId)
 
-
-  if (data) console.log(data);
-  if (error) console.log(error)
+  // if (data) console.log(data);
+  // if (error) console.log(error)
 
 
   // const malls = [
@@ -52,10 +54,12 @@ function DeveloperMallList() {
   //   }
   // ]
 
-  const handleMallClick = (stores, mallName) => {
-    console.log("stores", stores)
+  const handleMallClick = (stores, mallName, mallId) => {
+    // console.log("stores", stores)
+    console.log("handleMallCLick", mallName, mallId)
     setStores(stores)
     setSelectedMall(mallName)
+    setSelectedMallId(mallId)
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -74,8 +78,8 @@ function DeveloperMallList() {
         {data && data.developer.malls.length > 0 ? (
 
           <ol className="flex-row">
-            {data && data.developer.malls.map((mall, index) => (
-              <li key={index} >
+            {data && data.developer.malls.map((mall) => (
+              <li key={mall._id} >
                 <MallArray {...mall} clickHandler={handleMallClick} />
               </li>
             ))}
@@ -89,8 +93,8 @@ function DeveloperMallList() {
       </div>
       <div>
 
-<DeveloperStoreList stores={stores == null ? [] : stores} mallName={selectedMall}/>
-    
+        <DeveloperStoreList stores={stores == null ? [] : stores} mallName={selectedMall} mallId={selectedMallId} />
+
 
       </div>
     </>

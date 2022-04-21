@@ -102,14 +102,13 @@ export const REMOVE_MALL = gql`
 `;
 
 export const ADD_STORE = gql`
-mutation Mutation($mallId: ID!, $storeName: String!, $image: String!, $category: String!, $description: String!, $url: String!) {
-  addStore(mallID: $mallId, storeName: $storeName, image: $image, category: $category, description: $description, url: $url) {
+mutation Mutation($mallId: ID!, $storeName: String!, $category: String!, $description: String!, $url: String!) {
+  addStore(mallID: $mallId, storeName: $storeName, category: $category, description: $description, url: $url) {
     mallName
     style
     location
     stores {
       storeName
-      image
       category {
         name
       }
@@ -122,8 +121,8 @@ mutation Mutation($mallId: ID!, $storeName: String!, $image: String!, $category:
 `;
 
 export const UPDATE_STORE = gql`
-mutation updateStore($mallId: ID!, $storeId: ID!, $storeName: String!, $image: String!, $category: String!, $description: String!, $url: String!) {
-  updateStore(mallID: $mallId, storeID: $storeId, storeName: $storeName, image: $image, category: $category, description: $description, url: $url) {
+mutation updateStore($mallId: ID!, $storeId: ID!, $storeName: String!, $category: String!, $description: String!, $url: String!) {
+  updateStore(mallID: $mallId, storeID: $storeId, storeName: $storeName, category: $category, description: $description, url: $url) {
     _id
     mallName
     style
@@ -131,7 +130,6 @@ mutation updateStore($mallId: ID!, $storeId: ID!, $storeName: String!, $image: S
     stores {
       _id
       storeName
-      image
       category {
         _id
         name
