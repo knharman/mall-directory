@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_MALL } from "../../utils/mutations";
-import {Dropdown, DropdownButton} from 'react-bootstrap'
-import Auth from "../../utils/auth";
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import "./style.css";
 
 function DeveloperAddNewMall({ onClose }) {
@@ -20,43 +19,48 @@ function DeveloperAddNewMall({ onClose }) {
       [name]: value,
     }));
   };
- 
-  // TODO: fix and ADD_STORE mutation
-  const [addMall, { error }] = useMutation(ADD_MALL);
 
-  const handleSelect =(e)=>{
-    // console.log(e)
+  const [addMall] = useMutation(ADD_MALL);
+
+  const handleSelect = (e) => {
     setDropdown(e)
-  
   }
-// console.log(formState)
-  const submitNewMall = async (event) => {
-    // event.preventDefault();
 
-    // use try/catch instead of promises to handle errors
+  const submitNewMall = async (event) => {
+
     try {
-      // execute addMall mutation and pass in variable data from form
-     const mallObj ={
-       ...formState,
-       style: dropdown
-     }
-     console.log(mallObj)
-      const { data } = await addMall({
+      const mallObj = {
+        ...formState,
+        style: dropdown
+      }
+      await addMall({
         variables: { ...mallObj },
       });
       onClose();
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }
   };
 
+  const [errorMessage, setErrorMessage] = useState('');
+
+  function handleChange(e) {
+
+    if (!e.target.value.length) {
+      setErrorMessage(`All fields are required!`);
+    } else {
+      setErrorMessage('');
+    }
+  }
+
   return (
     <>
       <section>
-        <div id="addNewMall" className="modalBackdrop">
+        <div id="addNewMall" className="modalBackdrop mall-modal">
           <div className="modalContainer">
-            <div className=" inline margin50">
-              {/* Mall Name and input box */}
+            <h1 className="modalNames" >Adding a New Mall</h1>
+            <div className="inline margin50">
               <h1 className="modalTitles storeName">Mall Name:</h1>
               <input
                 className="modalTextBox"
@@ -66,36 +70,21 @@ function DeveloperAddNewMall({ onClose }) {
                 placeholder="Enter Your Mall's Name"
                 value={formState.mallName}
                 onChange={recieveInput}
+                onBlur={handleChange}
               ></input>
-              {/* Mall style and Drop down */}
-              {/* <h1 className="modalTitles storeName">Mall Style:</h1>
-              <select className="modalTextBox" id="style" onSelect={handleSelect}>
-                <option
-                  name="style"
-                  value="shoppingCenter"
-                  
-                >
-                  Shopping Center
-                </option>
-                <option name="style" value="stripMall" onSelect={()=>setDropdown('stripMall')}>
-                  Strip Mall
-                </option>
-                <option name="style" value="plaza" onSelect={()=>setDropdown('plaza')}>
-                  Plaza
-                </option>
-              </select> */}
+              <h1 className="modalTitles storeName">Mall Style:</h1>
+
               <DropdownButton
-              alignRight
-              title="Select Mall Type"
-              id="dropdown-menu-align-right"
-              onSelect={handleSelect}
+                id="style-dropdown-button"
+                alignRight
+                title="Select Mall Type"
+                onSelect={handleSelect}
               >
-                <Dropdown.Item eventKey="Shopping-Center">Shopping Center</Dropdown.Item>
-                <Dropdown.Item eventKey="Strip-Mall">Strip Mall</Dropdown.Item>
-                <Dropdown.Item eventKey="Plaza">Plaza</Dropdown.Item>                
+                <Dropdown.Item className="mall-style-choice" eventKey="Shopping-Center">Shopping Center</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="Strip-Mall">Strip Mall</Dropdown.Item>
+                <Dropdown.Item className="mall-style-choice" eventKey="Plaza">Plaza</Dropdown.Item>
               </DropdownButton>
 
-              {/* Mall Location and input box */}
               <h1 className="modalTitles storeName">Mall Location:</h1>
               <input
                 className="modalTextBox"
@@ -105,17 +94,21 @@ function DeveloperAddNewMall({ onClose }) {
                 placeholder="City & State ONLY         Ex. Portland OR"
                 value={formState.location}
                 onChange={recieveInput}
+                onBlur={handleChange}
               ></input>
-              {/* Save and Cancel boxes */}
+              {errorMessage && (
+                <>
+                  <p className="error-text">{errorMessage}</p>
+                </>
+              )}
+
               <div>
-                <button
-                  // onClick={submitNewMall()}
+                <button className="add-mall-modal-button"
                   onClick={() => submitNewMall()}
-                  type="button"
-                >
+                  type="button">
                   Submit
                 </button>
-                <button onClick={onClose} type="button">
+                <button className="add-mall-modal-button" onClick={onClose} type="button">
                   Cancel
                 </button>
               </div>

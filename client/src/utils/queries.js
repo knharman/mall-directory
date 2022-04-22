@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 
 export const GET_MALL = gql`
 query Mall($mallId: ID!) {
@@ -72,24 +72,6 @@ query getDeveloper {
 }
   `;
 
-
-// export const QUERY_STORES = gql`
-//   {
-//     Store {
-//       id
-//       mallID
-//       storeName
-//       image
-//       description
-//       URL
-//       category {
-//         _id
-//         name
-//       }
-//     }
-//   }
-// `;
-
 export const GET_CATEGORIES = gql`
   query categories {
   categories {
@@ -98,5 +80,3 @@ export const GET_CATEGORIES = gql`
   }
 }
 `;
-
-

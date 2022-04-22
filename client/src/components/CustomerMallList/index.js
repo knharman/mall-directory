@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { Dropdown, DropdownButton, Container, Col, Row } from "react-bootstrap";
 
@@ -50,49 +50,46 @@ function CustomerMallList() {
 
   return (
     <>
-    <Row>
-      <Col>
-      <Container fluid>
-        <Col className="mall-list-container" lg={12} md={12}>
-          <div className="mall-dropdown-container box">
-            <Col className="mall-dropdown-box box">
-              {/* <div className="box inline margin50"> */}
-              <h2 className="center mall-list-title">Mall List</h2>
-              {/* <div className="center"> */}
-              {
-                uniqueLocations().length === 0 ? (
-                  <h3>No malls have been added yet!</h3>
-                ) : (
-                  <>
-                    <h4 className="mall-list-filter">Filter by Location:</h4>
-                    <DropdownButton id="dropdown-basic-button" title="Select a City">
-                      {
-                        uniqueLocations().map((uniqueLocation, index) => <Dropdown.Item href="#" key={index} onClick={() => { setLocationFilter(uniqueLocation) }}>{uniqueLocation}</Dropdown.Item>)
-                      }
-                    </DropdownButton>
-                  </>
-                )
-              }
-              {/* </div> */}
-              {/* </div> */}
-            </Col>
+      <Row>
+        <Col>
+          <Container fluid>
+            <Col className="mall-list-container" lg={12} md={12}>
+              <div className="mall-dropdown-container box">
+                <Col className="mall-dropdown-box box">
+                  <h2 className="mall-list-title">Mall List</h2>
+                  {
+                    uniqueLocations().length === 0 ? (
+                      <h3>No malls have been added yet!</h3>
+                    ) : (
+                      <>
+                        <h4 className="mall-list-filter">Filter by Location:</h4>
+                        <DropdownButton id="dropdown-basic-button" title="Select a City">
+                          {
+                            uniqueLocations().map((uniqueLocation, index) => <Dropdown.Item href="#" key={index} onClick={() => { setLocationFilter(uniqueLocation) }}>{uniqueLocation}</Dropdown.Item>)
+                          }
+                        </DropdownButton>
+                        <button className="catBtn"></button>
+                      </>
+                    )
+                  }
+                </Col>
 
-            <Col>
-              <ol className="scrollBox list-numbers">
-                {filterMalls().map((mall, index) => (
-                  <li key={index}>
-                    <IndividualMall {...mall} clickHandler={handleMallClick} />
-                  </li>
-                ))}
-              </ol>
+                <Col>
+                  <ol className="scrollBox list-numbers">
+                    {filterMalls().map((mall, index) => (
+                      <li className="store-list-items" key={index}>
+                        <IndividualMall className="store-list-items" {...mall} clickHandler={handleMallClick} />
+                      </li>
+                    ))}
+                  </ol>
+                </Col>
+              </div>
             </Col>
-          </div>
+          </Container>
         </Col>
-      </Container>
-      </Col>
-      <Col>
-      <CustomerStoreList stores={stores == null ? [] : stores} mallName={selectedMall}/>
-      </Col>
+        <Col>
+          <CustomerStoreList stores={stores == null ? [] : stores} mallName={selectedMall} />
+        </Col>
       </Row>
     </>
   );

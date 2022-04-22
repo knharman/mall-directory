@@ -1,41 +1,58 @@
 :root {
-    --customer1: #C5FFFD;
-    --customer2: #88D9E6;
-    --customer3: #8B8BAE;
-    --customer4: #526760;
-    --customer5: #374B4A;
-    --developer1: #202C39;
-    --developer2: #283845;
-    --developer3: #B8B08D;
-    --developer4: #F2D492;
-    --developer5: #F29559;
-    --white: #FFFFFF;
-  }
+  --customer1: #c5fffd;
+  --customer2: #88d9e6;
+  --customer3: #8b8bae;
+  --customer4: #526760;
+  --customer5: #374b4a;
+  --developer1: #202c39;
+  --developer2: #283845;
+  --developer3: #b8b08d;
+  --developer4: #f2d492;
+  --developer5: #f29559;
+  --white: #ffffff;
+}
 
 .nav-bar {
-    background-color: var(--customer4);
-    box-shadow: 0 0 25px 0 black;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: x-large;
+  box-shadow: 0 0 25px 0 black;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  z-index: 100 !important;
+  overflow-x: hidden;
 }
 
 .nav-title {
-    color: var(--customer2) !important;
-    font-weight: bolder;
+  font-weight: bolder;
+  margin-right: 0px;
+}
+
+.nav-bar1 {
+  background-color: var(--developer2);
+}
+
+.nav-title1 {
+  color: var(--developer4) !important;
+}
+
+.nav-bar2 {
+  background-color: var(--customer4);
+}
+
+.nav-title2 {
+  color: var(--customer2) !important;
 }
 
 @media (max-width: 768px) {
-    .margin-none{
-        margin-left: 0px !important;
-    }
-    .text-left {
-        text-align: left !important;
-    }
+  .margin-none {
+    margin-left: 0px !important;
+  }
+  .text-left {
+    text-align: left !important;
+  }
 }
 
 @media (max-width: 348px) {
-    .nav-row {
-        display: inline;
-    }
+  .nav-row {
+    display: inline;
+  }
 }

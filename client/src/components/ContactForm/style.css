@@ -1,9 +1,16 @@
 #contact-form {
-  background-color: #c5fffd;
+
   border-radius: 15px;
   padding: 20px;
   margin: 8%;
   width: 74%;
+}
+.CF1 {
+  background-color: #b8b08d;
+}
+
+.CF2 {
+  background-color: #c5fffd;
 }
 
 .contact-input {
@@ -14,6 +21,8 @@
 
 .error-text {
   color: red;
+  font-weight: bold;
+  background-color: var(--white);
 }
 
 .contact-message {
@@ -44,6 +53,6 @@
   margin-bottom: 11px;
   margin-top: 12px;
   padding: 5px;
-  box-shadow: #526760;  
+  box-shadow: #526760;
   width: 96% !important;
 }

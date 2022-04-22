@@ -10,7 +10,7 @@ const storeSchema = new Schema({
   },
   image: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   category: {
@@ -29,7 +29,5 @@ const storeSchema = new Schema({
     trim: true
   }
 });
-
-// const Store = mongoose.model('Store',storeSchema);
 
 module.exports = storeSchema;

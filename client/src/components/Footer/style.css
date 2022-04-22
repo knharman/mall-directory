@@ -18,41 +18,56 @@
   bottom: 0;
   width: 100%;
   height: 5%;
-  background-color: var(--customer5);
   text-align: center;
   vertical-align: auto;
 }
 
-.footer a {
+.a {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   font-size: larger;
   font-weight: bolder;
-  color: var(--customer2);
   text-decoration: none;
 }
+p {
+  margin-top: 10px !important;
+}
+
+.footer1 {
+  background-color: var(--customer5);
+}
+
+.a1 {
+  color: var(--customer);
+}
+
+
+.footer2 {
+  background-color: var(--developer2);
+}
+
+.a2 {
+  color: var(--developer4);
+}
+
 
 @media (max-width: 768px) {
   .footer {
     height: 7%;
-    /* padding-bottom: 25px; */
-    /* width: 97%; */
   }
 
   .footer a {
-    font-size:large;
+    font-size: large;
   }
 }
 
 @media (max-width: 375px) {
   .footer {
     height: 9%;
-    /* padding-bottom: 20px; */
-    /* width: 97%; */
   }
 
   .footer a {
-    font-size:medium;
+    font-size: medium;
   }
 }

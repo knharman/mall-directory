@@ -1,26 +1,146 @@
-/* The sidebar menu */
+:root {
+  --developer1: #202c39;
+  --developer2: #283845;
+  --developer3: #b8b08d;
+  --developer4: #f2d492;
+  --developer5: #f29559;
+  --white: #ffffff;
+}
+
 .sidenav {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 160px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: rgb(255, 82, 82); /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px;
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  top:  5%;
+  left: 0;
+  background-color: var(--developer5);
+  overflow-x: hidden;
+  padding: 10px;
+  margin-left: 0%;
+  margin-top: 50px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: var(--developer2);
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.dev-mall-list-item {
+  background-color: var(--developer4);
+  color: var(--developer2);
+  font-weight: bold;
+  width: 80%;
+  padding: 5px;
+}
+
+.dev-mall-list-item-title {
+  color: var(--developer1);
+  font-weight: bold;
+  text-shadow: 2px 2px 2px var(--developer4);
+}
+
+.dev-mall-list-item-descrip {
+  color: var(--white);
+  font-style: italic;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px var(--developer2);
+}
+
+.dev-mall-list-item:hover {
+  background-color: var(--developer4);
+  color: var(--developer2);
+  cursor: pointer;
+}
+
+.mall-list-button {
+  background-color: var(--developer2);
+  color: var(--developer4);
+  font-weight: bold;
+  outline: solid;
+  margin-top: 15px;
+  margin-left: 25%;
+}
+
+.mall-list-button:hover {
+  background-color: var(--developer4);
+  color: var(--developer2);
+  outline: solid;
+}
+
+.my-5 {
+  margin-top: 0px !important;
+
+}
+
+
+@media (max-width: 768px) {
+  .marginLeft {
+    margin-left: -30%;
   }
+  .dev-mall-list-item {
+    width: 95%;
+  }
+  .dev-mall-list-item-descrip {
+    color: var(--white);
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px var(--developer2);
+   margin-left: -30%;
+
+  }
+  ::marker{
+    color: var(--developer5);
+  }
+  .sidenav {
+    top:11%;
+  }
+  }
+
+  @media (max-width: 600px) {
+    .marginLeft {
+      margin-left: -53%;
+      margin-right: 1%;
+    }
+    .dev-mall-list-item {
+      width: 100%;
+    }
+    .dev-mall-list-item-descrip {
+     margin-left: -45%;
+    }
+    .sidenav {
+      top:12%;
+    }
+
+    }
+
+    @media (max-width: 515px) {
+      .marginLeft {
+        margin-left: -45%;
+        margin-right: 1%;
+      }
+      .dev-mall-list-item {
+        width: 100%;
+      }
+      .dev-mall-list-item-descrip {
+       margin-left: -45%;
+      }
+      .sidenav {
+        top:17.5%;
+        width: 30%;
+        margin-right: 1%;
+      }
   
-  /* The navigation menu links */
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #070707;
-    display: block;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
+      }
+
+
+
+
+
+    

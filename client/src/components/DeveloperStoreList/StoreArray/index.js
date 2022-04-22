@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import '../style.css';
-import DeveloperEditStore from '../../DeveloperEditStore'
+import React, { useState } from "react";
+import "../style.css";
+import DeveloperEditStore from "../../DeveloperEditStore";
 
+function StoreArray({ storeName, description, category, url, clickHandler }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-
-function StoreArray({ storeName, description, category, url }) {
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const toggleModal = () => {
-      setIsModalOpen(!isModalOpen);
-    };
+  const toggleModal2 = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
-      <>
-    {/* {isModalOpen && (
-        <DeveloperEditStore onClose={toggleModal} />
-      )} */}
+    <>
+      {isModalOpen && <DeveloperEditStore onClose={toggleModal2} />}
       <div className="my-2">
-          <h4>{storeName}</h4>
-          <ul>
-              <li>{category}</li>
-              <li>{description}</li>
-              <li>{url}</li>
-          </ul>
-          <button onClick={() => toggleModal()}>Edit</button>
+        <h4>{storeName}</h4>
+        <ul>
+          <li>Category: {category.name}</li>
+          <li>Description: {description}</li>
+          <li>URL: {url}</li>
+        </ul>
+        <button className='mall-list-button3' onClick={clickHandler}>Edit</button>
       </div>
-      </>
+    </>
   );
 }
 

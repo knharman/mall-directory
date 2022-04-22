@@ -1,55 +1,53 @@
 :root {
-  --customer1: #C5FFFD;
-  --customer2: #88D9E6;
-  --customer3: #8B8BAE;
+  --customer1: #c5fffd;
+  --customer2: #88d9e6;
+  --customer3: #8b8bae;
   --customer4: #526760;
-  --customer5: #374B4A;
-  --developer1: #202C39;
+  --customer5: #374b4a;
+  --developer1: #202c39;
   --developer2: #283845;
-  --developer3: #B8B08D;
-  --developer4: #F2D492;
-  --developer5: #F29559;
-  --white: #FFFFFF;
+  --developer3: #b8b08d;
+  --developer4: #f2d492;
+  --developer5: #f29559;
+  --white: #ffffff;
 }
 
-
 .modalContainer {
-	background: var(--customer5);
-	border-radius: 5px;
-	max-width: 100%;
-	margin: 50px auto;
-	padding: 15px;
-	width: 960px;
+  background: var(--customer5);
+  border-radius: 5px;
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 15px;
+  width: 960px;
 }
 
 .modalTitle {
-	font-size: 18px;
-	font-weight: 600;
-	margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
 }
 
 button {
-	background: var(--customer2);
-	border: 0;
-	border-radius: 5px;
-	color: #fff;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: 600;
-	margin-bottom: 30px;
-	padding: 10px 15px;	
+  background: var(--customer2);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  padding: 10px 15px;
 }
 
-
 .modalBackdrop {
-	background: transparent;
-	bottom: 0;
-	left: 0;
-	overflow: auto;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 1;
+  background: transparent;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
 }
 
 .box {
@@ -63,26 +61,25 @@ button {
   display: flexbox;
   width: 100%;
   vertical-align: top;
-
 }
 
 .modalTitles {
-	font-size: 22px;
-	font-weight: 600;
-	margin-bottom: 25px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
   margin-left: 20px;
   color: var(--customer5);
 }
 
 .modalText {
-	font-size: 14px;
-	font-weight: 600;
-	margin-bottom: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 25px;
   margin-left: 30px;
   margin-right: 30px;
   color: var(--customer3);
 }
 
-.storeName{
+.storeName {
   font-size: 35px;
 }

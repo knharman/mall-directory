@@ -36,7 +36,7 @@ const resolvers = {
     },
     addMall: async (parent, { mallName, style, location }, context) => {
       if (context.user) {
-        const mall = await Mall.create({ mallName,  location, style });
+        const mall = await Mall.create({ mallName, location, style });
         await Developer.findByIdAndUpdate(context.user._id, {
           $push: { malls: mall },
         });
@@ -82,9 +82,9 @@ const resolvers = {
     ) => {
       if (context.user) {
         const cat = await Category.findOne({ name: category });
-      
 
-        const store ={
+
+        const store = {
           storeName,
           image,
           category: cat._id,
@@ -92,10 +92,9 @@ const resolvers = {
           url,
         };
 
-        await Mall.findByIdAndUpdate({_id: mallID}, { $push: { stores: store } });
+        await Mall.findByIdAndUpdate({ _id: mallID }, { $push: { stores: store } });
 
         store.category = cat;
-        console.log(store);
         return store;
       }
 
@@ -103,7 +102,7 @@ const resolvers = {
     },
     updateStore: async (
       parent,
-      { mallID, storeID, storeName, image, category, description, url },
+      { mallID, storeID, storeName, category, description, url },
       context
     ) => {
       if (context.user) {
@@ -111,7 +110,6 @@ const resolvers = {
 
         const storeUpdates = {
           storeName,
-          image,
           category: cat._id,
           description,
           url,
