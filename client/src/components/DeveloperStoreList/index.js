@@ -14,6 +14,10 @@ function DeveloperStoreList({ stores = [], mallName = "Select a Mall", mallId })
     setIsModalOpen(!isModalOpen);
   };
 
+  if(!mallId) {
+    return <></>
+  }
+
   return (
     <>
       {isModalOpen && <DeveloperAddNewStore mallId={mallId} onClose={toggleModal} />}

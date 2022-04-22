@@ -6,7 +6,7 @@ import "./style.css";
 
 function DeveloperAddNewStore({ mallId, onClose }) {
   const [formState, setFormState] = useState({
-    mallId,
+    mallId: mallId,
     storeName: "",
     category: "",
     description: "",
@@ -33,6 +33,7 @@ function DeveloperAddNewStore({ mallId, onClose }) {
 
   const sumbitNewStore = async (event) => {
     try {
+      console.log(formState)
       await addStore({
         variables: { ...formState },
       });
@@ -77,9 +78,9 @@ function DeveloperAddNewStore({ mallId, onClose }) {
               <h1 className="modalTitles storeName">Category:</h1>
               <DropdownButton
                 id="style-dropdown-button"
-                alignRight
+                alignright="true"
                 name="category"
-                title="Select Category"
+                title={formState.category ? formState.category : "Select a Category"}
                 onSelect={handleCategorySelect}
               >
                 <Dropdown.Item className="mall-style-choice" eventKey="ACCESSORIES">ACCESSORIES</Dropdown.Item>
